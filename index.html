@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Royal Hyderabadi Biryani Restaurant</title>
+
+    <style>
+      /* --- SMART HIDE GOOGLE TRANSLATE (Unprofessional Bars/Banners) --- */
+      .goog-te-banner-frame,
+      .skiptranslate,
+      #goog-gt-tt,
+      .goog-te-balloon-frame,
+      .goog-tooltip,
+      .goog-tooltip-content,
+      .VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      body {
+        top: 0 !important;
+      }
+      /* Prevent layout jumping when translating */
+      body.translated-rtl,
+      body.translated-ltr {
+        position: static !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="google_translate_element"
+      style="
+        position: fixed;
+        top: -9999px;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      "
+    ></div>
+
+    <div id="root"></div>
+
+    <script type="text/javascript">
+      // 1. Sync Language Cookie BEFORE script loads (CRITICAL)
+      var _userLang = localStorage.getItem("siteLang") || "en";
+      var host = window.location.hostname;
+
+      if (_userLang !== "en") {
+        document.cookie = "googtrans=/en/" + _userLang + "; path=/;";
+        document.cookie =
+          "googtrans=/en/" + _userLang + "; path=/; domain=" + host + ";";
+      } else {
+        // Clear cookies if English
+        var _exp = "expires=Thu, 01 Jan 1970 00:00:00 UTC";
+        document.cookie = "googtrans=; " + _exp + "; path=/;";
+        document.cookie =
+          "googtrans=; " + _exp + "; path=/; domain=" + host + ";";
+      }
+
+      // 2. Initialize Google Translate
+      function googleTranslateElementInit() {
+        new window.google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            includedLanguages: "en,ar",
+            autoDisplay: false,
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element",
+        );
+      }
+    </script>
+
+    <script
+      type="text/javascript"
+      src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
