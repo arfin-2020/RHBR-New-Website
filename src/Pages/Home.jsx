@@ -1,8 +1,24 @@
+import { useState } from 'react'
+import { Dialog, DialogPanel } from '@headlessui/react'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import HeroSection from './HeroSection'
+import BiryaniIntroSection from './BiryaniIntroSection'
+import MenuSection from './MenuSection'
+
+const navigation = [
+  { name: 'Product', href: '#' },
+  { name: 'Features', href: '#' },
+  { name: 'Marketplace', href: '#' },
+  { name: 'Company', href: '#' },
+]
 const Home = () => {
+     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#2a1b15] to-[#3e2c1f] text-white">
-            <h1 className="text-4xl font-bold">Welcome to Royal Hyderabadi Biryani!</h1>
-         </div>
+        <>
+        <HeroSection/>
+        <BiryaniIntroSection/>
+        <MenuSection/>
+    </>
     );
 }
 

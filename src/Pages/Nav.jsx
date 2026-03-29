@@ -9,9 +9,10 @@ function switchLanguage(langCode) {
   const host = window.location.hostname;
   sessionStorage.setItem("restoreScroll", String(window.scrollY));
   localStorage.setItem("siteLang", langCode);
-  
+
   if (langCode === "en") {
-    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${host};`;
   } else {
     document.cookie = `googtrans=/en/${langCode}; path=/;`;
@@ -24,60 +25,56 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const currentLang = localStorage.getItem("siteLang") || "en";
   const isArabic = currentLang === "ar";
-  const brandColor = "#3b271e";
+  const brandColor = "#26140a";
 
- const handleWhatsApp = () => {
-  // Access the number from the .env file
-  const phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
-  
-  if (!phoneNumber) {
-    console.error("WhatsApp number not found in environment variables!");
-    return;
-  }
+  const handleWhatsApp = () => {
+    // Access the number from the .env file
+    const phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
 
-  const msg = encodeURIComponent("Hello Royal Hyderabadi! I'd like to place an order.");
-  window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${msg}`;
-};
+    if (!phoneNumber) {
+      console.error("WhatsApp number not found in environment variables!");
+      return;
+    }
+
+    const msg = encodeURIComponent(
+      "Hello Royal Hyderabadi! I'd like to place an order.",
+    );
+    window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${msg}`;
+  };
 
   return (
-    <nav 
-      style={{ backgroundColor: brandColor }} 
-      className="fixed top-0 w-full z-[100] text-white shadow-xl px-6 py-4"
+    <nav
+      style={{ backgroundColor: brandColor }}
+      className="fixed top-0 w-full z-100 text-white shadow-xl px-6 py-4 mb-20"
       dir="ltr" /* FORCES Logo on Left even in Arabic */
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        
-        {/* LEFT: Logo & Brand */}
-        {/* <div className="flex items-center gap-3">
-          <div className="p-2 rounded-full shrink-0">
-            <img src="./src/assets/logo.png" className="w-20 h-20 object-contain" />
-          </div>
+        <Link
+          to="/"
+          className="flex items-center gap-3 hover:opacity-90 transition-opacity"
+        >
+          <img
+            src="./src/assets/logo.png"
+            style={{ width: "80px", height: "80px" }}
+          />
           <div className="leading-tight">
-            <h1 className="text-lg font-black  uppercase whitespace-nowrap">
+            <h1 className="font-bold text-lg text-white tracking-tight uppercase">
               Royal Hyderabadi Biryani Restaurant
             </h1>
+            <p className="text-amber-500 text-[10px] uppercase tracking-widest font-bold">
+              We ensure Customer Satisfaction
+            </p>
           </div>
-        </div> */}
-        <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
-              <img
-                src="./src/assets/logo.png" 
-                style={{ width: "100px", height: "100px" }}
-                
-              />
-              <div className="leading-tight">
-                <h1 className="font-bold text-lg text-white tracking-tight uppercase">
-                  Royal Hyderabadi Biryani Restaurant
-                </h1>
-                <p className="text-amber-500 text-[10px] uppercase tracking-widest font-bold">
-                  We ensure Customer Satisfaction
-                </p>
-              </div>
-            </Link>
+        </Link>
 
         {/* CENTER: Navigation (Desktop) */}
         <div className="hidden lg:flex items-center gap-8">
           {["Home", "About Us", "Menu", "Offers", "Contact"].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="text-xs font-bold uppercase tracking-widest hover:text-amber-400 transition-colors">
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="text-xs font-bold uppercase tracking-widest hover:text-amber-400 transition-colors"
+            >
               {item}
             </a>
           ))}
@@ -113,15 +110,25 @@ const Nav = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }}
+            initial={{ height: 0 }}
+            animate={{ height: "auto" }}
+            exit={{ height: 0 }}
             className="lg:hidden absolute top-full left-0 w-full bg-[#2a1b15] border-t border-white/10 flex flex-col p-6 gap-5 overflow-hidden shadow-2xl"
           >
             {["Home", "About Us", "Menu", "Offers", "Contact"].map((item) => (
-              <a key={item} href={`#${item}`} onClick={() => setIsOpen(false)} className="text-lg font-bold border-b border-white/5 pb-2">
+              <a
+                key={item}
+                href={`#${item}`}
+                onClick={() => setIsOpen(false)}
+                className="text-lg font-bold border-b border-white/5 pb-2"
+              >
                 {item}
               </a>
             ))}
-            <button onClick={handleWhatsApp} className="w-full bg-green-600 py-4 rounded-xl font-bold flex justify-center items-center gap-2">
+            <button
+              onClick={handleWhatsApp}
+              className="w-full bg-green-600 py-4 rounded-xl font-bold flex justify-center items-center gap-2"
+            >
               <MessageCircle size={20} /> Order on WhatsApp
             </button>
           </motion.div>
