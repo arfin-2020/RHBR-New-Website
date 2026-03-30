@@ -4,6 +4,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import HeroSection from './HeroSection'
 import BiryaniIntroSection from './BiryaniIntroSection'
 import MenuSection from './MenuSection'
+import TalabatSection from './TalabatSection'
+import VideoSection from './VideoSection'
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -18,6 +20,8 @@ const Home = () => {
         <HeroSection/>
         <BiryaniIntroSection/>
         <MenuSection/>
+        <TalabatSection/>
+        <VideoSection/>
     </>
     );
 }

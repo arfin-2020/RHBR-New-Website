@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -47,13 +47,13 @@ const menuData = {
       id: 7,
       image: "./src/assets/Bindi.jpg",
       title: "Bindi Fry",
-      description: "Bindi and oil cooked with light spices, a simple yet flavorful dish that pairs perfectly with paratha or rice for a satisfying breakfast ",
+      description: "Bindi and oil cooked with light spices, a simple yet flavorful dish that pairs perfectly with paratha or rice for a satisfying breakfast.",
     },
     {
       id: 8,
       image: "./src/assets/Chana Masala.jpg",
       title: "Chana Masala",
-      description: "Aromatic chickpea curry cooked with tomatoes, onions and traditional spices creating a rich flavorful gravy that is both hearty and satisfying",
+      description: "Aromatic chickpea curry cooked with tomatoes, onions and traditional spices creating a rich flavorful gravy that is both hearty and satisfying.",
     },
   ],
   Lunch: [
@@ -67,13 +67,13 @@ const menuData = {
       id: 10,
       image: "./src/assets/Mutton Biryani.jpg",
       title: "Hyderabadi Special Mutton Biryani",
-      description: "Fragrant basmati rice layered with spiced fresh mutton. Slow-cooked on dum for rich, authentic flavorHerb-marinated chicken, avocado, mixed greens & chipotle mayo.",
+      description: "Fragrant basmati rice layered with spiced fresh mutton. Slow-cooked on dum for rich, authentic flavor.",
     },
     {
       id: 11,
       image: "./src/assets/Chicken Tikka Masala.jpg",
       title: "Chicken Masala",
-      description: "chicken, onions, tomatoes, ginger, garlic, green chilies, turmeric, cumin, coriander powder, oil, salt.",
+      description: "Chicken, onions, tomatoes, ginger, garlic, green chilies, turmeric, cumin, coriander powder, oil, salt.",
     },
     {
       id: 12,
@@ -93,19 +93,19 @@ const menuData = {
       id: 14,
       image: "./src/assets/Mutton Biryani.jpg",
       title: "Hyderabadi Special Mutton Biryani",
-      description: "Fragrant basmati rice layered with spiced fresh mutton. Slow-cooked on dum for rich, authentic flavorHerb-marinated chicken, avocado, mixed greens & chipotle mayo.",
+      description: "Fragrant basmati rice layered with spiced fresh mutton. Slow-cooked on dum for rich, authentic flavor.",
     },
     {
       id: 15,
       image: "./src/assets/Mutton Kadhai.jpg",
       title: "Mutton Kadhai",
-      description: "Tender mutton cooked in a traditional kadhai with aromatic spices, tomatoes, and bell peppers. A rich and flavorful gravy that captures authentic culinary traditions with every bite",
+      description: "Tender mutton cooked in a traditional kadhai with aromatic spices, tomatoes, and bell peppers. A rich and flavorful gravy that captures authentic culinary traditions with every bite.",
     },
     {
       id: 16,
       image: "./src/assets/Dum_ka_Chicken.jpg",
       title: "Dum ka Chicken",
-      description: "chicken, yogurt, onions, cashews, ginger, garlic, cardamom, cloves, cinnamon, saffron, oil, salt.",
+      description: "Chicken, yogurt, onions, cashews, ginger, garlic, cardamom, cloves, cinnamon, saffron, oil, salt.",
     },
   ],
   Drinks: [
@@ -164,7 +164,6 @@ const menuData = {
 
 const tabs = Object.keys(menuData);
 
-// ─── Tab Icons ─────────────────────────────────────────────────────────────────
 const tabIcons = {
   "Today's Special": "✦",
   Breakfast: "☀",
@@ -199,37 +198,28 @@ function MenuCard({ item, index }) {
         cursor: "pointer",
       }}
     >
-      {/* Image */}
       <div style={{ position: "relative", overflow: "hidden", height: "210px" }}>
         <motion.img
           src={item.image}
           alt={item.title}
           animate={{ scale: hovered ? 1.07 : 1 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-          }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
         />
-        {/* Gradient overlay */}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background:
-              "linear-gradient(to top, rgba(38,20,10,0.55) 0%, transparent 55%)",
+            background: "linear-gradient(to top, rgba(38,20,10,0.55) 0%, transparent 55%)",
             pointerEvents: "none",
           }}
         />
-        {/* Badge */}
         <div
           style={{
             position: "absolute",
             top: "14px",
             right: "14px",
-            background: "#26140a",
+            background: "#23100B",
             color: "#f5e8d8",
             fontSize: "11px",
             fontFamily: "'Playfair Display', serif",
@@ -243,23 +233,14 @@ function MenuCard({ item, index }) {
         </div>
       </div>
 
-      {/* Content */}
-      <div
-        style={{
-          padding: "22px 24px 24px",
-          display: "flex",
-          flexDirection: "column",
-          flex: 1,
-          gap: "10px",
-        }}
-      >
+      <div style={{ padding: "22px 24px 24px", display: "flex", flexDirection: "column", flex: 1, gap: "10px" }}>
         <h3
           style={{
             margin: 0,
             fontFamily: "'Playfair Display', serif",
             fontSize: "20px",
             fontWeight: 700,
-            color: "#26140a",
+            color: "#23100B",
             lineHeight: 1.25,
           }}
         >
@@ -277,15 +258,13 @@ function MenuCard({ item, index }) {
         >
           {item.description}
         </p>
-       
 
-        {/* CTA */}
         <motion.button
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           onClick={() => navigate("/menu")}
           style={{
-            background: "#442713",
+            background: "#23100B",
             color: "#f5e8d8",
             border: "none",
             borderRadius: "10px",
@@ -316,6 +295,28 @@ function MenuCard({ item, index }) {
 // ─── Main Menu Section ─────────────────────────────────────────────────────────
 export default function MenuSection() {
   const [activeTab, setActiveTab] = useState("Today's Special");
+  const scrollRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft]   = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const checkScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    checkScroll();
+    el.addEventListener("scroll", checkScroll, { passive: true });
+    window.addEventListener("resize", checkScroll);
+    return () => {
+      el.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, [checkScroll]);
 
   return (
     <section
@@ -325,7 +326,6 @@ export default function MenuSection() {
         fontFamily: "'Lato', sans-serif",
       }}
     >
-      {/* Google Fonts */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap');
 
@@ -347,13 +347,11 @@ export default function MenuSection() {
           display: flex;
           align-items: center;
           gap: 7px;
+          flex-shrink: 0;
         }
         .menu-tab-btn:hover { color: #26140a; }
         .menu-tab-btn.active { color: #26140a; }
-        .menu-tab-btn .icon {
-          font-size: 16px;
-          line-height: 1;
-        }
+        .menu-tab-btn .icon { font-size: 16px; line-height: 1; }
 
         .menu-grid {
           display: grid;
@@ -368,13 +366,92 @@ export default function MenuSection() {
           .menu-tab-btn { padding: 10px 14px; font-size: 12px; }
         }
 
+        /* ── Tab scroll wrapper (handles fade edges + scroll) ──────────── */
+        .tabs-outer {
+          position: relative;
+        }
+
+        /* Right-side fade hint — only shows when content overflows */
+        .tabs-outer::after {
+          content: '';
+          position: absolute;
+          top: 0; right: 0; bottom: 0;
+          width: 48px;
+          background: linear-gradient(to left, #ffffff, transparent);
+          pointer-events: none;
+          border-radius: 0 12px 12px 0;
+          opacity: 0;
+          transition: opacity 0.2s;
+        }
+        .tabs-outer.can-scroll-right::after { opacity: 1; }
+
+        /* Left-side fade hint */
+        .tabs-outer::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; bottom: 0;
+          width: 48px;
+          background: linear-gradient(to right, #ffffff, transparent);
+          pointer-events: none;
+          border-radius: 12px 0 0 12px;
+          z-index: 1;
+          opacity: 0;
+          transition: opacity 0.2s;
+        }
+        .tabs-outer.can-scroll-left::before { opacity: 1; }
+
+        /* The actual scrollable row */
         .tabs-scroll {
           display: flex;
+          flex-wrap: nowrap;              /* single row always                */
           overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
           scrollbar-width: none;
-          gap: 10px;
+          -ms-overflow-style: none;
+          gap: 4px;
+          padding: 2px 4px;
+          /* NOTE: NO justify-content:center — that breaks overflow scrolling */
         }
         .tabs-scroll::-webkit-scrollbar { display: none; }
+
+        /* On screens wide enough to show all tabs, center them with margin trick */
+        @media (min-width: 901px) {
+          .tabs-scroll { justify-content: center; }
+        }
+
+        /* ── FIX 2: View Full Menu hover ───────────────────────────────── */
+        .view-full-menu-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: transparent;
+          border: 2px solid #23100B;
+          color: #23100B;
+          border-radius: 12px;
+          padding: 14px 36px;
+          font-family: 'Lato', sans-serif;
+          font-weight: 700;
+          font-size: 14px;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          text-decoration: none;
+          cursor: pointer;
+          transition: background 0.28s ease, color 0.28s ease,
+                      box-shadow 0.28s ease, transform 0.2s ease;
+        }
+        .view-full-menu-btn:hover {
+          background: #23100B;
+          color: #f5e8d8;
+          box-shadow: 0 10px 32px rgba(35,16,11,0.25);
+          transform: translateY(-2px);
+        }
+        .view-full-menu-btn .btn-arrow {
+          transition: stroke 0.28s ease;
+          stroke: #23100B;
+        }
+        .view-full-menu-btn:hover .btn-arrow { stroke: #f5e8d8; }
+        .view-full-menu-btn:active { transform: scale(0.97) translateY(0); }
       `}</style>
 
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
@@ -390,7 +467,7 @@ export default function MenuSection() {
               fontFamily: "'Playfair Display', serif",
               fontStyle: "italic",
               fontSize: "17px",
-              color: "#ffb900",
+              color: "#23100B",
               marginBottom: "10px",
             }}
           >
@@ -420,7 +497,7 @@ export default function MenuSection() {
             style={{
               width: "60px",
               height: "3px",
-              background: "#26140a",
+              background: "#23100B",
               borderRadius: "2px",
               margin: "0 auto",
               transformOrigin: "center",
@@ -441,51 +518,57 @@ export default function MenuSection() {
             marginBottom: "48px",
             boxShadow: "0 2px 20px rgba(38,20,10,0.07)",
             border: "1px solid #f0e0d0",
-            
           }}
         >
-          <div className="tabs-scroll">
-            {tabs.map((tab) => (
-              <button
-                key={tab}
-                className={`menu-tab-btn ${activeTab === tab ? "active" : ""}`}
-                onClick={() => setActiveTab(tab)}
-                style={{ flex: "0 0 auto" }}
-              >
-                {/* Active pill background */}
-                {activeTab === tab && (
-                  <motion.div
-                    layoutId="tab-active-bg"
+          {/* tabs-outer drives the CSS fade-edge pseudo-elements */}
+          <div
+            className={[
+              "tabs-outer",
+              canScrollLeft  ? "can-scroll-left"  : "",
+              canScrollRight ? "can-scroll-right" : "",
+            ].join(" ")}
+          >
+            <div className="tabs-scroll" ref={scrollRef}>
+              {tabs.map((tab) => (
+                <button
+                  key={tab}
+                  className={`menu-tab-btn ${activeTab === tab ? "active" : ""}`}
+                  onClick={() => setActiveTab(tab)}
+                >
+                  {activeTab === tab && (
+                    <motion.div
+                      layoutId="tab-active-bg"
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        background: "#23100B",
+                        borderRadius: "10px",
+                      }}
+                      transition={{ type: "spring", stiffness: 420, damping: 36 }}
+                    />
+                  )}
+                  <span
+                    className="icon"
                     style={{
-                      position: "absolute",
-                      inset: 0,
-                      background: "#442713",
-                      borderRadius: "10px",
+                      position: "relative",
+                      zIndex: 1,
+                      color: activeTab === tab ? "#f5e8d8" : "#ffb900",
                     }}
-                    transition={{ type: "spring", stiffness: 420, damping: 36 }}
-                  />
-                )}
-                <span
-                  className="icon"
-                  style={{
-                    position: "relative",
-                    zIndex: 1,
-                    color: activeTab === tab ? "#f5e8d8" : "#ffb900",
-                  }}
-                >
-                  {tabIcons[tab]}
-                </span>
-                <span
-                  style={{
-                    position: "relative",
-                    zIndex: 1,
-                    color: activeTab === tab ? "#f5e8d8" : undefined,
-                  }}
-                >
-                  {tab}
-                </span>
-              </button>
-            ))}
+                  >
+                    {tabIcons[tab]}
+                  </span>
+                  <span
+                    style={{
+                      position: "relative",
+                      zIndex: 1,
+                      color: activeTab === tab ? "#f5e8d8" : undefined,
+                    }}
+                  >
+                    {tab}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         </motion.div>
 
@@ -524,33 +607,20 @@ export default function MenuSection() {
           >
             Explore our full collection of dishes
           </p>
-          <motion.a
-            href="/menu"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "10px",
-              background: "transparent",
-              border: "2px solid #26140a",
-              color: "#26140a",
-              borderRadius: "12px",
-              padding: "14px 36px",
-              fontFamily: "'Lato', sans-serif",
-              fontWeight: 700,
-              fontSize: "14px",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              textDecoration: "none",
-              cursor: "pointer",
-            }}
-          >
+
+          {/* className-based hover — motion.a whileHover conflicts with CSS transition */}
+          <a href="/menu" className="view-full-menu-btn">
             View Full Menu
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M8 3l5 5-5 5" stroke="#26140a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                className="btn-arrow"
+                d="M3 8h10M8 3l5 5-5 5"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
-          </motion.a>
+          </a>
         </motion.div>
       </div>
     </section>
