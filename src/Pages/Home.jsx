@@ -6,6 +6,9 @@ import BiryaniIntroSection from './BiryaniIntroSection'
 import MenuSection from './MenuSection'
 import TalabatSection from './TalabatSection'
 import VideoSection from './VideoSection'
+import ReviewsSection from './ReviewsSection'
+import Footer from './Footer'
+
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -22,6 +25,8 @@ const Home = () => {
         <MenuSection/>
         <TalabatSection/>
         <VideoSection/>
+        <ReviewsSection/>
+        <Footer/>
     </>
     );
 }
