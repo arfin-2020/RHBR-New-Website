@@ -27,7 +27,7 @@ const HeroSection = () => {
         className="absolute inset-0 z-0"
       >
         <img
-          src="./src/assets/background.webp"
+          src="./assets/background.webp"
           alt="Authentic Hyderabadi Biryani"
           className="w-full h-full object-cover object-center"
         />

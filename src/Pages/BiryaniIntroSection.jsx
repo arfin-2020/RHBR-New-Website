@@ -78,7 +78,7 @@ const BiryaniIntroSection = () => {
             <motion.img
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.5 }}
-              src="./src/assets/Chicken Biryani .png"
+              src="./assets/Chicken Biryani .png"
               alt="Premium Chicken Biryani"
               style={{width: "500px"}}
               onError={(e) => {

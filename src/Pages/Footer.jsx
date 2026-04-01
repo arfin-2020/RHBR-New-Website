@@ -575,7 +575,7 @@ export default function Footer() {
               className="mb-10 flex items-center gap-3 hover:opacity-90 transition-opacity"
             >
               <img
-                src="./src/assets/Logo Header.png"
+                src="./assets/Logo Header.png"
                 style={{ width: "370px", height: "82.5288px" }}
               />
             </Link>
