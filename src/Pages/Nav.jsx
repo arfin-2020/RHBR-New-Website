@@ -101,7 +101,8 @@ const Nav = () => {
             <img
               src="/assets/Logo Header.png"
               alt="Royal Hyderabadi Logo"
-              className="h-10 w-auto sm:h-12 md:h-14 lg:h-16 object-contain transition-all duration-300"
+              className=" sm:h-12 md:h-14 lg:h-16 object-contain transition-all duration-300"
+              style={{ width: "350px", height: "75.5288px" }}
             />
           </Link>
         </motion.div>

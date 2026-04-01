@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Flame, UtensilsCrossed } from "lucide-react";
 
@@ -147,14 +147,14 @@ const menuData = {
     },
     {
       id: 19,
-      image: "./assets/pepsi.jpg",
+      image: "./assets/Pepsi.jpg",
       title: "Pepsi",
       description: "Classic cola soft drink to refresh your palate.",
       badge: "🥤 Cool",
     },
     {
       id: 20,
-      image: "./assets/water.jpg",
+      image: "./assets/Water.jpg",
       title: "Water",
       description: "Pure mineral water for your hydration.",
       badge: "💧 Pure",
@@ -518,14 +518,20 @@ export default function MenuSection() {
           <p className="text-gray-600 text-lg mb-6">
             Want to explore our complete collection?
           </p>
-          <motion.a
-            href="/menu"
+          
+          <motion.a 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-2 text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
             style={{ backgroundColor: BRAND_COLOR }}
           >
-            <span>View Complete Menu</span>
+            
+            <Link
+            to="/menu"
+            className="flex items-center gap-3 hover:opacity-90 transition-opacity duration-300 shrink-0"
+          >
+           <span>View Complete Menu</span>
+          </Link>
             <motion.svg
               animate={{ x: 0 }}
               whileHover={{ x: 4 }}
