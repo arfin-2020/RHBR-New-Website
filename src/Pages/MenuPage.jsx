@@ -14,10 +14,10 @@ const MENU = {
   "Biryani": {
     color: "#7c2d12",
     items: [
-      { id: 1,  name: "Zaffrani Chicken Dum Biryani (Fresh Chicken)",       desc: "Fresh chicken slow-cooked on dum with saffron & whole spices.",              badge: "Signature",  image: "./assets/Zaffrani Chicken Biryani.jpg", pricing: { Single: "1.500", Couple: "3.000", Family: "5.900" } },
-      { id: 2,  name: "Chicken Biryani (Regular)",           desc: "Classic Hyderabadi style chicken biryani with aromatic basmati rice.",                      badge: "Popular",    image: "./assets/Chicken Dum Biryani.jpg",          pricing: { Single: "0.990", Couple: "2.100", Family: "3.400" } },
+      { id: 1,  name: "Zaffrani Chicken Dum Biryani (Fresh Chicken)",       desc: "Fresh chicken slow-cooked on dum with saffron & whole spices.",               badge: "Signature",  image: "./assets/Zaffrani Chicken Biryani.jpg", pricing: { Single: "1.500", Couple: "3.000", Family: "5.900" } },
+      { id: 2,  name: "Chicken Biryani (Regular)",           desc: "Classic Hyderabadi style chicken biryani with aromatic basmati rice.",                       badge: "Popular",    image: "./assets/Chicken Dum Biryani.jpg",           pricing: { Single: "0.990", Couple: "2.100", Family: "3.400" } },
       { id: 3,  name: "Zaffrani Mutton Biryani (Omani Mutton)",             desc: "Omani mutton cooked on dum with saffron for a royal finish.",                 badge: "Royal",      image: "./assets/Zaffrani Mutton Biryani.png",    pricing: { Single: "2.500", Couple: "5.000", Family: "9.900" } },
-      { id: 4,  name: "Mutton Biryani",                      desc: "Fragrant basmati rice layered with spiced fresh mutton, slow-cooked on dum.", badge: "Hot",        image: "./assets/Mutton Biryani.jpg",           pricing: { Single: "1.700", Couple: "3.200", Family: "6.000" } },
+      { id: 4,  name: "Mutton Biryani",                       desc: "Fragrant basmati rice layered with spiced fresh mutton, slow-cooked on dum.", badge: "Hot",        image: "./assets/Mutton Biryani.jpg",           pricing: { Single: "1.700", Couple: "3.200", Family: "6.000" } },
       { id: 5,  name: "Hyderabadi Chicken Tandoori Biryani", desc: "Tandoori chicken layered in aromatic biryani rice.",                         badge: "Special",    image: "./assets/Chicken Tandoori Biryani.png",            pricing: { Quarter: "1.800", Half: "2.200", Full: "3.400" } },
       { id: 6,  name: "Hyderabadi Chicken 65 Biryani",       desc: "Crispy chicken 65 tossed through fragrant biryani rice.",                    badge: "Spicy",      image: "./assets/65-Biryani.jpg", pricing: { Single: "1.690" } },
       { id: 7,  name: "Egg Biryani",                         desc: "Light and aromatic egg biryani with traditional spices.",                     badge: "Light",      image: "./assets/Egg Biryani.jpg",            pricing: { Single: "0.850" } },
@@ -42,22 +42,22 @@ const MENU = {
     items: [
       { id: 17, name: "Chicken Tandoori",     desc: "Whole chicken marinated in tandoori spices, roasted in a clay oven.",           badge: "Classic",  image: "./assets/Tandoori-Chicken.jpg", pricing: { Quarter: "0.900", Half: "1.750", Full: "2.300" } },
       { id: 18, name: "Chicken Reshmi Kebab", desc: "Silky smooth chicken kebabs marinated in cream & cashew paste.",                badge: "Creamy",   image: "./assets/chicken-reshmi-kabab.jpg", pricing: { Single: "2.000" } },
-      { id: 19, name: "Chicken Tikka Kebab",  desc: "Juicy chicken tikka marinated in yogurt and spices, tandoor-grilled.",          badge: "Tandoor",  image: "./assets/Chicken-Tikka-Kebab.jpg", pricing: { Single: "2.000" } },
-      { id: 20, name: "Paneer Tikka Kebab",   desc: "Soft paneer cubes marinated in spiced yogurt and grilled to perfection.",       badge: "Vegetarian", image: "./assets/paneer-tikka-2.jpg", pricing: { Single: "2.100" } },
-      { id: 21, name: "Chicken Lollypop",     desc: "Crispy spiced chicken lollypops — perfect party starter.",                      badge: "Crispy",   image: "./assets/Chicken-Lollipop.jpg", pricing: { Single: "2.000" } },
-      { id: 22, name: "Mutton Seekh Kebab",   desc: "Minced mutton blended with herbs and spices, grilled on skewers.",              badge: "Grilled",  image: "./assets/mutton-Sheekh-kabab.jpg", pricing: { Single: "2.100" } },
+      { id: 19, name: "Chicken Tikka Kebab",  desc: "Juicy chicken tikka marinated in yogurt and spices, tandoor-grilled.",           badge: "Tandoor",  image: "./assets/Chicken-Tikka-Kebab.jpg", pricing: { Single: "2.000" } },
+      { id: 20, name: "Paneer Tikka Kebab",   desc: "Soft paneer cubes marinated in spiced yogurt and grilled to perfection.",        badge: "Vegetarian", image: "./assets/paneer-tikka-2.jpg", pricing: { Single: "2.100" } },
+      { id: 21, name: "Chicken Lollypop",     desc: "Crispy spiced chicken lollypops — perfect party starter.",                       badge: "Crispy",   image: "./assets/Chicken-Lollipop.jpg", pricing: { Single: "2.000" } },
+      { id: 22, name: "Mutton Seekh Kebab",   desc: "Minced mutton blended with herbs and spices, grilled on skewers.",               badge: "Grilled",  image: "./assets/mutton-Sheekh-kabab.jpg", pricing: { Single: "2.100" } },
     ],
   },
   "Chicken": {
     color: "#854d0e",
     items: [
-      { id: 23, name: "Chicken Curry",      desc: "Classic Hyderabadi chicken curry with 1 roti included.",                 badge: "Combo",     note: "Comes with 1 Roti", image: "./assets/Chicken Curry.jpg", pricing: { Half: "0.700", Full: "1.200" } },
+      { id: 23, name: "Chicken Curry",      desc: "Classic Hyderabadi chicken curry with 1 roti included.",                  badge: "Combo",     note: "Comes with 1 Roti", image: "./assets/Chicken Curry.jpg", pricing: { Half: "0.700", Full: "1.200" } },
       { id: 24, name: "Butter Chicken",     desc: "Rich, creamy tomato-based butter chicken — a crowd favourite.",           badge: "Favourite", image: "./assets/Butter Chicken.jpg", pricing: { Single: "1.200" } },
       { id: 25, name: "Chicken Manchurian", desc: "Indo-Chinese chicken in a spiced soy-ginger sauce.",                     badge: "Fusion",    image: "./assets/Chicken Manchurian.jpg", pricing: { Single: "1.700" } },
       { id: 26, name: "Dragon Chicken",     desc: "Crispy chicken tossed in a fiery dragon sauce.",                         badge: "Spicy",     image: "./assets/Dragon Chicken.jpg", pricing: { Single: "1.700" } },
       { id: 27, name: "Chilly Chicken Dry", desc: "Bold Indo-Chinese dry chilly chicken with peppers & onions.",             badge: "Hot",       image: "./assets/Chilly Chicken Dry.png", pricing: { Single: "1.700" } },
       { id: 28, name: "Chicken 65",         desc: "Deep-fried spiced chicken — a South Indian classic in dry or gravy.",    badge: "Star",      image: "./assets/Chicken65.png", pricing: { Dry: "1.500", Gravy: "1.500" } },
-      { id: 29, name: "Crispy Fried Chicken",     desc: "Golden-fried crispy chicken with a light spiced coating.",               badge: "Crispy",    image: "./assets/Crispy Fried Chicken.jpg", pricing: { Single: "1.700" } },
+      { id: 29, name: "Crispy Fried Chicken",     desc: "Golden-fried crispy chicken with a light spiced coating.",                badge: "Crispy",    image: "./assets/Crispy Fried Chicken.jpg", pricing: { Single: "1.700" } },
     ],
   },
   "Mutton": {
@@ -71,13 +71,13 @@ const MENU = {
   "Veg": {
     color: "#365314",
     items: [
-      { id: 33, name: "Paneer Butter Masala", desc: "Creamy, rich paneer in a silky tomato-butter gravy.",         badge: "Everyday", note: "Everyday Special",   image: "./assets/Butter Panieer Masala.jpg", pricing: { Half: "0.600", Full: "1.500" } },
-      { id: 34, name: "Aloo Gobi",            desc: "Potato and cauliflower cooked with light spices.",             badge: "Light",    note: "Sunday Special",    image: "./assets/Aloo Gobi.jpg", pricing: { Single: "0.400" } },
-      { id: 35, name: "Chana Dal Palak",      desc: "Split chickpea lentils cooked with spinach and spices.",       badge: "Healthy",  note: "Monday Special",    image: "./assets/Chana Daal.jpg", pricing: { Single: "0.400" } },
-      { id: 36, name: "Mix Veg",              desc: "Fresh seasonal vegetables cooked with traditional spices.",    badge: "Fresh",    note: "Tuesday Special",   image: "./assets/Mix Veg.jpg", pricing: { Single: "0.400" } },
-      { id: 37, name: "Aloo Chana",           desc: "Hearty chickpea and potato curry with aromatic spices.",       badge: "Classic",  note: "Wednesday Special", image: "./assets/Aloo Chana.jpg", pricing: { Single: "0.400" } },
-      { id: 38, name: "Kaddu Dalcha",         desc: "Bottle gourd cooked with lentils in a tangy, spiced gravy.",  badge: "Special",  note: "Thursday Special",  image: "./assets/Kaddu Dalcha.jpg", pricing: { Single: "0.400" } },
-      { id: 39, name: "Aloo Methi",           desc: "Fenugreek leaves cooked with potatoes — a classic comfort.",  badge: "Aromatic", note: "Friday Special",    image: "./assets/Aloo Methi.jpg", pricing: { Single: "0.400" } },
+      { id: 33, name: "Paneer Butter Masala", desc: "Creamy, rich paneer in a silky tomato-butter gravy.",          badge: "Everyday", note: "Everyday Special",   image: "./assets/Butter Panieer Masala.jpg", pricing: { Half: "0.600", Full: "1.500" } },
+      { id: 34, name: "Aloo Gobi",            desc: "Potato and cauliflower cooked with light spices.",             badge: "Light",    note: "Sunday Special",     image: "./assets/Aloo Gobi.jpg", pricing: { Single: "0.400" } },
+      { id: 35, name: "Chana Dal Palak",      desc: "Split chickpea lentils cooked with spinach and spices.",       badge: "Healthy",  note: "Monday Special",     image: "./assets/Chana Daal.jpg", pricing: { Single: "0.400" } },
+      { id: 36, name: "Mix Veg",              desc: "Fresh seasonal vegetables cooked with traditional spices.",    badge: "Fresh",    note: "Tuesday Special",    image: "./assets/Mix Veg.jpg", pricing: { Single: "0.400" } },
+      { id: 37, name: "Aloo Chana",           desc: "Hearty chickpea and potato curry with aromatic spices.",        badge: "Classic",  note: "Wednesday Special", image: "./assets/Aloo Chana.jpg", pricing: { Single: "0.400" } },
+      { id: 38, name: "Kaddu Dalcha",         desc: "Bottle gourd cooked with lentils in a tangy, spiced gravy.",  badge: "Special",  note: "Thursday Special",   image: "./assets/Kaddu Dalcha.jpg", pricing: { Single: "0.400" } },
+      { id: 39, name: "Aloo Methi",           desc: "Fenugreek leaves cooked with potatoes — a classic comfort.",  badge: "Aromatic", note: "Friday Special",     image: "./assets/Aloo Methi.jpg", pricing: { Single: "0.400" } },
       { id: 40, name: "Baigan Salan",         desc: "Eggplant cooked in tangy peanut and sesame gravy.",           badge: "HYD Classic", note: "Saturday Special", image: "./assets/baingan-salan.png", pricing: { Single: "0.400" } },
       { id: 41, name: "Chilly Paneer",        desc: "Crispy paneer tossed in Indo-Chinese chilly sauce.",          badge: "Fusion",   image: "./assets/chilli-paneer-recipe.png", pricing: { Single: "1.400" } },
     ],
@@ -85,8 +85,8 @@ const MENU = {
   "Fish": {
     color: "#0c4a6e",
     items: [
-      { id: 42, name: "Fish Fry",   desc: "Crispy golden-fried fish marinated in special Hyderabadi spices.", badge: "Fresh", image: "./assets/Fish Fry.jpg", pricing: { Single: "1.500" } }, 
-      { id: 43, name: "Fish Curry", desc: "Tender fish cooked in a tangy, spiced tomato-based curry.",        badge: "Bold",  image: "./assets/Fish Curry.jpg", pricing: { Single: "1.700" } },
+      { id: 42, name: "Fish Fry",   desc: "Crispy golden-fried fish marinated in special Hyderabadi spices.", badge: "Fresh", image: "./assets/Fish Fry.jpg", pricing: { Single: "1.500" } },
+      { id: 43, name: "Fish Curry", desc: "Tender fish cooked in a tangy, spiced tomato-based curry.",         badge: "Bold",  image: "./assets/Fish Curry.jpg", pricing: { Single: "1.700" } },
     ],
   },
   "Chinese": {
@@ -98,12 +98,12 @@ const MENU = {
       { id: 47, name: "Veg Fried Rice",               desc: "Seasonal vegetables stir-fried with aromatic basmati rice.",             badge: "Veg",     image: "./assets/Veg Fried Rice.png",    pricing: { Single: "1.200" } },
       { id: 48, name: "Schezwan Fried Rice (Veg)",    desc: "Fiery Schezwan sauce tossed with vegetables and rice.",                  badge: "Fiery",   image: "./assets/Szechwan-Fried-Rice.png",    pricing: { Single: "1.500" } },
       { id: 49, name: "Schezwan Fried Rice (Non-Veg)",desc: "Schezwan-spiced rice with chicken — full of heat and flavour.",          badge: "Hot",     image: "./assets/Schezwan Fried Rice (Non-Veg).png",    pricing: { Single: "1.700" } },
-      { id: 50, name: "Chicken Noodles",              desc: "Stir-fried noodles with chicken and vegetables.",                        badge: "Comfort", image: "./assets/Chicken Noodles.jpg",    pricing: { Single: "1.300" } },
-      { id: 51, name: "Egg Noodles",                  desc: "Classic egg noodles stir-fried with vegetables.",                        badge: "Classic", image: "./assets/Egg Noodles.jpg",    pricing: { Single: "1.200" } },
-      { id: 52, name: "Veg Noodles",                  desc: "Soft noodles tossed with fresh vegetables and soy.",                    badge: "Veg",     image: "./assets/Veg Noodles.jpg",    pricing: { Single: "1.300" } },
+      { id: 50, name: "Chicken Noodles",               desc: "Stir-fried noodles with chicken and vegetables.",                        badge: "Comfort", image: "./assets/Chicken Noodles.jpg",    pricing: { Single: "1.300" } },
+      { id: 51, name: "Egg Noodles",                   desc: "Classic egg noodles stir-fried with vegetables.",                        badge: "Classic", image: "./assets/Egg Noodles.jpg",    pricing: { Single: "1.200" } },
+      { id: 52, name: "Veg Noodles",                   desc: "Soft noodles tossed with fresh vegetables and soy.",                    badge: "Veg",     image: "./assets/Veg Noodles.jpg",    pricing: { Single: "1.300" } },
       { id: 53, name: "Chicken 65 Noodles",           desc: "Spiced chicken 65 mixed through stir-fried noodles.",                   badge: "Fusion",  image: "./assets/Chicken 65 Noodles.jpg", pricing: { Single: "1.300" } },
       { id: 54, name: "Schezwan Noodles (Veg)",       desc: "Fiery Schezwan sauce tossed through noodles with vegetables.",          badge: "Hot",     image: "./assets/Schezwan-Noodles-Veg.png",    pricing: { Single: "1.500" } },
-      { id: 55, name: "Schezwan Noodles (Non-Veg)",   desc: "Schezwan chicken noodles — bold, fiery, unforgettable.",               badge: "Bold",    image: "./assets/chezwan-Noodles-Non-Veg.jpg",    pricing: { Single: "1.600" } },
+      { id: 55, name: "Schezwan Noodles (Non-Veg)",   desc: "Schezwan chicken noodles — bold, fiery, unforgettable.",                badge: "Bold",    image: "./assets/chezwan-Noodles-Non-Veg.jpg",    pricing: { Single: "1.600" } },
     ],
   },
   "Breads & Rice": {
@@ -123,21 +123,21 @@ const MENU = {
   "Soups": {
     color: "#4a4a0a",
     items: [
-      { id: 65, name: "Chicken Corn Soup", desc: "Warm, comforting sweet corn soup with chicken pieces.",          badge: "Comforting", image: "./assets/ChickenCornSoup.png", pricing: { Single: "0.800" } },
-      { id: 66, name: "Manchow Soup",      desc: "Spicy, crispy-noodle-topped Indo-Chinese Manchow soup.",         badge: "Spicy",      image: "./assets/Manchow Soup.jpeg", pricing: { Single: "0.800" } },
+      { id: 65, name: "Chicken Corn Soup", desc: "Warm, comforting sweet corn soup with chicken pieces.",           badge: "Comforting", image: "./assets/ChickenCornSoup.png", pricing: { Single: "0.800" } },
+      { id: 66, name: "Manchow Soup",      desc: "Spicy, crispy-noodle-topped Indo-Chinese Manchow soup.",          badge: "Spicy",      image: "./assets/Manchow Soup.jpeg", pricing: { Single: "0.800" } },
     ],
   },
   "Desserts": {
     color: "#7c2d6b",
     items: [
-      { id: 67, name: "Qubani Ka Meetha", desc: "Hyderabadi apricot dessert — sweet, rich and indulgent.",          badge: "Heritage", image: "./assets/Qubani Ka Meetha.jpg", pricing: { Single: "1.200" } },
+      { id: 67, name: "Qubani Ka Meetha", desc: "Hyderabadi apricot dessert — sweet, rich and indulgent.",           badge: "Heritage", image: "./assets/Qubani Ka Meetha.jpg", pricing: { Single: "1.200" } },
       { id: 68, name: "Double Ka Meetha", desc: "Fried bread soaked in sugar syrup, topped with cream.",            badge: "Rich",     image: "./assets/Double Ka Meetha.jpg", pricing: { Single: "0.800" } },
       { id: 69, name: "Gulab Jamun",      desc: "Soft milk-solid dumplings soaked in rose-scented sugar syrup.",    badge: "Sweet",    image: "./assets/Gulab.jpg", pricing: { "2 pcs": "0.300" } },
       { id: 70, name: "Badam Kheer",      desc: "Creamy almond pudding — silky, fragrant and indulgent.",           badge: "Premium",  image: "./assets/Badam Ki Kheer.jpg", pricing: { Single: "0.400" } },
       { id: 71, name: "Kaddu Kheer",      desc: "Bottle gourd kheer with sago pearls, nuts & cardamom.",            badge: "Unique",   image: "./assets/Kaddu Kheer.jpg", pricing: { Single: "0.400" } },
       { id: 72, name: "Mango Kheer",      desc: "Creamy rice pudding infused with fresh mango.",                    badge: "Seasonal", image: "./assets/Mango Kheer.jpg", pricing: { Single: "0.500" } },
-      { id: 73, name: "Rabdi",            desc: "Slow-cooked condensed milk dessert with pistachios.",              badge: "Luxury",   image: "./assets/Rabri.jpg", pricing: { Single: "0.500" } },
-      { id: 74, name: "Sweets",           desc: "Assorted traditional Indian sweets.",                              badge: "Variety",  image: "./assets/Sweets.jpg", pricing: { Single: "0.400" } },
+      { id: 73, name: "Rabdi",            desc: "Slow-cooked condensed milk dessert with pistachios.",               badge: "Luxury",   image: "./assets/Rabri.jpg", pricing: { Single: "0.500" } },
+      { id: 74, name: "Sweets",           desc: "Assorted traditional Indian sweets.",                               badge: "Variety",  image: "./assets/Sweets.jpg", pricing: { Single: "0.400" } },
     ],
   },
   "Drinks & Tea": {
@@ -147,14 +147,14 @@ const MENU = {
       { id: 76, name: "Zaffrani Royal Tea", desc: "Royal chai infused with premium saffron strands.",       badge: "Premium",    image: "./assets/Zaffrani Royal Tea.png", pricing: { Single: "0.200" } },
       { id: 77, name: "Sulaimani Tea",      desc: "Spiced black tea with lemon — a South Indian classic.",  badge: "Soothing",   image: "./assets/Sulaimani Tea.png", pricing: { Single: "0.100" } },
       { id: 78, name: "Green Tea",          desc: "Light, refreshing green tea.",                           badge: "Healthy",    image: "./assets/Green Tea.png", pricing: { Single: "0.100" } },
-      { id: 79, name: "Black Coffee",       desc: "Strong, aromatic black coffee.",                         badge: "Bold",       image: "./assets/Black Coffee.png", pricing: { Single: "0.100" } },
+      { id: 79, name: "Black Coffee",       desc: "Strong, aromatic black coffee.",                          badge: "Bold",       image: "./assets/Black Coffee.png", pricing: { Single: "0.100" } },
       { id: 80, name: "Fresh Milk Coffee",  desc: "Freshly brewed coffee with full-cream milk.",            badge: "Creamy",     image: "./assets/Fresh Milk Coffee.png", pricing: { Single: "0.300" } },
-      { id: 81, name: "Water (Small)",      desc: "Chilled mineral water.",                                 badge: "Pure",       image: "https://images.deliveryhero.io/image/product-information-management/6836be3dfc3145bc6308202b.jpg", pricing: { Single: "0.100" } },
+      { id: 81, name: "Water (Small)",      desc: "Chilled mineral water.",                                  badge: "Pure",       image: "https://images.deliveryhero.io/image/product-information-management/6836be3dfc3145bc6308202b.jpg", pricing: { Single: "0.100" } },
       { id: 82, name: "Water (Big)",        desc: "Large chilled mineral water.",                           badge: "Pure",       image: "./assets/Water Big.jpg", pricing: { Single: "0.200" } },
-      { id: 83, name: "Pepsi",              desc: "Chilled Pepsi cola.",                                    badge: "Refreshing", image: "./assets/Pepsi.jpg", pricing: { Single: "0.300" } },
-      { id: 84, name: "Mountain Dew",       desc: "Chilled Mountain Dew.",                                  badge: "Cool",       image: "./assets/Mountain Dew.jpg", pricing: { Single: "0.300" } },
-      { id: 85, name: "Kinza",              desc: "Refreshing Kinza soft drink.",                           badge: "Fruity",     image: "./assets/Kinza.jpg", pricing: { Single: "0.300" } },
-      { id: 86, name: "Fresh Juice",        desc: "Freshly pressed seasonal fruit juice.",                  badge: "Fresh",      image: "./assets/Fresh Juice.png", pricing: { Single: "0.900" } },
+      { id: 83, name: "Pepsi",               desc: "Chilled Pepsi cola.",                                     badge: "Refreshing", image: "./assets/Pepsi.jpg", pricing: { Single: "0.300" } },
+      { id: 84, name: "Mountain Dew",       desc: "Chilled Mountain Dew.",                                   badge: "Cool",       image: "./assets/Mountain Dew.jpg", pricing: { Single: "0.300" } },
+      { id: 85, name: "Kinza",               desc: "Refreshing Kinza soft drink.",                            badge: "Fruity",     image: "./assets/Kinza.jpg", pricing: { Single: "0.300" } },
+      { id: 86, name: "Fresh Juice",        desc: "Freshly pressed seasonal fruit juice.",                   badge: "Fresh",      image: "./assets/Fresh Juice.png", pricing: { Single: "0.900" } },
     ],
   },
 };
@@ -162,24 +162,33 @@ const MENU = {
 const CATEGORIES = Object.keys(MENU);
 
 // ─── Business Logic Helpers ────────────────────────────────────────────────────
-/**
- * Returns true if this item has MULTIPLE pricing options.
- * Rule: more than 1 key in pricing object = show "View Options" button
- */
 function hasMultipleOptions(pricing) {
   return Object.keys(pricing).length > 1;
 }
 
-/**
- * For single-price items, return the display price string.
- * Returns null if item has multiple options.
- */
 function getSinglePrice(pricing) {
   const entries = Object.entries(pricing);
   if (entries.length !== 1) return null;
   const [, price] = entries[0];
   return price === "Market Price" ? "Market Price" : `${price} OMR`;
 }
+
+// ─── WhatsApp handler ────────────────────────────────────────────────────────
+const handleWhatsApp = (foodName) => {
+  // Defensive check for the environment to prevent 'import.meta' errors
+  const phoneNumber = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_WHATSAPP_NUMBER)
+    ? import.meta.env.VITE_WHATSAPP_NUMBER 
+    : "96872606555"; // Direct fallback
+    
+  if (!phoneNumber) {
+    console.error("WhatsApp number not found in environment variables!");
+    return;
+  }
+  const msg = encodeURIComponent(
+    `Hello Royal Hyderabadi!\nI'd like to place an order.\n\nFood Name: ${foodName}\nLocation: \nQuantity: `
+  );
+  window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${msg}`;
+};
 
 // ─── Skeleton Card ─────────────────────────────────────────────────────────────
 function SkeletonCard() {
@@ -208,6 +217,7 @@ function SkeletonCard() {
 function MenuCard({ item, index, onOpen }) {
   const [hovered, setHovered] = useState(false);
   const [imgErr,  setImgErr]  = useState(false);
+  const [orderHovered, setOrderHovered] = useState(false);
 
   const multipleOptions = hasMultipleOptions(item.pricing);
   const singlePrice     = getSinglePrice(item.pricing);
@@ -236,7 +246,6 @@ function MenuCard({ item, index, onOpen }) {
         display: "flex", flexDirection: "column", height: "100%",
       }}>
 
-        {/* ── Image ── */}
         <div style={{ position: "relative", height: "200px", overflow: "hidden", flexShrink: 0, background: "#f0e8df" }}>
           <motion.img
             src={imgErr ? "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=600&q=80" : item.image}
@@ -246,14 +255,12 @@ function MenuCard({ item, index, onOpen }) {
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
-          {/* gradient */}
           <div style={{
             position: "absolute", inset: 0,
             background: "linear-gradient(to top, rgba(38,20,10,0.65) 0%, transparent 55%)",
             pointerEvents: "none",
           }} />
 
-          {/* Badge — top left, text only, no emoji */}
           <div style={{
             position: "absolute", top: "12px", left: "12px",
             background: "rgba(255,255,255,0.93)",
@@ -269,7 +276,6 @@ function MenuCard({ item, index, onOpen }) {
             {item.badge}
           </div>
 
-          {/* Day note — top right */}
           {item.note && (
             <div style={{
               position: "absolute", top: "12px", right: "12px",
@@ -286,36 +292,8 @@ function MenuCard({ item, index, onOpen }) {
               {item.note}
             </div>
           )}
-
-          {/* ── PRICE ON IMAGE — only for single-price items ── */}
-          {!multipleOptions && (
-            <div style={{
-              position: "absolute", bottom: "12px", left: "14px",
-              display: "flex", flexDirection: "column", gap: "1px",
-            }}>
-              <span style={{
-                fontFamily: "'Lato', sans-serif",
-                fontSize: "9.5px", fontWeight: 700,
-                color: "rgba(255,255,255,0.65)",
-                letterSpacing: "0.1em", textTransform: "uppercase",
-              }}>
-                Price
-              </span>
-              <span style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: isMarketPrice ? "12px" : "16px",
-                fontWeight: 700,
-                color: "#ffffff",
-                textShadow: "0 1px 6px rgba(0,0,0,0.4)",
-                lineHeight: 1,
-              }}>
-                {singlePrice}
-              </span>
-            </div>
-          )}
         </div>
 
-        {/* ── Card Body ── */}
         <div style={{
           padding: "18px 20px 20px",
           display: "flex", flexDirection: "column",
@@ -339,19 +317,11 @@ function MenuCard({ item, index, onOpen }) {
             {item.desc}
           </p>
 
-          {/*
-            ── BOTTOM ACTION AREA ──
-            RULE:
-              multi-price  → "View Options" button
-              single-price → thin divider + price confirmation line (no button)
-          */}
           {multipleOptions ? (
-            // ── Show "View Options" button ──
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               style={{
-                marginTop: "auto",
                 background: hovered ? B : "transparent",
                 border: `2px solid ${B}`,
                 color: hovered ? "#f5e8d8" : B,
@@ -372,31 +342,58 @@ function MenuCard({ item, index, onOpen }) {
               </svg>
             </motion.div>
           ) : (
-            // ── No button — price already shown on image ──
-            // Show a subtle "available now" strip so card height stays consistent
-            <div style={{
-              marginTop: "auto",
-              borderTop: `1px solid ${BORDER}`,
-              paddingTop: "12px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}>
-              <span style={{
-                fontFamily: "'Lato', sans-serif",
-                fontSize: "11px", color: "#b8956e",
-                letterSpacing: "0.04em",
+            <>
+              <div style={{
+                marginTop: "auto",
+                borderTop: `1px solid ${BORDER}`,
+                paddingTop: "12px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
               }}>
-                Available daily
-              </span>
-              <span style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: isMarketPrice ? "12px" : "15px",
-                fontWeight: 700, color: B2,
-              }}>
-                {singlePrice}
-              </span>
-            </div>
+                <span style={{
+                  fontFamily: "'Lato', sans-serif",
+                  fontSize: "11px", color: "#b8956e",
+                  letterSpacing: "0.04em",
+                }}>
+                  Available daily
+                </span>
+                <span style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: isMarketPrice ? "12px" : "15px",
+                  fontWeight: 700, color: B2,
+                }}>
+                  {singlePrice}
+                </span>
+              </div>
+              
+              <button
+                onMouseEnter={() => setOrderHovered(true)}
+                onMouseLeave={() => setOrderHovered(false)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleWhatsApp(item.name);
+                }}
+                style={{
+                  marginTop: "6px",
+                  width: "100%",
+                  padding: "11px 0",
+                  background: orderHovered ? B : "#fff",
+                  color: orderHovered ? "#f5e8d8" : B,
+                  border: `2px solid ${B}`,
+                  borderRadius: "12px",
+                  fontFamily: "'Lato', sans-serif",
+                  fontSize: "12px",
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  cursor: "pointer",
+                  transition: "background 0.25s ease, color 0.25s ease",
+                }}
+              >
+                Order Now
+              </button>
+            </>
           )}
         </div>
       </div>
@@ -407,6 +404,7 @@ function MenuCard({ item, index, onOpen }) {
 // ─── Pricing Modal ─────────────────────────────────────────────────────────────
 function ItemModal({ item, onClose }) {
   const [imgErr, setImgErr] = useState(false);
+  const [orderHovered, setOrderHovered] = useState(false);
 
   useEffect(() => {
     const fn = (e) => { if (e.key === "Escape") onClose(); };
@@ -449,7 +447,6 @@ function ItemModal({ item, onClose }) {
           display: "flex", flexDirection: "column",
         }}
       >
-        {/* Image header */}
         <div style={{ position: "relative", height: "220px", flexShrink: 0 }}>
           <img
             src={imgErr ? "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=600&q=80" : item.image}
@@ -462,7 +459,6 @@ function ItemModal({ item, onClose }) {
             background: "linear-gradient(to top, rgba(38,20,10,0.82) 0%, rgba(38,20,10,0.08) 60%)",
           }} />
 
-          {/* Close */}
           <button
             onClick={onClose}
             style={{
@@ -480,7 +476,6 @@ function ItemModal({ item, onClose }) {
             ×
           </button>
 
-          {/* Badge */}
           <div style={{
             position: "absolute", bottom: "14px", left: "16px",
             background: "rgba(255,255,255,0.95)",
@@ -495,9 +490,7 @@ function ItemModal({ item, onClose }) {
           </div>
         </div>
 
-        {/* Content */}
         <div style={{ padding: "24px 28px 30px", overflowY: "auto", flex: 1 }}>
-          {/* Name + note */}
           <div style={{ marginBottom: "10px" }}>
             <h2 style={{
               margin: "0 0 8px",
@@ -522,7 +515,6 @@ function ItemModal({ item, onClose }) {
             )}
           </div>
 
-          {/* Description */}
           <p style={{
             margin: "0 0 22px",
             fontFamily: "'Lato', sans-serif",
@@ -531,10 +523,8 @@ function ItemModal({ item, onClose }) {
             {item.desc}
           </p>
 
-          {/* Divider */}
           <div style={{ height: "1px", background: BORDER, marginBottom: "20px" }} />
 
-          {/* Pricing label */}
           <p style={{
             margin: "0 0 14px",
             fontFamily: "'Lato', sans-serif",
@@ -545,8 +535,7 @@ function ItemModal({ item, onClose }) {
             Pricing Options
           </p>
 
-          {/* Pricing rows */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "24px" }}>
             {Object.entries(item.pricing).map(([label, price], i) => (
               <motion.div
                 key={label}
@@ -586,6 +575,30 @@ function ItemModal({ item, onClose }) {
               </motion.div>
             ))}
           </div>
+
+          <button
+            onMouseEnter={() => setOrderHovered(true)}
+            onMouseLeave={() => setOrderHovered(false)}
+            onClick={() => handleWhatsApp(item.name)}
+            style={{
+              width: "100%",
+              padding: "14px 0",
+              background: orderHovered ? B : "#fff",
+              color: orderHovered ? "#f5e8d8" : B,
+              border: `2px solid ${B}`,
+              borderRadius: "16px",
+              fontFamily: "'Lato', sans-serif",
+              fontSize: "14px",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              boxShadow: orderHovered ? "0 8px 24px rgba(38,20,10,0.2)" : "none"
+            }}
+          >
+            Order Now on WhatsApp
+          </button>
         </div>
       </motion.div>
     </motion.div>
@@ -595,17 +608,55 @@ function ItemModal({ item, onClose }) {
 // ─── Main Export ───────────────────────────────────────────────────────────────
 export default function MenuSection() {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState(CATEGORIES[0]);
+  const [activeTab, setActiveTab] = useState(() => {
+    const saved = localStorage.getItem("ms_active_tab");
+    return saved && CATEGORIES.includes(saved) ? saved : CATEGORIES[0];
+  });
+
   const [search,    setSearch]    = useState("");
   const [modalItem, setModalItem] = useState(null);
   const [loading,   setLoading]   = useState(false);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+  
   const tabsRef = useRef(null);
+
+  const checkTabScroll = useCallback(() => {
+    const el = tabsRef.current;
+    if (!el) return;
+    setShowLeftArrow(el.scrollLeft > 20);
+    setShowRightArrow(el.scrollLeft < el.scrollWidth - el.clientWidth - 20);
+  }, []);
+
+  useEffect(() => {
+    const el = tabsRef.current;
+    if (el) {
+      el.addEventListener('scroll', checkTabScroll);
+      checkTabScroll();
+      window.addEventListener('resize', checkTabScroll);
+    }
+    return () => {
+      if (el) el.removeEventListener('scroll', checkTabScroll);
+      window.removeEventListener('resize', checkTabScroll);
+    };
+  }, [checkTabScroll]);
+
+  const scrollTabs = (direction) => {
+    const el = tabsRef.current;
+    if (!el) return;
+    const scrollAmount = 200;
+    el.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
+  };
 
   const switchTab = useCallback((cat) => {
     if (cat === activeTab) return;
     setLoading(true);
     setSearch("");
-    setTimeout(() => { setActiveTab(cat); setLoading(false); }, 260);
+    setTimeout(() => {
+      setActiveTab(cat);
+      localStorage.setItem("ms_active_tab", cat);
+      setLoading(false);
+    }, 260);
   }, [activeTab]);
 
   const displayedItems = useMemo(() => {
@@ -635,7 +686,12 @@ export default function MenuSection() {
           100% { background-position: -200% 0; }
         }
 
-        /* ── Tabs ── */
+        .ms-tabs-container {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+
         .ms-tabs {
           display: flex; gap: 6px;
           overflow-x: auto; scrollbar-width: none;
@@ -644,13 +700,38 @@ export default function MenuSection() {
         }
         .ms-tabs::-webkit-scrollbar { display: none; }
 
+        .ms-tab-arrow {
+          display: none;
+          position: absolute;
+          top: 50%; transform: translateY(-50%);
+          width: 32px; height: 32px;
+          background: #fff;
+          border-radius: 50%;
+          border: 1px solid ${BORDER};
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          z-index: 10;
+          cursor: pointer;
+          align-items: center; justify-content: center;
+          color: ${B};
+          font-weight: bold;
+          transition: all 0.2s ease;
+        }
+
+        @media (max-width: 1023px) {
+          .ms-tab-arrow.visible { display: flex; }
+        }
+
+        .ms-tab-arrow:hover { background: ${B}; color: #fff; }
+        .ms-tab-arrow.left { left: -10px; }
+        .ms-tab-arrow.right { right: -10px; }
+
         .ms-tab {
           flex-shrink: 0;
           border: none; cursor: pointer;
           padding: 10px 20px;
           border-radius: 12px;
           font-family: 'Lato', sans-serif;
-          font-size: 13px; font-weight: 700;
+          font-size: 14px; font-weight: 700;
           letter-spacing: 0.04em;
           display: flex; align-items: center; gap: 6px;
           transition: transform 0.2s;
@@ -658,7 +739,6 @@ export default function MenuSection() {
         }
         .ms-tab:hover { transform: translateY(-1px); }
 
-        /* ── Search ── */
         .ms-search {
           width: 100%;
           padding: 14px 18px 14px 46px;
@@ -677,7 +757,6 @@ export default function MenuSection() {
         }
         .ms-search::placeholder { color: #c4a88a; }
 
-        /* ── Grid ── */
         .ms-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
@@ -688,7 +767,6 @@ export default function MenuSection() {
         @media (max-width: 780px)  { .ms-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
         @media (max-width: 480px)  { .ms-grid { grid-template-columns: 1fr; } }
 
-        /* ── CTA button ── */
         .ms-view-btn {
           display: inline-flex; align-items: center; gap: 10px;
           background: ${B}; color: #f5e8d8;
@@ -709,21 +787,8 @@ export default function MenuSection() {
 
       <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 32px" }}>
 
-        {/* ══ HEADER ══ */}
         <div style={{ textAlign: "center", marginBottom: "52px" }}>
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontStyle: "italic", fontSize: "17px",
-              color: "#8b5e3c", marginBottom: "10px",
-            }}
-          >
-            Crafted with passion
-          </motion.p>
+         
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -763,11 +828,10 @@ export default function MenuSection() {
               maxWidth: "520px", margin: "0 auto", lineHeight: 1.75,
             }}
           >
-            Discover our exquisite selection of traditional Hyderabadi dishes, crafted with the finest ingredients & timeless recipes.
+            Explore our beautiful collection of traditional Hyderabadi dishes made with the best ingredients and recipes that have stood the test of time.
           </motion.p>
         </div>
 
-        {/* ══ SEARCH ══ */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -803,7 +867,6 @@ export default function MenuSection() {
           )}
         </motion.div>
 
-        {/* ══ TABS ══ */}
         {!isSearching && (
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -819,35 +882,50 @@ export default function MenuSection() {
               border: `1px solid ${BORDER}`,
             }}
           >
-            <div className="ms-tabs" ref={tabsRef}>
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  className="ms-tab"
-                  onClick={() => switchTab(cat)}
-                  style={{
-                    background: activeTab === cat ? B : "transparent",
-                    color: activeTab === cat ? "#f5e8d8" : MUTED,
-                  }}
-                >
-                  {activeTab === cat && (
-                    <motion.div
-                      layoutId="ms-active-tab"
-                      style={{
-                        position: "absolute", inset: 0,
-                        background: B, borderRadius: "12px", zIndex: -1,
-                      }}
-                      transition={{ type: "spring", stiffness: 440, damping: 34 }}
-                    />
-                  )}
-                  <span style={{ position: "relative", zIndex: 1 }}>{cat}</span>
-                </button>
-              ))}
+            <div className="ms-tabs-container">
+              <button 
+                className={`ms-tab-arrow left ${showLeftArrow ? 'visible' : ''}`}
+                onClick={() => scrollTabs(-1)}
+              >
+                ←
+              </button>
+              
+              <div className="ms-tabs" ref={tabsRef}>
+                {CATEGORIES.map((cat) => (
+                  <button
+                    key={cat}
+                    className="ms-tab"
+                    onClick={() => switchTab(cat)}
+                    style={{
+                      background: activeTab === cat ? B : "transparent",
+                      color: activeTab === cat ? "#f5e8d8" : MUTED,
+                    }}
+                  >
+                    {activeTab === cat && (
+                      <motion.div
+                        layoutId="ms-active-tab"
+                        style={{
+                          position: "absolute", inset: 0,
+                          background: B, borderRadius: "12px", zIndex: -1,
+                        }}
+                        transition={{ type: "spring", stiffness: 440, damping: 34 }}
+                      />
+                    )}
+                    <span style={{ position: "relative", zIndex: 1 }}>{cat}</span>
+                  </button>
+                ))}
+              </div>
+
+              <button 
+                className={`ms-tab-arrow right ${showRightArrow ? 'visible' : ''}`}
+                onClick={() => scrollTabs(1)}
+              >
+                →
+              </button>
             </div>
           </motion.div>
         )}
 
-        {/* Search result count */}
         {isSearching && (
           <motion.p
             initial={{ opacity: 0 }}
@@ -863,7 +941,6 @@ export default function MenuSection() {
           </motion.p>
         )}
 
-        {/* ══ GRID ══ */}
         <AnimatePresence mode="wait">
           <motion.div
             key={isSearching ? `search-${search}` : activeTab}
@@ -901,38 +978,8 @@ export default function MenuSection() {
           </motion.div>
         </AnimatePresence>
 
-        {/* ══ BOTTOM CTA ══ */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55, delay: 0.2 }}
-          style={{
-            textAlign: "center", marginTop: "64px",
-            paddingTop: "48px", borderTop: `1px solid ${BORDER}`,
-            display: "flex", flexDirection: "column",
-            alignItems: "center", gap: "16px",
-          }}
-        >
-          <p style={{
-            fontFamily: "'Playfair Display', serif",
-            fontStyle: "italic", color: "#8b5e3c",
-            fontSize: "15px", margin: 0,
-          }}>
-            Want to explore our complete collection?
-          </p>
-          <a href="/menu" className="ms-view-btn">
-            View Complete Menu
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" strokeWidth="2.3"
-              strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </motion.div>
       </div>
 
-      {/* ══ MODAL ══ */}
       <AnimatePresence>
         {modalItem && <ItemModal item={modalItem} onClose={() => setModalItem(null)} />}
       </AnimatePresence>
