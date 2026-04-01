@@ -99,7 +99,7 @@ const Nav = () => {
             className="flex items-center gap-3 hover:opacity-90 transition-opacity duration-300 shrink-0"
           >
             <img
-              src="./src/assets/Logo Header.png"
+              src="/assets/Logo Header.png"
               alt="Royal Hyderabadi Logo"
               className="h-10 w-auto sm:h-12 md:h-14 lg:h-16 object-contain transition-all duration-300"
             />
