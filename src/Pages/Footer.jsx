@@ -648,7 +648,7 @@ export default function Footer() {
           <div className="ft-bottom">
             
             <span className="ft-bottom-copy">
-              © {new Date().getFullYear()} Royal Hyderabadi Biryani Restaurant ·
+              © {new Date().getFullYear()} Royal Hyderabadi Biryani Restaurant·
               All rights reserved.
             </span>
             <div className="ft-bottom-links">

@@ -1,6 +1,12 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, Flame, UtensilsCrossed } from "lucide-react";
+
+// ─── Brand Color ────────────────────────────────────────────────────────────
+const BRAND_COLOR = "#26140a";
+const BRAND_LIGHT = "#3b271e";
+const BRAND_LIGHTER = "#f5e8d8";
 
 // ─── Food Data ────────────────────────────────────────────────────────────────
 const menuData = {
@@ -9,25 +15,29 @@ const menuData = {
       id: 1,
       image: "https://royalhyderabadioman.com/wp-content/uploads/2026/02/Mutton-Marag-1024x720.jpg",
       title: "Mutton Marag",
-      description: "A traditional Hyderabadi delicacy, Mutton Marag is a light yet flavorful soup made with tender mutton, aromatic spices, and slow-cooked broth—warm, nourishing, and perfect to start a royal meal.",
+      description: "A traditional Hyderabadi delicacy, Mutton Marag is a light yet flavorful soup made with tender mutton, aromatic spices, and slow-cooked broth.",
+      badge: "⭐ Special",
     },
     {
       id: 2,
       image: "./src/assets/Nihari Paya.jpg",
       title: "Nihari Paya",
-      description: "A classic Hyderabadi specialty, Nihari Paya is a rich, slow-cooked stew made from tender trotters simmered overnight with aromatic spices, delivering deep flavor, warmth, and a truly traditional taste.",
+      description: "A classic Hyderabadi specialty, Nihari Paya is a rich, slow-cooked stew made from tender trotters simmered overnight.",
+      badge: "🔥 Hot",
     },
     {
       id: 3,
       image: "https://royalhyderabadioman.com/wp-content/uploads/2026/02/Haleem-2-1-1024x720.jpg",
       title: "Hyderabadi Haleem",
-      description: "Stone-baked margherita with San Marzano tomatoes & buffalo mozzarella.",
+      description: "Stone-baked traditional haleem with tender meat and lentils slow-cooked to perfection with aromatic spices.",
+      badge: "🏆 Signature",
     },
     {
       id: 4,
       image: "https://royalhyderabadioman.com/wp-content/uploads/2026/02/Bheja-Fry-1024x720.jpg",
       title: "Bheja Fry",
-      description: "A rich and flavorful Hyderabadi delicacy made from tender brain, slow-cooked with aromatic spices, onions, and herbs, then lightly fried to perfection for a creamy texture and bold taste. Perfect as a royal starter or lunch accompaniment.",
+      description: "A rich and flavorful Hyderabadi delicacy made from tender brain, slow-cooked with aromatic spices and herbs.",
+      badge: "⭐ Special",
     },
   ],
   Breakfast: [
@@ -35,25 +45,29 @@ const menuData = {
       id: 5,
       image: "./src/assets/Kheema.jpg",
       title: "Kheema",
-      description: "Finely minced meat cooked with onions, green chilies, and aromatic spices, delivering a bold, hearty flavor that makes it a popular choice for breakfast or lunch.",
+      description: "Finely minced meat cooked with onions, green chilies, and aromatic spices, delivering bold, hearty flavor.",
+      badge: "☀️ Fresh",
     },
     {
       id: 6,
       image: "./src/assets/Hyderabadi Paratha.jpg",
       title: "Hyderabadi Special Paratha",
-      description: "Crispy and soft paratha cooked with light oil made from wheat flour, oil, salt and water. A traditional hyderabadi breakfast special that is flaky and delicious.",
+      description: "Crispy and soft paratha cooked with light oil, flaky and delicious traditional breakfast special.",
+      badge: "🍳 Popular",
     },
     {
       id: 7,
       image: "./src/assets/Bindi.jpg",
       title: "Bindi Fry",
-      description: "Bindi and oil cooked with light spices, a simple yet flavorful dish that pairs perfectly with paratha or rice for a satisfying breakfast.",
+      description: "Bindi cooked with light spices, a simple yet flavorful dish that pairs perfectly with paratha.",
+      badge: "🥒 Light",
     },
     {
       id: 8,
       image: "./src/assets/Chana Masala.jpg",
       title: "Chana Masala",
-      description: "Aromatic chickpea curry cooked with tomatoes, onions and traditional spices creating a rich flavorful gravy that is both hearty and satisfying.",
+      description: "Aromatic chickpea curry cooked with tomatoes, onions and traditional spices creating a rich gravy.",
+      badge: "🌟 Vegan",
     },
   ],
   Lunch: [
@@ -61,25 +75,29 @@ const menuData = {
       id: 9,
       image: "./src/assets/Chicken Dum Biryani.jpg",
       title: "Hyderabadi Special Chicken Dum Biryani",
-      description: "Classic Hyderabadi biryani made with tender chicken, fragrant basmati rice, and traditional spices, slow-cooked on dum to seal in rich aroma and flavor.",
+      description: "Classic Hyderabadi biryani made with tender chicken, fragrant basmati rice, slow-cooked on dum.",
+      badge: "🏆 Best",
     },
     {
       id: 10,
       image: "./src/assets/Mutton Biryani.jpg",
       title: "Hyderabadi Special Mutton Biryani",
-      description: "Fragrant basmati rice layered with spiced fresh mutton. Slow-cooked on dum for rich, authentic flavor.",
+      description: "Fragrant basmati rice layered with spiced fresh mutton. Slow-cooked on dum for rich flavor.",
+      badge: "👑 Royal",
     },
     {
       id: 11,
       image: "./src/assets/Chicken Tikka Masala.jpg",
       title: "Chicken Masala",
-      description: "Chicken, onions, tomatoes, ginger, garlic, green chilies, turmeric, cumin, coriander powder, oil, salt.",
+      description: "Tender chicken cooked in rich, spiced tomato-based gravy with traditional Hyderabadi spices.",
+      badge: "🔥 Hot",
     },
     {
       id: 12,
       image: "./src/assets/Mutton Masala.jpg",
       title: "Mutton Masala",
-      description: "Mutton cooked in a rich, spiced tomato-based gravy, perfect for those who love a hearty and flavorful dish.",
+      description: "Mutton cooked in a rich, spiced tomato-based gravy, perfect for those who love hearty dishes.",
+      badge: "⭐ Favorite",
     },
   ],
   Dinner: [
@@ -87,25 +105,29 @@ const menuData = {
       id: 13,
       image: "./src/assets/Chicken Dum Biryani.jpg",
       title: "Hyderabadi Special Chicken Dum Biryani",
-      description: "Classic Hyderabadi biryani made with tender chicken, fragrant basmati rice, and traditional spices, slow-cooked on dum to seal in rich aroma and flavor.",
+      description: "Classic Hyderabadi biryani made with tender chicken, fragrant basmati rice, slow-cooked on dum.",
+      badge: "🏆 Best",
     },
     {
       id: 14,
       image: "./src/assets/Mutton Biryani.jpg",
       title: "Hyderabadi Special Mutton Biryani",
-      description: "Fragrant basmati rice layered with spiced fresh mutton. Slow-cooked on dum for rich, authentic flavor.",
+      description: "Fragrant basmati rice layered with spiced fresh mutton. Slow-cooked on dum for rich flavor.",
+      badge: "👑 Royal",
     },
     {
       id: 15,
       image: "./src/assets/Mutton Kadhai.jpg",
       title: "Mutton Kadhai",
-      description: "Tender mutton cooked in a traditional kadhai with aromatic spices, tomatoes, and bell peppers. A rich and flavorful gravy that captures authentic culinary traditions with every bite.",
+      description: "Tender mutton cooked in a traditional kadhai with aromatic spices, tomatoes, and bell peppers.",
+      badge: "🌶️ Spicy",
     },
     {
       id: 16,
       image: "./src/assets/Dum_ka_Chicken.jpg",
       title: "Dum ka Chicken",
-      description: "Chicken, yogurt, onions, cashews, ginger, garlic, cardamom, cloves, cinnamon, saffron, oil, salt.",
+      description: "Chicken slow-cooked with yogurt, cashews, cardamom, cloves, and saffron for ultimate richness.",
+      badge: "✨ Premium",
     },
   ],
   Drinks: [
@@ -113,25 +135,29 @@ const menuData = {
       id: 17,
       image: "./src/assets/Karak Tea.jpg",
       title: "Hyderabadi Special Chai",
-      description: "Hyderabadi special chai, often called Irani Chai, is a rich, creamy, and strong tea that symbolizes Hyderabad’s culture and hospitality. ",
+      description: "Hyderabadi special chai, often called Irani Chai, is a rich, creamy, and strong tea.",
+      badge: "☕ Hot",
     },
     {
       id: 18,
       image: "./src/assets/Kinza.jpg",
       title: "Kinza",
-      description: "Soft Drink",
+      description: "Refreshing soft drink, perfect to complement your meal.",
+      badge: "🥤 Cool",
     },
     {
       id: 19,
       image: "./src/assets/pepsi.jpg",
       title: "Pepsi",
-      description: "Soft Drink",
+      description: "Classic cola soft drink to refresh your palate.",
+      badge: "🥤 Cool",
     },
     {
       id: 20,
       image: "./src/assets/water.jpg",
       title: "Water",
-      description: "Mineral Water",
+      description: "Pure mineral water for your hydration.",
+      badge: "💧 Pure",
     },
   ],
   Desserts: [
@@ -139,25 +165,29 @@ const menuData = {
       id: 21,
       image: "./src/assets/Gulab.jpg",
       title: "Gulab Jamun - 2 pcs",
-      description: "Milk solids, flour, sugar, water, cardamom, rose water, ghee.",
+      description: "Milk solids, flour, sugar, cardamom, rose water, ghee. A classic sweet treat.",
+      badge: "🍮 Sweet",
     },
     {
       id: 22,
       image: "./src/assets/Kaddu Kheer.jpg",
       title: "Kaddu Kheer",
       description: "Bottle gourd, milk, sugar, sago pearls, nuts, cardamom, ghee.",
+      badge: "🍯 Rich",
     },
     {
       id: 23,
       image: "./src/assets/Badam Ki Kheer.jpg",
       title: "Badam Ki Kheer Pudding",
-      description: "Creamy almond pudding made with ground almonds milk and rice cooked to silky perfection garnished with nuts and dried fruits this traditional dessert is rich aromatic and delightfully sweet",
+      description: "Creamy almond pudding made with ground almonds, milk and rice cooked to silky perfection.",
+      badge: "🥜 Premium",
     },
     {
       id: 24,
       image: "./src/assets/Gajar Ka Halwa.jpg",
       title: "Special Gajar Ka Halwa",
-      description: "Fresh carrots simmered in milk and ghee. Sweet, rich, and full of classic flavor",
+      description: "Fresh carrots simmered in milk and ghee. Sweet, rich, and full of classic flavor.",
+      badge: "🌟 Iconic",
     },
   ],
 };
@@ -167,126 +197,132 @@ const tabs = Object.keys(menuData);
 const tabIcons = {
   "Today's Special": "✦",
   Breakfast: "☀",
-  Lunch: "◎",
-  Dinner: "◑",
-  Drinks: "❧",
-  Desserts: "❋",
+  Lunch: "🍽️",
+  Dinner: "🌙",
+  Drinks: "☕",
+  Desserts: "🍰",
 };
 
 // ─── Card Component ────────────────────────────────────────────────────────────
 function MenuCard({ item, index }) {
   const navigate = useNavigate();
-  const [hovered, setHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 60 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      style={{
-        background: "#fff",
-        borderRadius: "16px",
-        overflow: "hidden",
-        boxShadow: hovered
-          ? "0 20px 60px rgba(38,20,10,0.18)"
-          : "0 4px 24px rgba(38,20,10,0.07)",
-        transition: "box-shadow 0.35s ease",
-        display: "flex",
-        flexDirection: "column",
-        cursor: "pointer",
+      transition={{
+        duration: 0.6,
+        delay: index * 0.08,
+        ease: [0.23, 1, 0.32, 1],
       }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="group relative h-full"
     >
-      <div style={{ position: "relative", overflow: "hidden", height: "210px" }}>
-        <motion.img
-          src={item.image}
-          alt={item.title}
-          animate={{ scale: hovered ? 1.07 : 1 }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(to top, rgba(38,20,10,0.55) 0%, transparent 55%)",
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: "14px",
-            right: "14px",
-            background: "#23100B",
-            color: "#f5e8d8",
-            fontSize: "11px",
-            fontFamily: "'Playfair Display', serif",
-            fontStyle: "italic",
-            letterSpacing: "0.06em",
-            padding: "4px 12px",
-            borderRadius: "999px",
-          }}
-        >
-          20% OFF
+      {/* ✅ Card container with fixed height */}
+      <div 
+        className="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col"
+        style={{ minHeight: "520px" }}
+      >
+        
+        {/* ✅ Image Container with fixed height */}
+        <div className="relative h-56 sm:h-64 overflow-hidden bg-gray-200 flex-shrink-0">
+          <motion.img
+            src={item.image}
+            alt={item.title}
+            animate={{ scale: isHovered ? 1.12 : 1 }}
+            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.target.src = "https://via.placeholder.com/300x250?text=" + item.title;
+            }}
+          />
+
+          {/* ✅ Gradient overlay */}
+          <motion.div
+            animate={{ opacity: isHovered ? 0.8 : 0.5 }}
+            transition={{ duration: 0.4 }}
+            className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"
+          />
+
+          {/* ✅ Badge with animation */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: index * 0.1 + 0.3, duration: 0.4 }}
+            className="absolute top-4 right-4 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg"
+            style={{ backgroundColor: BRAND_COLOR }}
+          >
+            {item.badge}
+          </motion.div>
+
+          {/* ✅ Floating action icon on hover */}
+          <motion.div
+            animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 20 }}
+            transition={{ duration: 0.3 }}
+            className="absolute bottom-4 right-4 rounded-full p-3 shadow-lg"
+            style={{ backgroundColor: BRAND_LIGHTER }}
+          >
+            <UtensilsCrossed size={20} style={{ color: BRAND_COLOR }} />
+          </motion.div>
         </div>
-      </div>
 
-      <div style={{ padding: "22px 24px 24px", display: "flex", flexDirection: "column", flex: 1, gap: "10px" }}>
-        <h3
-          style={{
-            margin: 0,
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "20px",
-            fontWeight: 700,
-            color: "#23100B",
-            lineHeight: 1.25,
-          }}
-        >
-          {item.title}
-        </h3>
-        <p
-          style={{
-            margin: 0,
-            fontFamily: "'Lato', sans-serif",
-            fontSize: "14px",
-            color: "#7a5c47",
-            lineHeight: 1.65,
-            flex: 1,
-          }}
-        >
-          {item.description}
-        </p>
+        {/* ✅ Content section — Fixed padding & height */}
+        <div className="p-5 sm:p-6 flex flex-col gap-3 flex-grow">
+          
+          {/* Title */}
+          <motion.h3
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: index * 0.08 + 0.2, duration: 0.4 }}
+            className="text-lg sm:text-xl font-bold text-gray-900 leading-tight group-hover:text-white transition-colors duration-300"
+            style={{ color: isHovered ? BRAND_COLOR : "#111827" }}
+          >
+            {item.title}
+          </motion.h3>
 
-        <motion.button
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          onClick={() => navigate("/menu")}
-          style={{
-            background: "#23100B",
-            color: "#f5e8d8",
-            border: "none",
-            borderRadius: "10px",
-            padding: "12px 0",
-            fontFamily: "'Lato', sans-serif",
-            fontSize: "13px",
-            fontWeight: 700,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            cursor: "pointer",
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
-          }}
-        >
-          More Menu
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M7 3l4 4-4 4" stroke="#f5e8d8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </motion.button>
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: index * 0.08 + 0.25, duration: 0.4 }}
+            className="text-sm text-gray-600 line-clamp-2 leading-relaxed flex-grow"
+          >
+            {item.description}
+          </motion.p>
+
+          {/* ✅ CTA Button with brand color */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate("/menu")}
+            className="w-full mt-auto text-white font-bold py-3 rounded-xl text-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+            style={{ 
+              backgroundColor: BRAND_COLOR,
+              marginTop: "auto"
+            }}
+          >
+            <span>View Details</span>
+            <motion.svg
+              animate={{ x: isHovered ? 4 : 0 }}
+              transition={{ duration: 0.2 }}
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+            >
+              <path
+                d="M3 8h10M8 3l5 5-5 5"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </motion.svg>
+          </motion.button>
+        </div>
       </div>
     </motion.div>
   );
@@ -296,14 +332,14 @@ function MenuCard({ item, index }) {
 export default function MenuSection() {
   const [activeTab, setActiveTab] = useState("Today's Special");
   const scrollRef = useRef(null);
-  const [canScrollLeft, setCanScrollLeft]   = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   const checkScroll = useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 4);
-    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+    setCanScrollLeft(el.scrollLeft > 20);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 20);
   }, []);
 
   useEffect(() => {
@@ -318,269 +354,151 @@ export default function MenuSection() {
     };
   }, [checkScroll]);
 
+  const scroll = (direction) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const scrollAmount = 300;
+    el.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <section
-      style={{
-        background: "#faf5f0",
-        padding: "96px 0 112px",
-        fontFamily: "'Lato', sans-serif",
-      }}
-    >
+    <section className="py-20 md:py-28 px-4 sm:px-6" style={{ background: "#faf5f0" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap');
 
-        .menu-tab-btn {
-          position: relative;
-          background: transparent;
-          border: none;
-          cursor: pointer;
-          padding: 12px 22px;
-          font-family: 'Lato', sans-serif;
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: #9e7a5f;
-          border-radius: 10px;
-          transition: color 0.25s ease;
-          white-space: nowrap;
-          display: flex;
-          align-items: center;
-          gap: 7px;
-          flex-shrink: 0;
-        }
-        .menu-tab-btn:hover { color: #26140a; }
-        .menu-tab-btn.active { color: #26140a; }
-        .menu-tab-btn .icon { font-size: 16px; line-height: 1; }
-
-        .menu-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 28px;
-        }
-        @media (max-width: 1200px) {
-          .menu-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 640px) {
-          .menu-grid { grid-template-columns: 1fr; }
-          .menu-tab-btn { padding: 10px 14px; font-size: 12px; }
-        }
-
-        /* ── Tab scroll wrapper (handles fade edges + scroll) ──────────── */
-        .tabs-outer {
-          position: relative;
-        }
-
-        /* Right-side fade hint — only shows when content overflows */
-        .tabs-outer::after {
-          content: '';
-          position: absolute;
-          top: 0; right: 0; bottom: 0;
-          width: 48px;
-          background: linear-gradient(to left, #ffffff, transparent);
-          pointer-events: none;
-          border-radius: 0 12px 12px 0;
-          opacity: 0;
-          transition: opacity 0.2s;
-        }
-        .tabs-outer.can-scroll-right::after { opacity: 1; }
-
-        /* Left-side fade hint */
-        .tabs-outer::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; bottom: 0;
-          width: 48px;
-          background: linear-gradient(to right, #ffffff, transparent);
-          pointer-events: none;
-          border-radius: 12px 0 0 12px;
-          z-index: 1;
-          opacity: 0;
-          transition: opacity 0.2s;
-        }
-        .tabs-outer.can-scroll-left::before { opacity: 1; }
-
-        /* The actual scrollable row */
-        .tabs-scroll {
-          display: flex;
-          flex-wrap: nowrap;              /* single row always                */
-          overflow-x: auto;
-          overflow-y: hidden;
-          -webkit-overflow-scrolling: touch;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-          gap: 4px;
-          padding: 2px 4px;
-          /* NOTE: NO justify-content:center — that breaks overflow scrolling */
-        }
-        .tabs-scroll::-webkit-scrollbar { display: none; }
-
-        /* On screens wide enough to show all tabs, center them with margin trick */
-        @media (min-width: 901px) {
-          .tabs-scroll { justify-content: center; }
-        }
-
-        /* ── FIX 2: View Full Menu hover ───────────────────────────────── */
-        .view-full-menu-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          background: transparent;
-          border: 2px solid #23100B;
-          color: #23100B;
-          border-radius: 12px;
-          padding: 14px 36px;
-          font-family: 'Lato', sans-serif;
-          font-weight: 700;
-          font-size: 14px;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          text-decoration: none;
-          cursor: pointer;
-          transition: background 0.28s ease, color 0.28s ease,
-                      box-shadow 0.28s ease, transform 0.2s ease;
-        }
-        .view-full-menu-btn:hover {
-          background: #23100B;
-          color: #f5e8d8;
-          box-shadow: 0 10px 32px rgba(35,16,11,0.25);
-          transform: translateY(-2px);
-        }
-        .view-full-menu-btn .btn-arrow {
-          transition: stroke 0.28s ease;
-          stroke: #23100B;
-        }
-        .view-full-menu-btn:hover .btn-arrow { stroke: #f5e8d8; }
-        .view-full-menu-btn:active { transform: scale(0.97) translateY(0); }
+        .tab-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+        .tab-scroll::-webkit-scrollbar { display: none; }
       `}</style>
 
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
+      <div className="max-w-7xl mx-auto">
+        
+        {/* ✅ Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: -40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 md:mb-20"
+        >
+         
 
-        {/* Section Header */}
-        <div style={{ textAlign: "center", marginBottom: "56px" }}>
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontStyle: "italic",
-              fontSize: "17px",
-              color: "#23100B",
-              marginBottom: "10px",
-            }}
-          >
-            Crafted with passion
-          </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.55, delay: 0.08 }}
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(32px, 4vw, 52px)",
-              fontWeight: 700,
-              color: "#442713",
-              margin: "0 0 16px",
-              lineHeight: 1.15,
-            }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#26140a] mb-4"
+            style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            Our Menu
+            Our Signature Menu
           </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="text-gray-600 text-lg max-w-2xl mx-auto"
+          >
+            Discover our exquisite selection of traditional Hyderabadi dishes that are made with love and high-quality ingredients.
+          </motion.p>
+
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{
-              width: "60px",
-              height: "3px",
-              background: "#23100B",
-              borderRadius: "2px",
-              margin: "0 auto",
-              transformOrigin: "center",
-            }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="h-1 w-16 rounded-full mx-auto mt-6"
+            style={{ background: BRAND_COLOR }}
           />
-        </div>
+        </motion.div>
 
-        {/* Tabs */}
+        {/* ✅ Tabs Section — CENTERED */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          style={{
-            background: "#fff",
-            borderRadius: "16px",
-            padding: "8px",
-            marginBottom: "48px",
-            boxShadow: "0 2px 20px rgba(38,20,10,0.07)",
-            border: "1px solid #f0e0d0",
-          }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-16 md:mb-20"
         >
-          {/* tabs-outer drives the CSS fade-edge pseudo-elements */}
-          <div
-            className={[
-              "tabs-outer",
-              canScrollLeft  ? "can-scroll-left"  : "",
-              canScrollRight ? "can-scroll-right" : "",
-            ].join(" ")}
-          >
-            <div className="tabs-scroll" ref={scrollRef}>
-              {tabs.map((tab) => (
-                <button
+          <div className="bg-white rounded-2xl p-2 shadow-lg border relative group" style={{ borderColor: `${BRAND_COLOR}20` }}>
+            {/* Left scroll button */}
+            <AnimatePresence>
+              {canScrollLeft && (
+                <motion.button
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => scroll("left")}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 hover:opacity-80 transition-all"
+                  style={{ background: `linear-gradient(to right, white, transparent)` }}
+                >
+                  <ChevronLeft size={24} style={{ color: BRAND_COLOR }} />
+                </motion.button>
+              )}
+            </AnimatePresence>
+
+            {/* ✅ Tabs scroll container — CENTERED with justify-center */}
+            <div 
+              className="flex gap-2 overflow-x-auto tab-scroll px-4 justify-center"
+              ref={scrollRef}
+              style={{ scrollBehavior: "smooth" }}
+            >
+              {tabs.map((tab, idx) => (
+                <motion.button
                   key={tab}
-                  className={`menu-tab-btn ${activeTab === tab ? "active" : ""}`}
                   onClick={() => setActiveTab(tab)}
+                  layout
+                  className={`relative px-6 py-3 rounded-xl font-semibold text-sm whitespace-nowrap transition-all duration-300 flex items-center gap-2 ${
+                    activeTab === tab
+                      ? "text-white"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
                 >
                   {activeTab === tab && (
                     <motion.div
-                      layoutId="tab-active-bg"
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        background: "#23100B",
-                        borderRadius: "10px",
-                      }}
-                      transition={{ type: "spring", stiffness: 420, damping: 36 }}
+                      layoutId="activeTab"
+                      className="absolute inset-0 rounded-xl shadow-lg"
+                      style={{ backgroundColor: BRAND_COLOR }}
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
                     />
                   )}
-                  <span
-                    className="icon"
-                    style={{
-                      position: "relative",
-                      zIndex: 1,
-                      color: activeTab === tab ? "#f5e8d8" : "#ffb900",
-                    }}
-                  >
-                    {tabIcons[tab]}
-                  </span>
-                  <span
-                    style={{
-                      position: "relative",
-                      zIndex: 1,
-                      color: activeTab === tab ? "#f5e8d8" : undefined,
-                    }}
-                  >
-                    {tab}
-                  </span>
-                </button>
+                  <span className="relative z-10 text-lg">{tabIcons[tab]}</span>
+                  <span className="relative z-10">{tab}</span>
+                </motion.button>
               ))}
             </div>
+
+            {/* Right scroll button */}
+            <AnimatePresence>
+              {canScrollRight && (
+                <motion.button
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => scroll("right")}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 hover:opacity-80 transition-all"
+                  style={{ background: `linear-gradient(to left, white, transparent)` }}
+                >
+                  <ChevronRight size={24} style={{ color: BRAND_COLOR }} />
+                </motion.button>
+              )}
+            </AnimatePresence>
           </div>
         </motion.div>
 
-        {/* Cards Grid */}
+        {/* ✅ Cards Grid — CONSISTENT SPACING */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="menu-grid"
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-16"
           >
             {menuData[activeTab].map((item, index) => (
               <MenuCard key={item.id} item={item} index={index} />
@@ -588,39 +506,43 @@ export default function MenuSection() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Bottom CTA */}
+        {/* ✅ Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          style={{ textAlign: "center", marginTop: "56px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center pt-8"
+          style={{ borderTopColor: `${BRAND_COLOR}20`, borderTopWidth: "1px" }}
         >
-          <p
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontStyle: "italic",
-              color: "#9e7a5f",
-              fontSize: "15px",
-              marginBottom: "20px",
-            }}
-          >
-            Explore our full collection of dishes
+          <p className="text-gray-600 text-lg mb-6">
+            Want to explore our complete collection?
           </p>
-
-          {/* className-based hover — motion.a whileHover conflicts with CSS transition */}
-          <a href="/menu" className="view-full-menu-btn">
-            View Full Menu
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <motion.a
+            href="/menu"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-2 text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+            style={{ backgroundColor: BRAND_COLOR }}
+          >
+            <span>View Complete Menu</span>
+            <motion.svg
+              animate={{ x: 0 }}
+              whileHover={{ x: 4 }}
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
               <path
-                className="btn-arrow"
-                d="M3 8h10M8 3l5 5-5 5"
-                strokeWidth="1.8"
+                d="M3 10h14M10 3l7 7-7 7"
+                stroke="currentColor"
+                strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-            </svg>
-          </a>
+            </motion.svg>
+          </motion.a>
         </motion.div>
       </div>
     </section>

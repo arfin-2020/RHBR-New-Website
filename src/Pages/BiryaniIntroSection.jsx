@@ -57,11 +57,10 @@ const BiryaniIntroSection = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-            <span style={{ color: brandColor }}>The Royal Hyderabadi</span> Experience
+            <span style={{ color: brandColor }}>The Royal Hyderabadi Experience</span> 
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Discover the authentic taste of Hyderabadi biryani, crafted with premium ingredients 
-            and traditional cooking methods passed down through generations.
+            Experience the true flavor of Hyderabadi biryani, made with high-quality ingredients and age-old cooking techniques that have been handed down through the generations.
           </p>
         </motion.div>
 
@@ -116,10 +115,7 @@ const BiryaniIntroSection = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-gray-600 text-lg leading-relaxed"
               >
-                Our biryani is more than just a dish—it's a celebration of flavors. Each grain of 
-                basmati rice is infused with aromatic spices, tender meat, and a touch of royal heritage. 
-                From the slow-cooked dum pukht method to the careful layering of ingredients, 
-                every step ensures an unforgettable experience.
+                Our biryani is not merely a dish; it is a celebration of flavors. Every grain of basmati rice is marinated in the flavors of aromatic spices, tender meat, and a hint of royal heritage. From the slow-cooked dum pukht method to the precise layering of ingredients, every aspect of our biryani is designed to provide an unforgettable experience.
               </motion.p>
             </div>
 
@@ -169,8 +165,8 @@ const BiryaniIntroSection = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
               whileHover={{ scale: 1.05, boxShadow: `0 20px 40px ${brandColor}40` }}
               whileTap={{ scale: 0.95 }}
-              style={{ backgroundColor: brandColor}}
-              className=" sm:w-auto px-8 py-4 rounded-full text-white font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-2xl"
+              style={{ backgroundColor: brandColor,cursor: "pointer" }}
+              className="w-full sm:w-auto px-8 py-4 rounded-full text-white font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-2xl"
               onClick={handleWhatsApp} // ← integrated your .env phone logic
             >
               Order Your Biryani Now

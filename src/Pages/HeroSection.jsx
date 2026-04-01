@@ -57,10 +57,17 @@ const HeroSection = () => {
           transition={{ delay: 1.2, duration: 1 }}
           className="text-gray-200 text-sm sm:text-base md:text-xl lg:text-2xl max-w-xs sm:max-w-xl md:max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-light notranslate px-2"
         >
-          Experience the most authentic Hyderabadi Biryani in Muscat. We cater bulk orders, buffet, engagements, parties & monthly mess. Direct call for order : +968 7260 6555 , +968 72607444
+          Experience the most authentic Hyderabadi Biryani in Muscat. We cater bulk orders, buffet, engagements, parties & monthly mess. 
           
         </motion.p>
-
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.6, duration: 0.8 }}
+          className="text-xs sm:text-sm md:text-base text-gray-300 max-w-xl mx-auto mb-10 sm:mb-12 font-semibold tracking-wide"
+        >
+          Direct call for order : +968 7260 6555 , +968 72607444
+        </motion.p>
         {/* Primary CTA Button with Floating Animation */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
