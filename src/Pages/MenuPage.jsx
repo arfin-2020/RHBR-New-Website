@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import Footer from "./Footer";
 
 // ─── Brand Tokens ──────────────────────────────────────────────────────────────
 const B      = "#26140a";
@@ -672,6 +673,7 @@ export default function MenuSection() {
   const isSearching = search.trim().length > 0;
 
   return (
+    <>
     <section style={{
       background: CREAM,
       padding: "100px 0 120px",
@@ -984,5 +986,7 @@ export default function MenuSection() {
         {modalItem && <ItemModal item={modalItem} onClose={() => setModalItem(null)} />}
       </AnimatePresence>
     </section>
+
+    </>
   );
 }

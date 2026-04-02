@@ -26,7 +26,7 @@ const Home = () => {
         <TalabatSection/>
         <VideoSection/>
         <ReviewsSection/>
-        <Footer/>
+    
     </>
     );
 }
