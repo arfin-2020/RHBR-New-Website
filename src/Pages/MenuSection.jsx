@@ -27,7 +27,7 @@ const menuData = {
     },
     {
       id: 3,
-      image: "https://royalhyderabadioman.com/wp-content/uploads/2026/02/Haleem-2-1-1024x720.jpg",
+      image: "https://www.foodaholic.biz/wp-content/uploads/2013/08/aviary-image-1620742447534-768x1024.jpg",
       title: "Hyderabadi Haleem",
       description: "Stone-baked traditional haleem with tender meat and lentils slow-cooked to perfection with aromatic spices.",
       badge: "🏆 Signature",

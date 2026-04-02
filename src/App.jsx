@@ -4,6 +4,7 @@ import './App.css'
 import Nav from './Pages/Nav'
 import Home from './Pages/Home'
 import MenuPage from './Pages/MenuPage'
+import AboutUs from './Pages/AboutUS'
 
 function App() {
  
@@ -14,6 +15,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/menu" element={<MenuPage />} />
+      <Route path="/about" element={<AboutUs/>} />
     </Routes>
     </>
   )

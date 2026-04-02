@@ -29,7 +29,7 @@ const MENU = {
   "HYD Special": {
     color: "#92400e",
     items: [
-      { id: 11, name: "Mutton Haleem",          desc: "Slow-cooked mutton & lentil porridge — the ultimate Hyderabadi comfort dish.", badge: "Iconic",   note: "Friday Special",   image: "https://royalhyderabadioman.com/wp-content/uploads/2026/02/Haleem-2-1-1024x720.jpg",   pricing: { Quarter: "1.000", Single: "1.650", "0.5 Kg": "2.000", "1 Kg": "3.400" } },
+      { id: 11, name: "Mutton Haleem",          desc: "Slow-cooked mutton & lentil porridge — the ultimate Hyderabadi comfort dish.", badge: "Iconic",   note: "Friday Special",   image: "https://www.foodaholic.biz/wp-content/uploads/2013/08/aviary-image-1620742447534-768x1024.jpg",   pricing: { Quarter: "1.000", Single: "1.650", "0.5 Kg": "2.000", "1 Kg": "3.400" } },
       { id: 12, name: "Nihari Sheep Paya",      desc: "Slow-cooked trotters in a rich overnight broth with aromatic spices.",         badge: "Must Try", note: "Friday Special",   image: "./assets/Nihari Paya.jpg", pricing: { Single: "1.200" } },
       { id: 13, name: "Mutton Tahari",          desc: "One-pot mutton rice cooked with spices — a Hyderabadi home classic.",          badge: "Special",  note: "Saturday Special", image: "./assets/Mutton Tahari.jpg",        pricing: { Single: "1.290" } },
       { id: 14, name: "Khichdi Khatta Kheema", desc: "Lentil rice paired with tangy kheema — unique Hyderabadi street food.",        badge: "Heritage", note: "Sunday Special",   image: "./assets/Khichdi Khatta Kheema.jpg",         pricing: { Single: "0.900" } },

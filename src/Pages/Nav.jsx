@@ -117,6 +117,8 @@ const Nav = () => {
               transition={{ delay: index * 0.05, duration: 0.3 }}
             >
               <Link
+
+              
                 to={item.path}
                 className={`relative text-sm font-semibold tracking-wide transition-all duration-300 py-2 px-3 rounded-md group ${
                   isActive(item.path)
