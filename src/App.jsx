@@ -7,6 +7,7 @@ import MenuPage from './Pages/MenuPage'
 import AboutUs from './Pages/AboutUS'
 import ContactPage from './Pages/ContactPage'
 import Footer from './Pages/Footer'
+import OffersPage from './Pages/OffersPage'
 
 function App() {
  
@@ -19,6 +20,7 @@ function App() {
       <Route path="/menu" element={<MenuPage />} />
       <Route path="/about" element={<AboutUs/>} />
       <Route path="/contact" element={<ContactPage/>} />
+      <Route path="/offers" element={<OffersPage/>} />
     </Routes>
     <Footer/>
     </>

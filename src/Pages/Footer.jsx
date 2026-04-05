@@ -124,7 +124,7 @@ const quickLinks = [
   { label: "About Restaurant", to: "/about" },
   { label: "Menu", to: "/menu" },
   { label: "Reservation", to: "/reservation" },
-  { label: "Blog", to: "/blog" },
+  // { label: "Blog", to: "/blog" },
   { label: "Career", to: "/career" },
   { label: "Contact", to: "/contact" },
 ];

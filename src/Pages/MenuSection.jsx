@@ -1,42 +1,56 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Flame, UtensilsCrossed } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Flame,
+  UtensilsCrossed,
+} from "lucide-react";
 
 // ─── Brand Color ────────────────────────────────────────────────────────────
 const BRAND_COLOR = "#26140a";
 const BRAND_LIGHT = "#3b271e";
 const BRAND_LIGHTER = "#f5e8d8";
+const MotionLink = motion.create(Link);
+
 
 // ─── Food Data ────────────────────────────────────────────────────────────────
 const menuData = {
   "Today's Special": [
     {
       id: 1,
-      image: "https://royalhyderabadioman.com/wp-content/uploads/2026/02/Mutton-Marag-1024x720.jpg",
+      image:
+        "https://royalhyderabadioman.com/wp-content/uploads/2026/02/Mutton-Marag-1024x720.jpg",
       title: "Mutton Marag",
-      description: "A traditional Hyderabadi delicacy, Mutton Marag is a light yet flavorful soup made with tender mutton, aromatic spices, and slow-cooked broth.",
+      description:
+        "A traditional Hyderabadi delicacy, Mutton Marag is a light yet flavorful soup made with tender mutton, aromatic spices, and slow-cooked broth.",
       badge: "⭐ Special",
     },
     {
       id: 2,
       image: "./assets/Nihari Paya.jpg",
       title: "Nihari Paya",
-      description: "A classic Hyderabadi specialty, Nihari Paya is a rich, slow-cooked stew made from tender trotters simmered overnight.",
+      description:
+        "A classic Hyderabadi specialty, Nihari Paya is a rich, slow-cooked stew made from tender trotters simmered overnight.",
       badge: "🔥 Hot",
     },
     {
       id: 3,
-      image: "https://www.foodaholic.biz/wp-content/uploads/2013/08/aviary-image-1620742447534-768x1024.jpg",
+      image:
+        "https://www.foodaholic.biz/wp-content/uploads/2013/08/aviary-image-1620742447534-768x1024.jpg",
       title: "Hyderabadi Haleem",
-      description: "Stone-baked traditional haleem with tender meat and lentils slow-cooked to perfection with aromatic spices.",
+      description:
+        "Stone-baked traditional haleem with tender meat and lentils slow-cooked to perfection with aromatic spices.",
       badge: "🏆 Signature",
     },
     {
       id: 4,
-      image: "https://royalhyderabadioman.com/wp-content/uploads/2026/02/Bheja-Fry-1024x720.jpg",
+      image:
+        "https://royalhyderabadioman.com/wp-content/uploads/2026/02/Bheja-Fry-1024x720.jpg",
       title: "Bheja Fry",
-      description: "A rich and flavorful Hyderabadi delicacy made from tender brain, slow-cooked with aromatic spices and herbs.",
+      description:
+        "A rich and flavorful Hyderabadi delicacy made from tender brain, slow-cooked with aromatic spices and herbs.",
       badge: "⭐ Special",
     },
   ],
@@ -45,28 +59,32 @@ const menuData = {
       id: 5,
       image: "./assets/Kheema.jpg",
       title: "Kheema",
-      description: "Finely minced meat cooked with onions, green chilies, and aromatic spices, delivering bold, hearty flavor.",
+      description:
+        "Finely minced meat cooked with onions, green chilies, and aromatic spices, delivering bold, hearty flavor.",
       badge: "☀️ Fresh",
     },
     {
       id: 6,
       image: "./assets/Hyderabadi Paratha.jpg",
       title: "Hyderabadi Special Paratha",
-      description: "Crispy and soft paratha cooked with light oil, flaky and delicious traditional breakfast special.",
+      description:
+        "Crispy and soft paratha cooked with light oil, flaky and delicious traditional breakfast special.",
       badge: "🍳 Popular",
     },
     {
       id: 7,
       image: "./assets/Bindi.jpg",
       title: "Bindi Fry",
-      description: "Bindi cooked with light spices, a simple yet flavorful dish that pairs perfectly with paratha.",
+      description:
+        "Bindi cooked with light spices, a simple yet flavorful dish that pairs perfectly with paratha.",
       badge: "🥒 Light",
     },
     {
       id: 8,
       image: "./assets/Chana Masala.jpg",
       title: "Chana Masala",
-      description: "Aromatic chickpea curry cooked with tomatoes, onions and traditional spices creating a rich gravy.",
+      description:
+        "Aromatic chickpea curry cooked with tomatoes, onions and traditional spices creating a rich gravy.",
       badge: "🌟 Vegan",
     },
   ],
@@ -75,28 +93,32 @@ const menuData = {
       id: 9,
       image: "./assets/Chicken Dum Biryani.jpg",
       title: "Hyderabadi Special Chicken Dum Biryani",
-      description: "Classic Hyderabadi biryani made with tender chicken, fragrant basmati rice, slow-cooked on dum.",
+      description:
+        "Classic Hyderabadi biryani made with tender chicken, fragrant basmati rice, slow-cooked on dum.",
       badge: "🏆 Best",
     },
     {
       id: 10,
       image: "./assets/Mutton Biryani.jpg",
       title: "Hyderabadi Special Mutton Biryani",
-      description: "Fragrant basmati rice layered with spiced fresh mutton. Slow-cooked on dum for rich flavor.",
+      description:
+        "Fragrant basmati rice layered with spiced fresh mutton. Slow-cooked on dum for rich flavor.",
       badge: "👑 Royal",
     },
     {
       id: 11,
       image: "./assets/Chicken Tikka Masala.jpg",
       title: "Chicken Masala",
-      description: "Tender chicken cooked in rich, spiced tomato-based gravy with traditional Hyderabadi spices.",
+      description:
+        "Tender chicken cooked in rich, spiced tomato-based gravy with traditional Hyderabadi spices.",
       badge: "🔥 Hot",
     },
     {
       id: 12,
       image: "./assets/Mutton Masala.jpg",
       title: "Mutton Masala",
-      description: "Mutton cooked in a rich, spiced tomato-based gravy, perfect for those who love hearty dishes.",
+      description:
+        "Mutton cooked in a rich, spiced tomato-based gravy, perfect for those who love hearty dishes.",
       badge: "⭐ Favorite",
     },
   ],
@@ -105,28 +127,32 @@ const menuData = {
       id: 13,
       image: "./assets/Chicken Dum Biryani.jpg",
       title: "Hyderabadi Special Chicken Dum Biryani",
-      description: "Classic Hyderabadi biryani made with tender chicken, fragrant basmati rice, slow-cooked on dum.",
+      description:
+        "Classic Hyderabadi biryani made with tender chicken, fragrant basmati rice, slow-cooked on dum.",
       badge: "🏆 Best",
     },
     {
       id: 14,
       image: "./assets/Mutton Biryani.jpg",
       title: "Hyderabadi Special Mutton Biryani",
-      description: "Fragrant basmati rice layered with spiced fresh mutton. Slow-cooked on dum for rich flavor.",
+      description:
+        "Fragrant basmati rice layered with spiced fresh mutton. Slow-cooked on dum for rich flavor.",
       badge: "👑 Royal",
     },
     {
       id: 15,
       image: "./assets/Mutton Kadhai.jpg",
       title: "Mutton Kadhai",
-      description: "Tender mutton cooked in a traditional kadhai with aromatic spices, tomatoes, and bell peppers.",
+      description:
+        "Tender mutton cooked in a traditional kadhai with aromatic spices, tomatoes, and bell peppers.",
       badge: "🌶️ Spicy",
     },
     {
       id: 16,
       image: "./assets/Dum_ka_Chicken.jpg",
       title: "Dum ka Chicken",
-      description: "Chicken slow-cooked with yogurt, cashews, cardamom, cloves, and saffron for ultimate richness.",
+      description:
+        "Chicken slow-cooked with yogurt, cashews, cardamom, cloves, and saffron for ultimate richness.",
       badge: "✨ Premium",
     },
   ],
@@ -135,7 +161,8 @@ const menuData = {
       id: 17,
       image: "./assets/Karak Tea.jpg",
       title: "Hyderabadi Special Chai",
-      description: "Hyderabadi special chai, often called Irani Chai, is a rich, creamy, and strong tea.",
+      description:
+        "Hyderabadi special chai, often called Irani Chai, is a rich, creamy, and strong tea.",
       badge: "☕ Hot",
     },
     {
@@ -165,28 +192,32 @@ const menuData = {
       id: 21,
       image: "./assets/Gulab.jpg",
       title: "Gulab Jamun - 2 pcs",
-      description: "Milk solids, flour, sugar, cardamom, rose water, ghee. A classic sweet treat.",
+      description:
+        "Milk solids, flour, sugar, cardamom, rose water, ghee. A classic sweet treat.",
       badge: "🍮 Sweet",
     },
     {
       id: 22,
       image: "./assets/Kaddu Kheer.jpg",
       title: "Kaddu Kheer",
-      description: "Bottle gourd, milk, sugar, sago pearls, nuts, cardamom, ghee.",
+      description:
+        "Bottle gourd, milk, sugar, sago pearls, nuts, cardamom, ghee.",
       badge: "🍯 Rich",
     },
     {
       id: 23,
       image: "./assets/Badam Ki Kheer.jpg",
       title: "Badam Ki Kheer Pudding",
-      description: "Creamy almond pudding made with ground almonds, milk and rice cooked to silky perfection.",
+      description:
+        "Creamy almond pudding made with ground almonds, milk and rice cooked to silky perfection.",
       badge: "🥜 Premium",
     },
     {
       id: 24,
       image: "./assets/Gajar Ka Halwa.jpg",
       title: "Special Gajar Ka Halwa",
-      description: "Fresh carrots simmered in milk and ghee. Sweet, rich, and full of classic flavor.",
+      description:
+        "Fresh carrots simmered in milk and ghee. Sweet, rich, and full of classic flavor.",
       badge: "🌟 Iconic",
     },
   ],
@@ -222,11 +253,10 @@ function MenuCard({ item, index }) {
       className="group relative h-full"
     >
       {/* ✅ Card container with fixed height */}
-      <div 
+      <div
         className="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col"
         style={{ minHeight: "520px" }}
       >
-        
         {/* ✅ Image Container with fixed height */}
         <div className="relative h-56 sm:h-64 overflow-hidden bg-gray-200 flex-shrink-0">
           <motion.img
@@ -236,7 +266,8 @@ function MenuCard({ item, index }) {
             transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
             className="w-full h-full object-cover"
             onError={(e) => {
-              e.target.src = "https://via.placeholder.com/300x250?text=" + item.title;
+              e.target.src =
+                "https://via.placeholder.com/300x250?text=" + item.title;
             }}
           />
 
@@ -271,7 +302,6 @@ function MenuCard({ item, index }) {
 
         {/* ✅ Content section — Fixed padding & height */}
         <div className="p-5 sm:p-6 flex flex-col gap-3 flex-grow">
-          
           {/* Title */}
           <motion.h3
             initial={{ opacity: 0 }}
@@ -299,9 +329,9 @@ function MenuCard({ item, index }) {
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate("/menu")}
             className="w-full mt-auto text-white font-bold py-3 rounded-xl text-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
-            style={{ 
+            style={{
               backgroundColor: BRAND_COLOR,
-              marginTop: "auto"
+              marginTop: "auto",
             }}
           >
             <span>View Details</span>
@@ -365,7 +395,10 @@ export default function MenuSection() {
   };
 
   return (
-    <section className="py-20 md:py-28 px-4 sm:px-6" style={{ background: "#faf5f0" }}>
+    <section
+      className="py-20 md:py-28 px-4 sm:px-6"
+      style={{ background: "#faf5f0" }}
+    >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap');
 
@@ -374,7 +407,6 @@ export default function MenuSection() {
       `}</style>
 
       <div className="max-w-7xl mx-auto">
-        
         {/* ✅ Header Section */}
         <motion.div
           initial={{ opacity: 0, y: -40 }}
@@ -383,8 +415,6 @@ export default function MenuSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16 md:mb-20"
         >
-         
-
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -403,7 +433,8 @@ export default function MenuSection() {
             transition={{ duration: 0.7, delay: 0.15 }}
             className="text-gray-600 text-lg max-w-2xl mx-auto"
           >
-            Discover our exquisite selection of traditional Hyderabadi dishes that are made with love and high-quality ingredients.
+            Discover our exquisite selection of traditional Hyderabadi dishes
+            that are made with love and high-quality ingredients.
           </motion.p>
 
           <motion.div
@@ -424,7 +455,10 @@ export default function MenuSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-16 md:mb-20"
         >
-          <div className="bg-white rounded-2xl p-2 shadow-lg border relative group" style={{ borderColor: `${BRAND_COLOR}20` }}>
+          <div
+            className="bg-white rounded-2xl p-2 shadow-lg border relative group"
+            style={{ borderColor: `${BRAND_COLOR}20` }}
+          >
             {/* Left scroll button */}
             <AnimatePresence>
               {canScrollLeft && (
@@ -434,7 +468,9 @@ export default function MenuSection() {
                   exit={{ opacity: 0 }}
                   onClick={() => scroll("left")}
                   className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 hover:opacity-80 transition-all"
-                  style={{ background: `linear-gradient(to right, white, transparent)` }}
+                  style={{
+                    background: `linear-gradient(to right, white, transparent)`,
+                  }}
                 >
                   <ChevronLeft size={24} style={{ color: BRAND_COLOR }} />
                 </motion.button>
@@ -442,7 +478,7 @@ export default function MenuSection() {
             </AnimatePresence>
 
             {/* ✅ Tabs scroll container — CENTERED with justify-center */}
-            <div 
+            <div
               className="flex gap-2 overflow-x-auto tab-scroll px-4 justify-center"
               ref={scrollRef}
               style={{ scrollBehavior: "smooth" }}
@@ -463,7 +499,11 @@ export default function MenuSection() {
                       layoutId="activeTab"
                       className="absolute inset-0 rounded-xl shadow-lg"
                       style={{ backgroundColor: BRAND_COLOR }}
-                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 30,
+                      }}
                     />
                   )}
                   <span className="relative z-10 text-lg">{tabIcons[tab]}</span>
@@ -481,7 +521,9 @@ export default function MenuSection() {
                   exit={{ opacity: 0 }}
                   onClick={() => scroll("right")}
                   className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 hover:opacity-80 transition-all"
-                  style={{ background: `linear-gradient(to left, white, transparent)` }}
+                  style={{
+                    background: `linear-gradient(to left, white, transparent)`,
+                  }}
                 >
                   <ChevronRight size={24} style={{ color: BRAND_COLOR }} />
                 </motion.button>
@@ -515,40 +557,52 @@ export default function MenuSection() {
           className="text-center pt-8"
           style={{ borderTopColor: `${BRAND_COLOR}20`, borderTopWidth: "1px" }}
         >
-          <p className="text-gray-600 text-lg mb-6">
-            Want to explore our complete collection?
-          </p>
           
-          <motion.a 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
-            style={{ backgroundColor: BRAND_COLOR }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-center pt-8"
+            style={{
+              borderTopColor: `${BRAND_COLOR}20`,
+              borderTopWidth: "1px",
+            }}
           >
-            
-            <Link
-            to="/menu"
-            className="flex items-center gap-3 hover:opacity-90 transition-opacity duration-300 shrink-0"
-          >
-           <span>View Complete Menu</span>
-          </Link>
-            <motion.svg
-              animate={{ x: 0 }}
-              whileHover={{ x: 4 }}
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
+            <p className="text-gray-600 text-lg mb-6">
+              Want to explore our complete collection?
+            </p>
+
+            {/* Corrected implementation using MotionLink */}
+            <MotionLink
+              to="/menu"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              // Combines styles from previous motion.a and Link
+              className="inline-flex items-center gap-3 text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:opacity-90 shrink-0"
+              style={{ backgroundColor: BRAND_COLOR }}
             >
-              <path
-                d="M3 10h14M10 3l7 7-7 7"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </motion.svg>
-          </motion.a>
+              <span>View Complete Menu</span>
+
+              {/* Icon */}
+              <motion.svg
+                animate={{ x: 0 }}
+                whileHover={{ x: 4 }}
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  d="M3 10h14M10 3l7 7-7 7"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </motion.svg>
+            </MotionLink>
+          </motion.div>
         </motion.div>
       </div>
     </section>

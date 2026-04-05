@@ -245,14 +245,14 @@ function AboutSection() {
               }}
             >
               {[
-                "Welcome to the Royal Hyderabadi Biryani, where the legacy of Hyderabad is served in a royal platter. Our Biryani is prepared in the traditional dum style with slow cooking, layered with the finest Basmati Rice, exotic spices grounded in-house, and tender, succulent pieces of meat. The way it is prepared is the way it has been prepared over the centuries.",
+                "Welcome to the Royal Hyderabadi Biryani Restaurant, where the legacy of Hyderabad is served in a royal platter. Our Biryani is prepared in the traditional dum style with slow cooking, layered with the finest Basmati Rice, exotic spices grounded in-house, and tender, succulent pieces of meat. The way it is prepared is the way it has been prepared over the centuries.",
                 "We prepare each pot with patience, passion, and authenticity, which ensures the rich aroma, flavors, and the royal taste in every bite. As a new restaurant, we are proud to serve the classic taste of Hyderabad in a fresh, pure, and unforgettable way.",
                 "In a city like Muscat, where the old meets the new, we keep that history alive one plate, one memory, and one bite at a time.",
               ].map((text, i) => (
                 <p
                   key={i}
                   style={{
-                    fontFamily: "'Lato', sans-serif",
+                    fontFamily: "'poppins', sans-serif",
                     fontSize: "0.97rem",
                     color: "rgba(38,20,10,0.75)",
                     lineHeight: 1.85,
@@ -263,44 +263,7 @@ function AboutSection() {
               ))}
             </div>
 
-            <div
-              style={{
-                display: "flex",
-                gap: "2.5rem",
-                marginTop: "2.5rem",
-                flexWrap: "wrap",
-              }}
-            >
-              {[
-                { n: "350+", l: "Daily Guests" },
-                { n: "80+", l: "Menu Items" },
-                { n: "100%", l: "Authentic Spices" },
-              ].map(({ n, l }) => (
-                <div key={n}>
-                  <div
-                    style={{
-                      fontFamily: "'Playfair Display', serif",
-                      fontSize: "2rem",
-                      color: "#26140a",
-                      fontWeight: 700,
-                    }}
-                  >
-                    {n}
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: "'Lato'",
-                      fontSize: "0.75rem",
-                      color: "#b8893a",
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {l}
-                  </div>
-                </div>
-              ))}
-            </div>
+           
           </Reveal>
           {/* ══════════════════════════════════════
                         LEFT: Bento Image Grid  (NEW)
@@ -391,7 +354,7 @@ function AboutSection() {
                       backdropFilter: "blur(6px)",
                       borderRadius: 8,
                       padding: "4px 10px",
-                      fontFamily: "'Lato', sans-serif",
+                      fontFamily: "'poppins', sans-serif",
                       fontSize: "0.65rem",
                       color: "#c9a24e",
                       letterSpacing: "0.12em",
@@ -1236,7 +1199,7 @@ function ChairmanSection() {
                 <p
                   key={i}
                   style={{
-                    fontFamily: "'Lato'",
+                    fontFamily: "'poppins'",
                     fontSize: "0.95rem",
                     color: "rgba(38,20,10,0.72)",
                     lineHeight: 1.82,
@@ -1246,16 +1209,6 @@ function ChairmanSection() {
                 </p>
               ))}
             </div>
-
-            <a
-              href="https://www.instagram.com/mohsin_printwaves/"
-              target="_blank"
-              rel="noreferrer"
-              style={btnPrimary}
-            >
-              <InstagramIcon size={16} />
-              Follow on Instagram
-            </a>
           </Reveal>
         </div>
       </div>
