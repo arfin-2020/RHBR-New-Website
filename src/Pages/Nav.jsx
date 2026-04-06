@@ -157,7 +157,7 @@ const Nav = () => {
                 {/* ✅ Animated underline on hover */}
                 {!isActive(item.path) && (
                   <motion.span
-                    className="absolute -bottom-1 left-3 h-0.5 bg-gradient-to-r from-amber-400 to-amber-300 rounded-full"
+                    className="absolute -bottom-1 left-3 h-0.5 bg-linear-to-r from-amber-400 to-amber-300 rounded-full"
                     initial={{ width: 0 }}
                     whileHover={{ width: "calc(100% - 24px)" }}
                     transition={{ duration: 0.3 }}
@@ -180,7 +180,7 @@ const Nav = () => {
           >
             {/* ✅ Animated background on hover */}
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-amber-400/10 to-transparent -z-10"
+              className="absolute inset-0 bg-linear-to-r from-amber-400/10 to-transparent -z-10"
               initial={{ opacity: 0 }}
               whileHover={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
@@ -200,7 +200,7 @@ const Nav = () => {
             whileHover={{ scale: 1.08, boxShadow: "0 20px 40px rgba(34, 197, 94, 0.4)" }}
             whileTap={{ scale: 0.95 }}
             onClick={handleWhatsApp}
-            className="hidden md:flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 px-4 sm:px-6 py-2 rounded-full font-bold text-xs sm:text-sm shadow-xl transition-all duration-300 relative overflow-hidden group"
+            className="hidden md:flex items-center gap-2 bg-linear-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 px-4 sm:px-6 py-2 rounded-full font-bold text-xs sm:text-sm shadow-xl transition-all duration-300 relative overflow-hidden group"
             aria-label="Order via WhatsApp"
           >
             {/* ✅ Animated background shimmer */}
@@ -248,7 +248,7 @@ const Nav = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ type: "spring", stiffness: 260, damping: 28 }}
-            className="md:hidden absolute top-full left-0 w-full bg-gradient-to-b from-[#2a1b15] to-[#1f1410] border-t border-white/10 flex flex-col p-6 pt-4 gap-3 shadow-2xl overflow-hidden"
+            className="md:hidden absolute top-full left-0 w-full bg-linear-to-b from-[#2a1b15] to-[#1f1410] border-t border-white/10 flex flex-col p-6 pt-4 gap-3 shadow-2xl overflow-hidden"
           >
             {/* ✅ Staggered entrance animation for nav items */}
             {navItems.map((item, index) => (
@@ -294,7 +294,7 @@ const Nav = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => { setIsOpen(false); handleWhatsApp(); }}
-              className="mt-4 w-full bg-gradient-to-r from-green-600 to-green-500 py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:from-green-500 hover:to-green-400 transition-all duration-300 shadow-lg relative overflow-hidden group"
+              className="mt-4 w-full bg-linear-to-r from-green-600 to-green-500 py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:from-green-500 hover:to-green-400 transition-all duration-300 shadow-lg relative overflow-hidden group"
             >
               {/* ✅ Shimmer effect on hover */}
               <motion.div

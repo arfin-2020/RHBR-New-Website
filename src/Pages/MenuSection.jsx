@@ -258,7 +258,7 @@ function MenuCard({ item, index }) {
         style={{ minHeight: "520px" }}
       >
         {/* ✅ Image Container with fixed height */}
-        <div className="relative h-56 sm:h-64 overflow-hidden bg-gray-200 flex-shrink-0">
+        <div className="relative h-56 sm:h-64 overflow-hidden bg-gray-200 shrink-0">
           <motion.img
             src={item.image}
             alt={item.title}
@@ -275,7 +275,7 @@ function MenuCard({ item, index }) {
           <motion.div
             animate={{ opacity: isHovered ? 0.8 : 0.5 }}
             transition={{ duration: 0.4 }}
-            className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"
+            className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent"
           />
 
           {/* ✅ Badge with animation */}
@@ -301,7 +301,7 @@ function MenuCard({ item, index }) {
         </div>
 
         {/* ✅ Content section — Fixed padding & height */}
-        <div className="p-5 sm:p-6 flex flex-col gap-3 flex-grow">
+        <div className="p-5 sm:p-6 flex flex-col gap-3 grow">
           {/* Title */}
           <motion.h3
             initial={{ opacity: 0 }}
@@ -318,7 +318,7 @@ function MenuCard({ item, index }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: index * 0.08 + 0.25, duration: 0.4 }}
-            className="text-sm text-gray-600 line-clamp-2 leading-relaxed flex-grow"
+            className="text-sm text-gray-600 line-clamp-2 leading-relaxed grow"
           >
             {item.description}
           </motion.p>
@@ -555,7 +555,7 @@ export default function MenuSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center pt-8"
-          style={{ borderTopColor: `${BRAND_COLOR}20`, borderTopWidth: "1px" }}
+          style={{ borderTopColor: `${BRAND_COLOR}20`}}
         >
           
           <motion.div
@@ -566,7 +566,7 @@ export default function MenuSection() {
             className="text-center pt-8"
             style={{
               borderTopColor: `${BRAND_COLOR}20`,
-              borderTopWidth: "1px",
+             
             }}
           >
             <p className="text-gray-600 text-lg mb-6">
