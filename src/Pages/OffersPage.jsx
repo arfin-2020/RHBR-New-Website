@@ -9,7 +9,8 @@ const OFFERS = [
     id: 1,
     title: "Chicken Sorba",
     tagline: "Friday Special",
-    shortDesc: "Chicken Shorba (Sorba) is a comforting spiced chicken soup made with tender chicken, aromatic spices, and herbs. It’s light yet flavorful, often enjoyed with bread or rice, and is perfect for cooler evenings.",
+    shortDesc:
+      "Chicken Shorba (Sorba) is a comforting spiced chicken soup made with tender chicken, aromatic spices, and herbs. It’s light yet flavorful, often enjoyed with bread or rice, and is perfect for cooler evenings.",
     price: "OMR 0.600",
     originalPrice: "OMR 1.200",
     saving: "Save 22%",
@@ -20,7 +21,8 @@ const OFFERS = [
     id: 2,
     title: "3 Options of Daily Meal",
     tagline: "Complete Meal",
-    shortDesc: "3 Meals 45 RO, 2 Meals 40 RO, 1 Meal 25 RO. Enjoy a complete meal with our daily meal offers.",
+    shortDesc:
+      "3 Meals 45 RO, 2 Meals 40 RO, 1 Meal 25 RO. Enjoy a complete meal with our daily meal offers.",
     price: "OMR 45, 40, 25",
     originalPrice: "OMR 50, 45, 30",
     saving: "Save 25%",
@@ -31,7 +33,8 @@ const OFFERS = [
     id: 3,
     title: "Nihari Paya with 1 Paratha",
     tagline: "Friday Special",
-    shortDesc: "Nihari Paya is a rich, slow-cooked South Asian delicacy that combines two iconic dishes: Nihari (a spicy, aromatic stew usually made with beef or mutton shank) and Paya (trotters, usually goat or cow).",
+    shortDesc:
+      "Nihari Paya is a rich, slow-cooked South Asian delicacy that combines two iconic dishes: Nihari (a spicy, aromatic stew usually made with beef or mutton shank) and Paya (trotters, usually goat or cow).",
     price: "OMR 1.200",
     originalPrice: "OMR 2.00",
     saving: "Full Menu",
@@ -42,7 +45,8 @@ const OFFERS = [
     id: 4,
     title: "Fresh Hyderabadi Chicken Biryani (Regular)",
     tagline: "All You Can Eat",
-    shortDesc: "Every Friday & Saturday morning, indulge in our unlimited Hyderabadi brunch spread with live cooking stations.",
+    shortDesc:
+      "Every Friday & Saturday morning, indulge in our unlimited Hyderabadi brunch spread with live cooking stations.",
     price: "OMR 0.990",
     originalPrice: "OMR 1.800",
     saving: "Per Person",
@@ -53,7 +57,8 @@ const OFFERS = [
     id: 5,
     title: "We are on Talabat",
     tagline: "First Order get 20% Off",
-    shortDesc: "You can now order from your comfort zone and enjoy our delicious meals with just a few clicks. Get 20% off on your first order through Talabat.",
+    shortDesc:
+      "You can now order from your comfort zone and enjoy our delicious meals with just a few clicks. Get 20% off on your first order through Talabat.",
     price: "",
     originalPrice: null,
     saving: "+ 10% OFF",
@@ -64,7 +69,8 @@ const OFFERS = [
     id: 6,
     title: "Aloo Capsicum",
     tagline: "Breakfast Special",
-    shortDesc: "Vegetarian delight! Aloo Capsicum is a flavorful Indian dish made with tender potatoes and vibrant bell peppers, cooked in a blend of aromatic spices. Perfect for breakfast or as a side dish.",
+    shortDesc:
+      "Vegetarian delight! Aloo Capsicum is a flavorful Indian dish made with tender potatoes and vibrant bell peppers, cooked in a blend of aromatic spices. Perfect for breakfast or as a side dish.",
     price: "0.400 Bz",
     originalPrice: null,
     saving: "Groups of 8+",
@@ -75,7 +81,8 @@ const OFFERS = [
     id: 7,
     title: "Special Karak Chai",
     tagline: "Special Tea",
-    shortDesc: "Charak Tea is a flavorful and aromatic tea blend that combines strong black tea with a mix of traditional spices like cardamom, cinnamon, ginger, and cloves. It’s a comforting and invigorating beverage enjoyed across the Middle East and South Asia.",
+    shortDesc:
+      "Charak Tea is a flavorful and aromatic tea blend that combines strong black tea with a mix of traditional spices like cardamom, cinnamon, ginger, and cloves. It’s a comforting and invigorating beverage enjoyed across the Middle East and South Asia.",
     price: "0.100 Bz",
     originalPrice: null,
     saving: "Groups of 8+",
@@ -89,12 +96,28 @@ const OFFERS = [
 ───────────────────────────────────────────── */
 
 const GoldLine = ({ style = {} }) => (
-  <div style={{ display: "flex", alignItems: "center", gap: "0.85rem", ...style }}>
-    <div style={{ flex: 1, height: "1px", background: "linear-gradient(to right, transparent, rgba(184,137,58,0.3))" }} />
+  <div
+    style={{ display: "flex", alignItems: "center", gap: "0.85rem", ...style }}
+  >
+    <div
+      style={{
+        flex: 1,
+        height: "1px",
+        background:
+          "linear-gradient(to right, transparent, rgba(184,137,58,0.3))",
+      }}
+    />
     <svg width="8" height="8" viewBox="0 0 24 24" fill="#b8893a">
       <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
     </svg>
-    <div style={{ flex: 1, height: "1px", background: "linear-gradient(to left, transparent, rgba(184,137,58,0.3))" }} />
+    <div
+      style={{
+        flex: 1,
+        height: "1px",
+        background:
+          "linear-gradient(to left, transparent, rgba(184,137,58,0.3))",
+      }}
+    />
   </div>
 );
 
@@ -120,8 +143,21 @@ function OfferCard({ offer, index, onClick }) {
         flexDirection: "column",
       }}
     >
-      <div style={{ position: "relative", width: "100%", paddingTop: "100%", overflow: "hidden", background: "#f0e8dd" }}>
-        {!imgLoaded && <div className="shimmer-effect" style={{ position: "absolute", inset: 0 }} />}
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          paddingTop: "100%",
+          overflow: "hidden",
+          background: "#f0e8dd",
+        }}
+      >
+        {!imgLoaded && (
+          <div
+            className="shimmer-effect"
+            style={{ position: "absolute", inset: 0 }}
+          />
+        )}
         <motion.img
           src={offer.image}
           alt={offer.title}
@@ -129,38 +165,106 @@ function OfferCard({ offer, index, onClick }) {
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.6 }}
           style={{
-            position: "absolute", inset: 0,
-            width: "100%", height: "100%",
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
             objectFit: "cover",
             opacity: imgLoaded ? 1 : 0,
           }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 40%)" }} />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 40%)",
+          }}
+        />
       </div>
 
-      <div style={{ padding: "1.25rem", flex: 1, display: "flex", flexDirection: "column" }}>
-        <span style={{ fontSize: "0.65rem", fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase", color: "#b8893a", marginBottom: "0.4rem" }}>
+      <div
+        style={{
+          padding: "1.25rem",
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <span
+          style={{
+            fontSize: "0.65rem",
+            fontWeight: 800,
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            color: "#b8893a",
+            marginBottom: "0.4rem",
+          }}
+        >
           {offer.tagline}
         </span>
-        <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.25rem", fontWeight: 700, color: "#26140a", marginBottom: "0.6rem" }}>
+        <h3
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "1.25rem",
+            fontWeight: 700,
+            color: "#26140a",
+            marginBottom: "0.6rem",
+          }}
+        >
           {offer.title}
         </h3>
-        <p style={{ fontSize: "0.85rem", color: "rgba(38,20,10,0.6)", lineHeight: 1.6, marginBottom: "1.2rem", flex: 1 }}>
+        <p
+          style={{
+            fontSize: "0.85rem",
+            color: "rgba(38,20,10,0.6)",
+            lineHeight: 1.6,
+            marginBottom: "1.2rem",
+            flex: 1,
+          }}
+        >
           {offer.shortDesc}
         </p>
-        
-        <div style={{ height: "1px", background: "rgba(0,0,0,0.05)", marginBottom: "1rem" }} />
-        
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+
+        <div
+          style={{
+            height: "1px",
+            background: "rgba(0,0,0,0.05)",
+            marginBottom: "1rem",
+          }}
+        />
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <div>
             {offer.originalPrice && (
-              <span style={{ fontSize: "0.75rem", textDecoration: "line-through", color: "rgba(0,0,0,0.3)", display: "block" }}>
+              <span
+                style={{
+                  fontSize: "0.75rem",
+                  textDecoration: "line-through",
+                  color: "rgba(0,0,0,0.3)",
+                  display: "block",
+                }}
+              >
                 {offer.originalPrice}
               </span>
             )}
-            <span style={{ fontSize: "1.2rem", fontWeight: 800, color: "#26140a" }}>{offer.price}</span>
+            <span
+              style={{ fontSize: "1.2rem", fontWeight: 800, color: "#26140a" }}
+            >
+              {offer.price}
+            </span>
           </div>
-          <span style={{ fontSize: "0.7rem", color: "#b8893a", fontWeight: 700 }}>{offer.validity}</span>
+          <span
+            style={{ fontSize: "0.7rem", color: "#b8893a", fontWeight: 700 }}
+          >
+            {offer.validity}
+          </span>
         </div>
       </div>
     </motion.article>
@@ -175,10 +279,14 @@ function ImageModal({ offer, onClose }) {
       exit={{ opacity: 0 }}
       onClick={onClose}
       style={{
-        position: "fixed", inset: 0, zIndex: 9999,
+        position: "fixed",
+        inset: 0,
+        zIndex: 9999,
         background: "rgba(0,0,0,0.9)",
         backdropFilter: "blur(10px)",
-        display: "flex", alignItems: "center", justifyContent: "center",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         padding: "1rem",
       }}
     >
@@ -187,14 +295,30 @@ function ImageModal({ offer, onClose }) {
         whileTap={{ scale: 0.9 }}
         onClick={onClose}
         style={{
-          position: "absolute", top: "2rem", right: "2rem",
-          background: "white", border: "none", borderRadius: "50%",
-          width: 40, height: 40, cursor: "pointer", zIndex: 10001,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.5)"
+          position: "absolute",
+          top: "2rem",
+          right: "2rem",
+          background: "white",
+          border: "none",
+          borderRadius: "50%",
+          width: 40,
+          height: 40,
+          cursor: "pointer",
+          zIndex: 10001,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
         }}
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#26140a" strokeWidth="3">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#26140a"
+          strokeWidth="3"
+        >
           <path d="M18 6L6 18M6 6l12 12" />
         </svg>
       </motion.button>
@@ -206,9 +330,11 @@ function ImageModal({ offer, onClose }) {
         src={offer.image}
         alt={offer.title}
         style={{
-          maxWidth: "100%", maxHeight: "90vh",
-          borderRadius: 12, objectFit: "contain",
-          boxShadow: "0 30px 100px rgba(0,0,0,0.8)"
+          maxWidth: "100%",
+          maxHeight: "90vh",
+          borderRadius: 12,
+          objectFit: "contain",
+          boxShadow: "0 30px 100px rgba(0,0,0,0.8)",
         }}
         onClick={(e) => e.stopPropagation()}
       />
@@ -224,24 +350,45 @@ export default function OffersPage() {
 
   return (
     <div style={{ background: "#faf5f0", minHeight: "100vh" }}>
-      <section style={{
-        background: "linear-gradient(135deg, #26140a 0%, #3d1a0b 100%)",
-        padding: "10rem 0 8rem", textAlign: "center", color: "#f5e8d8"
-      }}>
+      <section
+        style={{
+          background: "linear-gradient(135deg, #26140a 0%, #3d1a0b 100%)",
+          padding: "10rem 0 8rem",
+          textAlign: "center",
+          color: "#f5e8d8",
+        }}
+      >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           style={{ padding: "0 1rem" }}
         >
-          <span style={{ textTransform: "uppercase", fontSize: "0.7rem", fontWeight: 800, letterSpacing: "0.3em", color: "#c9a24e", border: "1px solid rgba(201,162,78,0.3)", padding: "0.5rem 1.2rem", borderRadius: 50 }}>
+          <span
+            style={{
+              textTransform: "uppercase",
+              fontSize: "0.7rem",
+              fontWeight: 800,
+              letterSpacing: "0.3em",
+              color: "#c9a24e",
+              border: "1px solid rgba(201,162,78,0.3)",
+              padding: "0.5rem 1.2rem",
+              borderRadius: 50,
+            }}
+          >
             Limited Time
           </span>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.5rem, 6vw, 4rem)", margin: "1.5rem 0", fontWeight: 700 }}>
-            Royal <em style={{ color: "#c9a24e", fontStyle: "italic" }}>Offers</em>
+          <h1
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(2.5rem, 6vw, 4rem)",
+              margin: "1.5rem 0",
+              fontWeight: 700,
+            }}
+          >
+            Royal{" "}
+            <em style={{ color: "#c9a24e", fontStyle: "italic" }}>Offers</em>
           </h1>
-        
-         
         </motion.div>
       </section>
 
@@ -249,7 +396,12 @@ export default function OffersPage() {
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 1.5rem" }}>
           <div className="offers-grid">
             {OFFERS.map((offer, i) => (
-              <OfferCard key={offer.id} offer={offer} index={i} onClick={setSelectedOffer} />
+              <OfferCard
+                key={offer.id}
+                offer={offer}
+                index={i}
+                onClick={setSelectedOffer}
+              />
             ))}
           </div>
         </div>
@@ -257,7 +409,10 @@ export default function OffersPage() {
 
       <AnimatePresence>
         {selectedOffer && (
-          <ImageModal offer={selectedOffer} onClose={() => setSelectedOffer(null)} />
+          <ImageModal
+            offer={selectedOffer}
+            onClose={() => setSelectedOffer(null)}
+          />
         )}
       </AnimatePresence>
 

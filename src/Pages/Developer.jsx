@@ -12,8 +12,6 @@ const Developer = () => {
         fontFamily: "'Playfair Display', serif",
       }}
     >
-      
-
       {/* Developer Credit */}
       <motion.p
         initial={{ opacity: 0 }}
@@ -21,7 +19,7 @@ const Developer = () => {
         transition={{ duration: 0.8 }}
         style={{ fontSize: "14px", marginBottom: "15px" }}
       >
-        Developed  by, {" "}
+        Developed by,{" "}
         <span style={{ fontWeight: "bold" }}>Arfin Chowdhury Arif</span>
       </motion.p>
 

@@ -6,7 +6,12 @@ const BG = "#f5e8d8";
 const BORDER = "#e6d6c3";
 
 export default function ContactSection() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -158,7 +163,7 @@ export default function ContactSection() {
             fontSize: "clamp(32px, 8vw, 44px)",
             color: BRAND,
             marginBottom: "clamp(30px, 10vw, 60px)",
-            marginTop: "60px"
+            marginTop: "60px",
           }}
         >
           Get In Touch
@@ -187,7 +192,7 @@ export default function ContactSection() {
                     marginBottom: "20px",
                     fontWeight: 600,
                     fontSize: "14px",
-                    textAlign: "center"
+                    textAlign: "center",
                   }}
                 >
                   ✅ Message sent successfully! We’ll contact you soon.
@@ -196,10 +201,41 @@ export default function ContactSection() {
             </AnimatePresence>
 
             <form onSubmit={handleSubmit}>
-              <input className="input" name="name" placeholder="Full Name" value={form.name} onChange={handleChange} required />
-              <input className="input" name="email" type="email" placeholder="Email Address" value={form.email} onChange={handleChange} required />
-              <input className="input" name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} required />
-              <textarea className="input" name="message" rows="5" placeholder="Your Message" value={form.message} onChange={handleChange} required style={{ resize: "vertical", minHeight: "120px" }} />
+              <input
+                className="input"
+                name="name"
+                placeholder="Full Name"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
+              <input
+                className="input"
+                name="email"
+                type="email"
+                placeholder="Email Address"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+              <input
+                className="input"
+                name="phone"
+                placeholder="Phone Number"
+                value={form.phone}
+                onChange={handleChange}
+                required
+              />
+              <textarea
+                className="input"
+                name="message"
+                rows="5"
+                placeholder="Your Message"
+                value={form.message}
+                onChange={handleChange}
+                required
+                style={{ resize: "vertical", minHeight: "120px" }}
+              />
 
               <button className="btn" disabled={loading}>
                 {loading ? "Sending..." : "Send Message"}
@@ -214,29 +250,49 @@ export default function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 style={{ 
-              fontFamily: "'Playfair Display'", 
-              color: BRAND, 
-              marginBottom: 20,
-              fontSize: "clamp(20px, 5vw, 28px)"
-            }}>
+            <h3
+              style={{
+                fontFamily: "'Playfair Display'",
+                color: BRAND,
+                marginBottom: 20,
+                fontSize: "clamp(20px, 5vw, 28px)",
+              }}
+            >
               Want to reach out directly?
             </h3>
 
             <div className="card">
               <div className="icon">📧</div>
               <div className="infoText">
-                <p style={{ margin: 0, color: "rgba(38,20,10,0.6)", fontSize: "13px" }}>Email</p>
-                <strong style={{ color: BRAND }}>royal.hydbiryani@gmail.com</strong>
+                <p
+                  style={{
+                    margin: 0,
+                    color: "rgba(38,20,10,0.6)",
+                    fontSize: "13px",
+                  }}
+                >
+                  Email
+                </p>
+                <strong style={{ color: BRAND }}>
+                  royal.hydbiryani@gmail.com
+                </strong>
               </div>
             </div>
 
             <div className="card">
               <div className="icon">📞</div>
               <div className="infoText">
-                <p style={{ margin: 0, color: "rgba(38,20,10,0.6)", fontSize: "13px" }}>Phone</p>
+                <p
+                  style={{
+                    margin: 0,
+                    color: "rgba(38,20,10,0.6)",
+                    fontSize: "13px",
+                  }}
+                >
+                  Phone
+                </p>
                 <strong style={{ color: BRAND }}>
-                  +968 7260 6555 ,  +968 7260 7444
+                  +968 7260 6555 , +968 7260 7444
                 </strong>
               </div>
             </div>

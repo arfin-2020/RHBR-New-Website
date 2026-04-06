@@ -14,7 +14,6 @@ const BRAND_LIGHT = "#3b271e";
 const BRAND_LIGHTER = "#f5e8d8";
 const MotionLink = motion.create(Link);
 
-
 // ─── Food Data ────────────────────────────────────────────────────────────────
 const menuData = {
   "Today's Special": [
@@ -555,9 +554,8 @@ export default function MenuSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center pt-8"
-          style={{ borderTopColor: `${BRAND_COLOR}20`}}
+          style={{ borderTopColor: `${BRAND_COLOR}20` }}
         >
-          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -566,7 +564,6 @@ export default function MenuSection() {
             className="text-center pt-8"
             style={{
               borderTopColor: `${BRAND_COLOR}20`,
-             
             }}
           >
             <p className="text-gray-600 text-lg mb-6">

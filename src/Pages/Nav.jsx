@@ -3,12 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, Globe, Menu, X, ChevronRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
-
-
-// useEffect(() => {
-//   window.scrollTo(0, 0);
-// }, []);
-
 // Reliable language switch from your reference
 function switchLanguage(langCode) {
   const host = window.location.hostname;
@@ -34,10 +28,11 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const location = useLocation(); // ✅ Track current page for active state
-  
-  const currentLang = typeof window !== "undefined"
-    ? (localStorage.getItem("siteLang") || "en")
-    : "en";
+
+  const currentLang =
+    typeof window !== "undefined"
+      ? localStorage.getItem("siteLang") || "en"
+      : "en";
   const isArabic = currentLang === "ar";
   const brandColor = "#26140a";
 
@@ -71,7 +66,9 @@ const Nav = () => {
       console.error("WhatsApp number not found in environment variables!");
       return;
     }
-    const msg = encodeURIComponent("Hello Royal Hyderabadi! I'd like to place an order.");
+    const msg = encodeURIComponent(
+      "Hello Royal Hyderabadi! I'd like to place an order.",
+    );
     window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${msg}`;
   };
 
@@ -123,8 +120,6 @@ const Nav = () => {
               transition={{ delay: index * 0.05, duration: 0.3 }}
             >
               <Link
-
-              
                 to={item.path}
                 className={`relative text-sm font-semibold tracking-wide transition-all duration-300 py-2 px-3 rounded-md group ${
                   isActive(item.path)
@@ -197,7 +192,10 @@ const Nav = () => {
 
           {/* Order Now — Desktop with enhanced animation */}
           <motion.button
-            whileHover={{ scale: 1.08, boxShadow: "0 20px 40px rgba(34, 197, 94, 0.4)" }}
+            whileHover={{
+              scale: 1.08,
+              boxShadow: "0 20px 40px rgba(34, 197, 94, 0.4)",
+            }}
             whileTap={{ scale: 0.95 }}
             onClick={handleWhatsApp}
             className="hidden md:flex items-center gap-2 bg-linear-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 px-4 sm:px-6 py-2 rounded-full font-bold text-xs sm:text-sm shadow-xl transition-all duration-300 relative overflow-hidden group"
@@ -256,7 +254,11 @@ const Nav = () => {
                 key={item.name}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.08, type: "spring", stiffness: 300 }}
+                transition={{
+                  delay: index * 0.08,
+                  type: "spring",
+                  stiffness: 300,
+                }}
               >
                 <Link
                   to={item.path}
@@ -293,7 +295,10 @@ const Nav = () => {
               transition={{ delay: navItems.length * 0.08 + 0.1 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => { setIsOpen(false); handleWhatsApp(); }}
+              onClick={() => {
+                setIsOpen(false);
+                handleWhatsApp();
+              }}
               className="mt-4 w-full bg-linear-to-r from-green-600 to-green-500 py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:from-green-500 hover:to-green-400 transition-all duration-300 shadow-lg relative overflow-hidden group"
             >
               {/* ✅ Shimmer effect on hover */}

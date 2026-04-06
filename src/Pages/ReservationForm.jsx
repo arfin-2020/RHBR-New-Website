@@ -44,7 +44,15 @@ export default function ReservationSection() {
 
       if (res.ok) {
         setSuccess(true);
-        setForm({ name: "", email: "", phone: "", guests: "2", date: "", time: "", message: "" });
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          guests: "2",
+          date: "",
+          time: "",
+          message: "",
+        });
         setTimeout(() => setSuccess(false), 5000);
       }
     } catch (error) {
@@ -148,13 +156,13 @@ export default function ReservationSection() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{ 
-              color: "#b8893a", 
-              fontWeight: 700, 
-              fontSize: "12px", 
-              letterSpacing: "0.3em", 
+            style={{
+              color: "#b8893a",
+              fontWeight: 700,
+              fontSize: "12px",
+              letterSpacing: "0.3em",
               textTransform: "uppercase",
-              display: "block"
+              display: "block",
             }}
           >
             Table Booking
@@ -197,7 +205,7 @@ export default function ReservationSection() {
                   fontWeight: 600,
                   fontSize: "14px",
                   textAlign: "center",
-                  border: "1px solid #10b981"
+                  border: "1px solid #10b981",
                 }}
               >
                 🎉 Reservation Requested! We will confirm your table shortly.
@@ -209,24 +217,54 @@ export default function ReservationSection() {
             <div className="inputGroup">
               <div>
                 <label className="label">Full Name</label>
-                <input className="input" name="name" placeholder="John Doe" value={form.name} onChange={handleChange} required />
+                <input
+                  className="input"
+                  name="name"
+                  placeholder="John Doe"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div>
                 <label className="label">Phone Number</label>
-                <input className="input" name="phone" placeholder="+968 XXXX XXXX" value={form.phone} onChange={handleChange} required />
+                <input
+                  className="input"
+                  name="phone"
+                  placeholder="+968 XXXX XXXX"
+                  value={form.phone}
+                  onChange={handleChange}
+                  required
+                />
               </div>
             </div>
 
             <div className="inputGroup">
               <div>
                 <label className="label">Email Address</label>
-                <input className="input" name="email" type="email" placeholder="john@example.com" value={form.email} onChange={handleChange} required />
+                <input
+                  className="input"
+                  name="email"
+                  type="email"
+                  placeholder="john@example.com"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div>
                 <label className="label">Number of Guests</label>
-                <select className="input" name="guests" value={form.guests} onChange={handleChange} required>
-                  {[1, 2, 3, 4, 5, 6, 7, 8, "9+"].map(num => (
-                    <option key={num} value={num}>{num} {num === 1 ? 'Person' : 'People'}</option>
+                <select
+                  className="input"
+                  name="guests"
+                  value={form.guests}
+                  onChange={handleChange}
+                  required
+                >
+                  {[1, 2, 3, 4, 5, 6, 7, 8, "9+"].map((num) => (
+                    <option key={num} value={num}>
+                      {num} {num === 1 ? "Person" : "People"}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -235,23 +273,37 @@ export default function ReservationSection() {
             <div className="inputGroup">
               <div>
                 <label className="label">Date</label>
-                <input className="input" name="date" type="date" value={form.date} onChange={handleChange} required />
+                <input
+                  className="input"
+                  name="date"
+                  type="date"
+                  value={form.date}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div>
                 <label className="label">Preferred Time</label>
-                <input className="input" name="time" type="time" value={form.time} onChange={handleChange} required />
+                <input
+                  className="input"
+                  name="time"
+                  type="time"
+                  value={form.time}
+                  onChange={handleChange}
+                  required
+                />
               </div>
             </div>
 
             <div style={{ marginBottom: "20px" }}>
               <label className="label">Special Requests (Optional)</label>
-              <textarea 
-                className="input" 
-                name="message" 
-                rows="3" 
-                placeholder="Birthdays, anniversaries, or allergies..." 
-                value={form.message} 
-                onChange={handleChange} 
+              <textarea
+                className="input"
+                name="message"
+                rows="3"
+                placeholder="Birthdays, anniversaries, or allergies..."
+                value={form.message}
+                onChange={handleChange}
                 style={{ resize: "none" }}
               />
             </div>

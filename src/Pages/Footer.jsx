@@ -125,7 +125,6 @@ const quickLinks = [
   { label: "Menu", to: "/menu" },
   { label: "Reservation", to: "/reservation" },
   { label: "Offers", to: "/offers" },
-
   { label: "Contact", to: "/contact" },
 ];
 
@@ -642,11 +641,10 @@ export default function Footer() {
             ))}
           </div>
         </div>
-              <Developer/>
+        <Developer />
         {/* ── Bottom bar ── */}
         <div className="ft-bottom-wrap">
           <div className="ft-bottom">
-            
             <span className="ft-bottom-copy">
               © {new Date().getFullYear()} Royal Hyderabadi Biryani Restaurant·
               All rights reserved.
