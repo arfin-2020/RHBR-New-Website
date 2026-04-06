@@ -1,6 +1,11 @@
-import React from "react";
+import { useEffect, useState } from 'react';
 import { motion } from "framer-motion";
 import { Flame, Clock, Users, Star } from "lucide-react";
+
+
+
+
+
 
 // 1) Bring in your WhatsApp helper
 const handleWhatsApp = () => {
@@ -12,6 +17,9 @@ const handleWhatsApp = () => {
   const msg = encodeURIComponent("Hello Royal Hyderabadi! I'd like to place an order.");
   window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${msg}`;
 };
+
+
+
 
 const BiryaniIntroSection = () => {
   const brandColor = "#3b271e";

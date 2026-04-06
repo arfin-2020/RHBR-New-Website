@@ -3,6 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, Globe, Menu, X, ChevronRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
+
+
+// useEffect(() => {
+//   window.scrollTo(0, 0);
+// }, []);
+
 // Reliable language switch from your reference
 function switchLanguage(langCode) {
   const host = window.location.hostname;

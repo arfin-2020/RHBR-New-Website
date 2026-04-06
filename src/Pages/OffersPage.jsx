@@ -75,7 +75,7 @@ const OFFERS = [
     id: 7,
     title: "Special Karak Chai",
     tagline: "Special Tea",
-    shortDesc: "Planning a business lunch? Bring 8 or more colleagues and receive 20% off your entire food bill on weekdays.",
+    shortDesc: "Charak Tea is a flavorful and aromatic tea blend that combines strong black tea with a mix of traditional spices like cardamom, cinnamon, ginger, and cloves. It’s a comforting and invigorating beverage enjoyed across the Middle East and South Asia.",
     price: "0.100 Bz",
     originalPrice: null,
     saving: "Groups of 8+",

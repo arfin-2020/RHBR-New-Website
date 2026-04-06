@@ -33,7 +33,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section style={{ background: BG, padding: "110px 20px" }}>
+    <section style={{ background: BG, padding: "80px 20px" }} id="contact">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;700&display=swap');
 
@@ -45,13 +45,19 @@ export default function ContactSection() {
           gap: 50px;
         }
 
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+          .grid { gap: 30px; }
+        }
+
         @media (max-width: 768px) {
           .grid { grid-template-columns: 1fr; }
+          .container { padding: 0 10px; }
         }
 
         .formBox {
           background: #fff;
-          padding: 40px;
+          padding: clamp(20px, 5vw, 40px);
           border-radius: 24px;
           border: 1px solid ${BORDER};
           box-shadow: 0 25px 60px rgba(38,20,10,0.08);
@@ -65,6 +71,7 @@ export default function ContactSection() {
           margin-bottom: 14px;
           font-size: 14px;
           transition: 0.3s;
+          box-sizing: border-box;
         }
 
         .input:focus {
@@ -79,9 +86,10 @@ export default function ContactSection() {
           border-radius: 14px;
           background: ${BRAND};
           color: #fff;
-          border: none;
+          border: 2px solid ${BRAND};
           font-weight: 700;
           letter-spacing: 0.1em;
+          text-transform: uppercase;
           cursor: pointer;
           transition: 0.3s;
         }
@@ -89,7 +97,11 @@ export default function ContactSection() {
         .btn:hover {
           background: transparent;
           color: ${BRAND};
-          border: 2px solid ${BRAND};
+        }
+
+        .btn:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
         }
 
         .card {
@@ -118,40 +130,53 @@ export default function ContactSection() {
           align-items: center;
           justify-content: center;
           font-size: 20px;
+          flex-shrink: 0;
+        }
+
+        .infoText {
+          overflow-wrap: break-word;
+          word-break: break-word;
+          font-size: clamp(13px, 4vw, 16px);
+        }
+
+        @media (max-width: 480px) {
+          .card { padding: 15px; gap: 12px; }
+          .icon { width: 45px; height: 45px; font-size: 18px; }
         }
       `}</style>
 
       <div className="container">
-
-        {/* Title */}
+        {/* Title: Responsive font size */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           style={{
             textAlign: "center",
             fontFamily: "'Playfair Display', serif",
-            fontSize: "44px",
+            fontSize: "clamp(32px, 8vw, 44px)",
             color: BRAND,
-            marginBottom: "60px",
+            marginBottom: "clamp(30px, 10vw, 60px)",
+            marginTop: "60px"
           }}
         >
           Get In Touch
         </motion.h2>
 
         <div className="grid">
-
           {/* FORM */}
           <motion.div
             className="formBox"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             <AnimatePresence>
               {success && (
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   style={{
@@ -161,6 +186,8 @@ export default function ContactSection() {
                     borderRadius: "12px",
                     marginBottom: "20px",
                     fontWeight: 600,
+                    fontSize: "14px",
+                    textAlign: "center"
                   }}
                 >
                   ✅ Message sent successfully! We’ll contact you soon.
@@ -172,7 +199,7 @@ export default function ContactSection() {
               <input className="input" name="name" placeholder="Full Name" value={form.name} onChange={handleChange} required />
               <input className="input" name="email" type="email" placeholder="Email Address" value={form.email} onChange={handleChange} required />
               <input className="input" name="phone" placeholder="Phone Number" value={form.phone} onChange={handleChange} required />
-              <textarea className="input" name="message" rows="5" placeholder="Your Message" value={form.message} onChange={handleChange} required />
+              <textarea className="input" name="message" rows="5" placeholder="Your Message" value={form.message} onChange={handleChange} required style={{ resize: "vertical", minHeight: "120px" }} />
 
               <button className="btn" disabled={loading}>
                 {loading ? "Sending..." : "Send Message"}
@@ -182,31 +209,38 @@ export default function ContactSection() {
 
           {/* CONTACT INFO */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 style={{ fontFamily: "'Playfair Display'", color: BRAND, marginBottom: 20 }}>
+            <h3 style={{ 
+              fontFamily: "'Playfair Display'", 
+              color: BRAND, 
+              marginBottom: 20,
+              fontSize: "clamp(20px, 5vw, 28px)"
+            }}>
               Want to reach out directly?
             </h3>
 
             <div className="card">
               <div className="icon">📧</div>
-              <div>
-                <p>Email</p>
-                <strong>royal.hydbiryani@gmail.com</strong>
+              <div className="infoText">
+                <p style={{ margin: 0, color: "rgba(38,20,10,0.6)", fontSize: "13px" }}>Email</p>
+                <strong style={{ color: BRAND }}>royal.hydbiryani@gmail.com</strong>
               </div>
             </div>
 
             <div className="card">
               <div className="icon">📞</div>
-              <div>
-                <p>Phone</p>
-                <strong>+968 72606555 / +968 72607444</strong>
+              <div className="infoText">
+                <p style={{ margin: 0, color: "rgba(38,20,10,0.6)", fontSize: "13px" }}>Phone</p>
+                <strong style={{ color: BRAND }}>
+                  +968 7260 6555 ,  +968 7260 7444
+                </strong>
               </div>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>
