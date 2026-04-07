@@ -1,8 +1,8 @@
-# Royal Hyderabadi Oman – Official Website 🕌🍛
+# Royal Hyderabadi Biryani Restaurant Oman – Official Website 
 
 [![Live Site](https://img.shields.io/badge/Live-Website-gold?style=for-the-badge&logo=googlechrome&logoColor=white)](https://www.royalhyderabadioman.com/)
 
-A modern, high-performance, and responsive web application built for **Royal Hyderabadi Biryani Restaurant** in Oman. This project serves as the primary digital storefront, bridging the gap between traditional Hyderabadi culinary heritage and a modern digital user experience.
+A contemporary and highly performant website application developed for the **Royal Hyderabadi Biryani Restaurant** based in Oman. The development of this site represents the link between the legacy of Hyderabadi cuisine and the technological world of today.
 
 ---
 
@@ -21,10 +21,9 @@ A modern, high-performance, and responsive web application built for **Royal Hyd
 ### **Frontend**
 * **HTML5 & CSS3:** Semantic structure and custom styling for a premium look.
 * **JavaScript (ES6+):** For interactive elements and dynamic content loading.
-* **Tailwind/Farmer Animation:** (Edit this) Used for responsive grid layouts and UI components.
+* **Tailwind/Framer Motion:** Used for responsive grid layouts and UI components.
 
 ### **Integrations**
-* **Google Maps API:** For location tracking and directions.
 * **Table Reservation System:** Custom-built or integrated API for booking management.
 * **Formspree:** For handling contact form submissions and Reservation.
 
@@ -35,14 +34,3 @@ A modern, high-performance, and responsive web application built for **Royal Hyd
 > [!TIP]
 > Visit the live site at [royalhyderabadioman.com](https://www.royalhyderabadioman.com/) to see the full animations and menu layout.
 
----
-
-## 📂 Project Structure
-
-```text
-├── assets/          # Images, Icons, and Brand Assets
-├── css/             # Stylesheets and Responsive Queries
-├── js/              # Interactivity and API Integrations
-├── index.html       # Main Landing Page
-├── menu.html        # Digital Menu Page
-└── README.md        # Project Documentation
