@@ -193,3 +193,11 @@ export const Nav = () => {
   );
 };
 
+// Default export for the Canvas Preview (includes the required Router context)
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Nav />
+    </BrowserRouter>
+  );
+}

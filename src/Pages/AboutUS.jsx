@@ -1195,7 +1195,7 @@ function ChairmanSection() {
                 onMouseLeave={() => setImgHover(false)}
               >
                 <img
-                  src={CHAIRMAN_IMG}
+                  src='./assets/Boss.jpeg'
                   alt="Mohsin Ali Mohammad — Chairman, Royal Hyderabadi Biryani Restaurant"
                   style={{
                     width: "100%",
