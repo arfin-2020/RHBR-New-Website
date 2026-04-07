@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Nav from "./Pages/Nav";
+
 import Home from "./Pages/Home";
 import MenuPage from "./Pages/MenuPage";
 import AboutUs from "./Pages/AboutUS";
@@ -9,12 +9,13 @@ import Footer from "./Pages/Footer";
 import OffersPage from "./Pages/OffersPage";
 import ReservationSection from "./Pages/ReservationForm";
 import ScrollToTop from "./Pages/ScrollToTop";
+import { Nav } from "./Pages/Nav";
 
 function App() {
   return (
     <>
       <ScrollToTop />
-      <Nav />
+      <Nav/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<MenuPage />} />
