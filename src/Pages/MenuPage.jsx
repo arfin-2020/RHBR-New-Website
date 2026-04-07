@@ -21,7 +21,7 @@ const MENU = {
         desc: "Fresh chicken slow-cooked on dum with saffron & whole spices.",
         badge: "Signature",
         image: "./assets/Zaffrani Chicken Biryani.jpg",
-        pricing: { Single: "1.500", Couple: "3.000", Family: "5.900" },
+        pricing: { Single: "1.600", Couple: "3.000", Family: "5.900" },
       },
       {
         id: 2,
@@ -29,7 +29,7 @@ const MENU = {
         desc: "Classic Hyderabadi style chicken biryani with aromatic basmati rice.",
         badge: "Popular",
         image: "./assets/Chicken Dum Biryani.jpg",
-        pricing: { Single: "0.990", Couple: "2.100", Family: "3.400" },
+        pricing: { Single: "1.200", Couple: "2.400", Family: "3.700" },
       },
       {
         id: 3,
@@ -61,7 +61,7 @@ const MENU = {
         desc: "Crispy chicken 65 tossed through fragrant biryani rice.",
         badge: "Spicy",
         image: "./assets/65-Biryani.jpg",
-        pricing: { Single: "1.690" },
+        pricing: { Single: "1.800" },
       },
       {
         id: 7,
@@ -148,7 +148,7 @@ const MENU = {
         desc: "Spiced basmati rice served with lentil dalcha curry.",
         badge: "Classic",
         note: "Monday Special",
-        image: "./assets/Bagara Khana Dalcha.jpg",
+        image: "./assets/Bagara Khana Dalcha Phalli Gosht.jpg",
         pricing: { Single: "1.290" },
       },
       {
@@ -171,7 +171,7 @@ const MENU = {
         desc: "Whole chicken marinated in tandoori spices, roasted in a clay oven.",
         badge: "Classic",
         image: "./assets/Tandoori-Chicken.jpg",
-        pricing: { Quarter: "0.900", Half: "1.750", Full: "2.300" },
+        pricing: { Quarter: "1.200", Half: "1.900", Full: "2.600" },
       },
       {
         id: 18,
@@ -179,7 +179,7 @@ const MENU = {
         desc: "Silky smooth chicken kebabs marinated in cream & cashew paste.",
         badge: "Creamy",
         image: "./assets/chicken-reshmi-kabab.jpg",
-        pricing: { Single: "2.000" },
+        pricing: { Single: "2.100" },
       },
       {
         id: 19,
@@ -187,7 +187,7 @@ const MENU = {
         desc: "Juicy chicken tikka marinated in yogurt and spices, tandoor-grilled.",
         badge: "Tandoor",
         image: "./assets/Chicken-Tikka-Kebab.jpg",
-        pricing: { Single: "2.000" },
+        pricing: { Single: "2.100" },
       },
       {
         id: 20,
@@ -195,7 +195,7 @@ const MENU = {
         desc: "Soft paneer cubes marinated in spiced yogurt and grilled to perfection.",
         badge: "Vegetarian",
         image: "./assets/paneer-tikka-2.jpg",
-        pricing: { Single: "2.100" },
+        pricing: { Single: "2.200" },
       },
       {
         id: 21,
@@ -203,7 +203,7 @@ const MENU = {
         desc: "Crispy spiced chicken lollypops — perfect party starter.",
         badge: "Crispy",
         image: "./assets/Chicken-Lollipop.jpg",
-        pricing: { Single: "2.000" },
+        pricing: { Single: "2.100" },
       },
       {
         id: 22,
@@ -211,7 +211,7 @@ const MENU = {
         desc: "Minced mutton blended with herbs and spices, grilled on skewers.",
         badge: "Grilled",
         image: "./assets/mutton-Sheekh-kabab.jpg",
-        pricing: { Single: "2.100" },
+        pricing: { Single: "2.200" },
       },
     ],
   },
@@ -225,7 +225,7 @@ const MENU = {
         badge: "Combo",
         note: "Comes with 1 Roti",
         image: "./assets/Chicken Curry.jpg",
-        pricing: { Half: "0.700", Full: "1.200" },
+        pricing: { Half: "0.900", Full: "1.500" },
       },
       {
         id: 24,
@@ -233,7 +233,7 @@ const MENU = {
         desc: "Rich, creamy tomato-based butter chicken — a crowd favourite.",
         badge: "Favourite",
         image: "./assets/Butter Chicken.jpg",
-        pricing: { Single: "1.200" },
+        pricing: { Single: "1.700" },
       },
       {
         id: 25,
@@ -241,7 +241,7 @@ const MENU = {
         desc: "Indo-Chinese chicken in a spiced soy-ginger sauce.",
         badge: "Fusion",
         image: "./assets/Chicken Manchurian.jpg",
-        pricing: { Single: "1.700" },
+        pricing: { Single: "1.800" },
       },
       {
         id: 26,
@@ -249,7 +249,7 @@ const MENU = {
         desc: "Crispy chicken tossed in a fiery dragon sauce.",
         badge: "Spicy",
         image: "./assets/Dragon Chicken.jpg",
-        pricing: { Single: "1.700" },
+        pricing: { Single: "1.800" },
       },
       {
         id: 27,
@@ -257,7 +257,7 @@ const MENU = {
         desc: "Bold Indo-Chinese dry chilly chicken with peppers & onions.",
         badge: "Hot",
         image: "./assets/Chilly Chicken Dry.png",
-        pricing: { Single: "1.700" },
+        pricing: { Single: "1.800" },
       },
       {
         id: 28,
@@ -265,7 +265,7 @@ const MENU = {
         desc: "Deep-fried spiced chicken — a South Indian classic in dry or gravy.",
         badge: "Star",
         image: "./assets/Chicken65.png",
-        pricing: { Dry: "1.500", Gravy: "1.500" },
+        pricing: { Dry: "1.800", Gravy: "1.800" },
       },
       {
         id: 29,
@@ -273,7 +273,7 @@ const MENU = {
         desc: "Golden-fried crispy chicken with a light spiced coating.",
         badge: "Crispy",
         image: "./assets/Crispy Fried Chicken.jpg",
-        pricing: { Single: "1.700" },
+        pricing: { Single: "1.800" },
       },
     ],
   },
@@ -488,7 +488,7 @@ const MENU = {
         name: "Veg Noodles",
         desc: "Soft noodles tossed with fresh vegetables and soy.",
         badge: "Veg",
-        image: "./assets/Veg Noodles.jpg",
+        image: "./assets/VEG Noodles.jpg",
         pricing: { Single: "1.300" },
       },
       {
