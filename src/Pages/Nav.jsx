@@ -96,7 +96,7 @@ export const Nav = () => {
             <img
               src="/assets/Logo Header.png"
               alt="Royal Hyderabadi Logo"
-              className="w-[180px] xs:w-[220px] sm:w-[280px] md:w-[320px] lg:w-[350px] h-auto object-contain transition-all duration-300"
+              className="w-45 xs:w-[220px] sm:w-70 md:w-[320px] lg:w-87.5 h-auto object-contain transition-all duration-300"
               onError={(e) => { e.target.src = "./src/assets/Logo Header.png"; }}
             />
           </Link>
@@ -164,7 +164,7 @@ export const Nav = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="md:hidden fixed top-0 right-0 h-screen w-full sm:w-[320px] bg-[#26140a] shadow-[-20px_0_50px_rgba(0,0,0,0.5)] flex flex-col pt-24 px-10 gap-5 z-[99] border-l border-white/5"
+            className="md:hidden fixed top-0 right-0 h-screen w-full sm:w-[320px] bg-[#26140a] shadow-[-20px_0_50px_rgba(0,0,0,0.5)] flex flex-col pt-24 px-10 gap-5 z-99 border-l border-white/5"
           >
             <button className="absolute top-6 right-6 p-2 text-white/50" onClick={() => setIsOpen(false)}><X size={32} /></button>
             {navItems.map((item, idx) => (

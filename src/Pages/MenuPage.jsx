@@ -157,7 +157,7 @@ const MENU = {
         desc: "A light yet flavorful soup made with tender mutton & aromatic spices.",
         badge: "Warming",
         image:
-          "https://royalhyderabadioman.com/wp-content/uploads/2026/02/Mutton-Marag-1024x720.jpg",
+          "./assets/Mutton Marag.png",
         pricing: { Single: "1.700" },
       },
     ],
@@ -304,7 +304,7 @@ const MENU = {
         desc: "Tender brain slow-cooked with aromatic spices and herbs, lightly fried.",
         badge: "Signature",
         image:
-          "https://royalhyderabadioman.com/wp-content/uploads/2026/02/Bheja-Fry-1024x720.jpg",
+          "./assets/Bheja Fry.png",
         pricing: { Single: "1.00" },
       },
     ],
@@ -1633,8 +1633,9 @@ export default function MenuSection() {
                 fontSize: "clamp(34px,4vw,54px)",
                 fontWeight: 700,
                 color: B2,
-                margin: "0 0 18px",
+                margin: "30px 0 18px",
                 lineHeight: 1.1,
+
               }}
             >
               Our Signature Menu
