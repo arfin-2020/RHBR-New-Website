@@ -357,7 +357,7 @@ export default function TalabatSection() {
             transition={{ duration: 0.5, delay: 0.62 }}
           >
             <a
-              href="https://www.talabat.com"
+              href="https://www.talabat.com/oman/restaurant/798185/rhbr?aid=1404"
               target="_blank"
               rel="noopener noreferrer"
               className="tl-cta-btn"
