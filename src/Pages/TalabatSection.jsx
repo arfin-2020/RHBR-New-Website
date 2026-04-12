@@ -452,7 +452,7 @@ export default function DeliverySection() {
               margin: "0 auto",
               lineHeight: 1.78,
             }}>
-              Royal Hyderabadi Biryani is now available for delivery. Click a poster to see the full offer, then order with one tap.
+              Royal Hyderabadi Biryani Restaurant is now available for delivery. Click a poster to see the full offer, then order with one tap.
             </p>
           </div>
 
