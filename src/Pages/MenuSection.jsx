@@ -266,7 +266,7 @@ function MenuCard({ item, index }) {
             className="w-full h-full object-cover"
             onError={(e) => {
               e.target.src =
-                "https://via.placeholder.com/300x250?text=" + item.title;
+                "https://placehold.co/300x250?text=" + item.title;
             }}
           />
 

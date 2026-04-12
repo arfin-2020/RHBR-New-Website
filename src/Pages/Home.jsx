@@ -8,6 +8,7 @@ import TalabatSection from "./TalabatSection";
 import VideoSection from "./VideoSection";
 import ReviewsSection from "./ReviewsSection";
 import Footer from "./Footer";
+import DeliverySection from "./TalabatSection";
 
 const Home = () => {
   return (
@@ -15,7 +16,7 @@ const Home = () => {
       <HeroSection />
       <BiryaniIntroSection />
       <MenuSection />
-      <TalabatSection />
+      <DeliverySection/>
       <VideoSection />
       <ReviewsSection />
     </>

@@ -47,7 +47,7 @@ const OFFERS = [
     tagline: "All You Can Eat",
     shortDesc:
       "Every Friday & Saturday morning, indulge in our unlimited Hyderabadi brunch spread with live cooking stations.",
-    price: "OMR 0.990",
+    price: "OMR 1.200",
     originalPrice: "OMR 1.800",
     saving: "Per Person",
     validity: "Everyday",
