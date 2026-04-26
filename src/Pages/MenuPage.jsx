@@ -156,8 +156,7 @@ const MENU = {
         name: "Mutton Marag",
         desc: "A light yet flavorful soup made with tender mutton & aromatic spices.",
         badge: "Warming",
-        image:
-          "./assets/Mutton Marag.png",
+        image: "./assets/Mutton Marag.png",
         pricing: { Single: "1.700" },
       },
     ],
@@ -303,8 +302,7 @@ const MENU = {
         name: "Bheja Fry",
         desc: "Tender brain slow-cooked with aromatic spices and herbs, lightly fried.",
         badge: "Signature",
-        image:
-          "./assets/Bheja Fry.png",
+        image: "./assets/Bheja Fry.png",
         pricing: { Single: "1.00" },
       },
     ],
@@ -809,23 +807,254 @@ function getSinglePrice(pricing) {
   return price === "Market Price" ? "Market Price" : `${price} OMR`;
 }
 
-// ─── WhatsApp handler ────────────────────────────────────────────────────────
-const handleWhatsApp = (foodName) => {
-  // Defensive check for the environment to prevent 'import.meta' errors
-  const phoneNumber =
-    typeof import.meta !== "undefined" && import.meta.env?.VITE_WHATSAPP_NUMBER
-      ? import.meta.env.VITE_WHATSAPP_NUMBER
-      : "96872606555"; // Direct fallback
+// ─── WhatsApp Helpers ─────────────────────────────────────────────────────────
+const WHATSAPP_NUMBER =
+  typeof import.meta !== "undefined" && import.meta.env?.VITE_WHATSAPP_NUMBER
+    ? import.meta.env.VITE_WHATSAPP_NUMBER
+    : "96872606555";
 
-  if (!phoneNumber) {
-    console.error("WhatsApp number not found in environment variables!");
-    return;
-  }
-  const msg = encodeURIComponent(
-    `Hello Royal Hyderabadi!\nI'd like to place an order.\n\nFood Name: ${foodName}\nLocation: \nQuantity: `,
+const buildWhatsAppMsg = (foodName) =>
+  encodeURIComponent(
+    `Hello Royal Hyderabadi!\nI'd like to place an order.\n\nFood Name: ${foodName}\nLocation: \nQuantity: `
   );
-  window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${msg}`;
+
+const openWhatsAppApp = (foodName) => {
+  window.location.href = `whatsapp://send?phone=${WHATSAPP_NUMBER}&text=${buildWhatsAppMsg(foodName)}`;
 };
+
+const openWhatsAppWeb = (foodName) => {
+  const url = "https://web.whatsapp.com/send?phone=" + WHATSAPP_NUMBER + "&text=" + buildWhatsAppMsg(foodName);
+  window.open(url, "_blank", "noopener,noreferrer");
+};
+
+// ─── WhatsApp Chooser Modal ────────────────────────────────────────────────────
+function WhatsAppChooser({ foodName, onClose }) {
+  useEffect(() => {
+    const fn = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", fn);
+    return () => document.removeEventListener("keydown", fn);
+  }, [onClose]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.18 }}
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 2000,
+        background: "rgba(26,14,7,0.55)",
+        backdropFilter: "blur(4px)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "20px",
+      }}
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.88, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.88, y: 20 }}
+        transition={{ type: "spring", stiffness: 420, damping: 32 }}
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: "#fff",
+          borderRadius: "24px",
+          padding: "28px 28px 24px",
+          width: "100%",
+          maxWidth: "360px",
+          boxShadow: "0 32px 80px rgba(26,14,7,0.28)",
+          fontFamily: "'Lato', sans-serif",
+        }}
+      >
+        {/* Header */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+            marginBottom: "6px",
+          }}
+        >
+          <div>
+            <h3
+              style={{
+                margin: "0 0 4px",
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "18px",
+                fontWeight: 700,
+                color: B2,
+              }}
+            >
+              Open WhatsApp
+            </h3>
+            <p
+              style={{
+                margin: 0,
+                fontSize: "12.5px",
+                color: MUTED,
+                lineHeight: 1.5,
+              }}
+            >
+              How would you like to order?
+            </p>
+          </div>
+          <button
+            onClick={onClose}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "22px",
+              color: MUTED,
+              lineHeight: 1,
+              padding: "2px 4px",
+              marginTop: "-2px",
+            }}
+          >
+            ×
+          </button>
+        </div>
+
+        <div
+          style={{ height: "1px", background: BORDER, margin: "16px 0" }}
+        />
+
+        {/* WhatsApp App Button */}
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.97 }}
+          onClick={() => {
+            openWhatsAppApp(foodName);
+            onClose();
+          }}
+          style={{
+            width: "100%",
+            padding: "14px 18px",
+            background: "#25D366",
+            color: "#fff",
+            border: "none",
+            borderRadius: "14px",
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            cursor: "pointer",
+            marginBottom: "10px",
+            fontFamily: "'Lato', sans-serif",
+            fontSize: "14px",
+            fontWeight: 700,
+            letterSpacing: "0.04em",
+            boxShadow: "0 4px 16px rgba(37,211,102,0.35)",
+          }}
+        >
+          {/* WhatsApp SVG icon */}
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            style={{ flexShrink: 0 }}
+          >
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+          <div style={{ textAlign: "left" }}>
+            <div>Open in WhatsApp App</div>
+            <div
+              style={{
+                fontSize: "11px",
+                fontWeight: 400,
+                opacity: 0.85,
+                marginTop: "1px",
+              }}
+            >
+              Recommended — fastest way to order
+            </div>
+          </div>
+        </motion.button>
+
+        {/* WhatsApp Web Button */}
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.97 }}
+          onClick={() => {
+            openWhatsAppWeb(foodName);
+            onClose();
+          }}
+          style={{
+            width: "100%",
+            padding: "14px 18px",
+            background: "#fff",
+            color: B2,
+            border: `2px solid ${BORDER}`,
+            borderRadius: "14px",
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            cursor: "pointer",
+            fontFamily: "'Lato', sans-serif",
+            fontSize: "14px",
+            fontWeight: 700,
+            letterSpacing: "0.04em",
+            transition: "border-color 0.2s",
+          }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.borderColor = B)
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.borderColor = BORDER)
+          }
+        >
+          {/* Globe / Web icon */}
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ flexShrink: 0, color: MUTED }}
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+          </svg>
+          <div style={{ textAlign: "left" }}>
+            <div>Open in WhatsApp Web</div>
+            <div
+              style={{
+                fontSize: "11px",
+                fontWeight: 400,
+                color: MUTED,
+                marginTop: "1px",
+              }}
+            >
+              No app? Order via browser
+            </div>
+          </div>
+        </motion.button>
+
+        <p
+          style={{
+            margin: "14px 0 0",
+            fontSize: "11px",
+            color: "#c4a88a",
+            textAlign: "center",
+            lineHeight: 1.5,
+          }}
+        >
+          You'll be connected to Royal Hyderabadi on WhatsApp
+        </p>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 // ─── Skeleton Card ─────────────────────────────────────────────────────────────
 function SkeletonCard() {
@@ -897,258 +1126,271 @@ function MenuCard({ item, index, onOpen }) {
   const [hovered, setHovered] = useState(false);
   const [imgErr, setImgErr] = useState(false);
   const [orderHovered, setOrderHovered] = useState(false);
+  const [chooserOpen, setChooserOpen] = useState(false);
 
   const multipleOptions = hasMultipleOptions(item.pricing);
   const singlePrice = getSinglePrice(item.pricing);
   const isMarketPrice = singlePrice === "Market Price";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.06,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      onClick={() => multipleOptions && onOpen(item)}
-      style={{
-        cursor: multipleOptions ? "pointer" : "default",
-        height: "100%",
-      }}
-    >
-      <div
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.5,
+          delay: index * 0.06,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        onHoverStart={() => setHovered(true)}
+        onHoverEnd={() => setHovered(false)}
+        onClick={() => multipleOptions && onOpen(item)}
         style={{
-          background: "#fff",
-          borderRadius: "20px",
-          overflow: "hidden",
-          border: `1px solid ${hovered ? "#c4956a" : BORDER}`,
-          boxShadow: hovered
-            ? "0 20px 56px rgba(38,20,10,0.16)"
-            : "0 2px 16px rgba(38,20,10,0.06)",
-          transition:
-            "box-shadow 0.35s ease, border-color 0.3s ease, transform 0.35s ease",
-          transform: hovered ? "translateY(-6px)" : "translateY(0)",
-          display: "flex",
-          flexDirection: "column",
+          cursor: multipleOptions ? "pointer" : "default",
           height: "100%",
         }}
       >
         <div
           style={{
-            position: "relative",
-            height: "200px",
+            background: "#fff",
+            borderRadius: "20px",
             overflow: "hidden",
-            flexShrink: 0,
-            background: "#f0e8df",
+            border: `1px solid ${hovered ? "#c4956a" : BORDER}`,
+            boxShadow: hovered
+              ? "0 20px 56px rgba(38,20,10,0.16)"
+              : "0 2px 16px rgba(38,20,10,0.06)",
+            transition:
+              "box-shadow 0.35s ease, border-color 0.3s ease, transform 0.35s ease",
+            transform: hovered ? "translateY(-6px)" : "translateY(0)",
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
           }}
         >
-          <motion.img
-            src={
-              imgErr
-                ? "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=600&q=80"
-                : item.image
-            }
-            alt={item.name}
-            onError={() => setImgErr(true)}
-            animate={{ scale: hovered ? 1.08 : 1 }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              display: "block",
-            }}
-          />
           <div
             style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(to top, rgba(38,20,10,0.65) 0%, transparent 55%)",
-              pointerEvents: "none",
-            }}
-          />
-
-          <div
-            style={{
-              position: "absolute",
-              top: "12px",
-              left: "12px",
-              background: "rgba(255,255,255,0.93)",
-              backdropFilter: "blur(6px)",
-              borderRadius: "999px",
-              padding: "3px 11px",
-              fontSize: "10.5px",
-              fontFamily: "'Playfair Display', serif",
-              fontWeight: 600,
-              color: B2,
-              letterSpacing: "0.04em",
+              position: "relative",
+              height: "200px",
+              overflow: "hidden",
+              flexShrink: 0,
+              background: "#f0e8df",
             }}
           >
-            {item.badge}
-          </div>
+            <motion.img
+              src={
+                imgErr
+                  ? "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=600&q=80"
+                  : item.image
+              }
+              alt={item.name}
+              onError={() => setImgErr(true)}
+              animate={{ scale: hovered ? 1.08 : 1 }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(to top, rgba(38,20,10,0.65) 0%, transparent 55%)",
+                pointerEvents: "none",
+              }}
+            />
 
-          {item.note && (
             <div
               style={{
                 position: "absolute",
                 top: "12px",
-                right: "12px",
-                background: "#26140a",
+                left: "12px",
+                background: "rgba(255,255,255,0.93)",
+                backdropFilter: "blur(6px)",
                 borderRadius: "999px",
-                padding: "3px 10px",
-                fontSize: "9px",
-                fontFamily: "'Lato', sans-serif",
-                fontWeight: 700,
-                color: "#f5e8d8",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
+                padding: "3px 11px",
+                fontSize: "10.5px",
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: 600,
+                color: B2,
+                letterSpacing: "0.04em",
               }}
             >
-              {item.note}
+              {item.badge}
             </div>
-          )}
-        </div>
 
-        <div
-          style={{
-            padding: "18px 20px 20px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px",
-            flex: 1,
-          }}
-        >
-          <h3
-            style={{
-              margin: 0,
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "16px",
-              fontWeight: 700,
-              color: B2,
-              lineHeight: 1.3,
-            }}
-          >
-            {item.name}
-          </h3>
+            {item.note && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "12px",
+                  right: "12px",
+                  background: "#26140a",
+                  borderRadius: "999px",
+                  padding: "3px 10px",
+                  fontSize: "9px",
+                  fontFamily: "'Lato', sans-serif",
+                  fontWeight: 700,
+                  color: "#f5e8d8",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {item.note}
+              </div>
+            )}
+          </div>
 
-          <p
+          <div
             style={{
-              margin: 0,
-              fontFamily: "'Lato', sans-serif",
-              fontSize: "13px",
-              color: MUTED,
-              lineHeight: 1.72,
+              padding: "18px 20px 20px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
               flex: 1,
             }}
           >
-            {item.desc}
-          </p>
-
-          {multipleOptions ? (
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.97 }}
+            <h3
               style={{
-                background: hovered ? B : "transparent",
-                border: `2px solid ${B}`,
-                color: hovered ? "#f5e8d8" : B,
-                borderRadius: "12px",
-                padding: "11px 0",
-                fontFamily: "'Lato', sans-serif",
-                fontSize: "12px",
+                margin: 0,
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "16px",
                 fontWeight: 700,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "7px",
-                transition: "background 0.3s ease, color 0.3s ease",
+                color: B2,
+                lineHeight: 1.3,
               }}
             >
-              View Options
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </motion.div>
-          ) : (
-            <>
-              <div
-                style={{
-                  marginTop: "auto",
-                  borderTop: `1px solid ${BORDER}`,
-                  paddingTop: "12px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "'Lato', sans-serif",
-                    fontSize: "11px",
-                    color: "#b8956e",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  Available daily
-                </span>
-                <span
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: isMarketPrice ? "12px" : "15px",
-                    fontWeight: 700,
-                    color: B2,
-                  }}
-                >
-                  {singlePrice}
-                </span>
-              </div>
+              {item.name}
+            </h3>
 
-              <button
-                onMouseEnter={() => setOrderHovered(true)}
-                onMouseLeave={() => setOrderHovered(false)}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleWhatsApp(item.name);
-                }}
+            <p
+              style={{
+                margin: 0,
+                fontFamily: "'Lato', sans-serif",
+                fontSize: "13px",
+                color: MUTED,
+                lineHeight: 1.72,
+                flex: 1,
+              }}
+            >
+              {item.desc}
+            </p>
+
+            {multipleOptions ? (
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
                 style={{
-                  marginTop: "6px",
-                  width: "100%",
-                  padding: "11px 0",
-                  background: orderHovered ? B : "#fff",
-                  color: orderHovered ? "#f5e8d8" : B,
+                  background: hovered ? B : "transparent",
                   border: `2px solid ${B}`,
+                  color: hovered ? "#f5e8d8" : B,
                   borderRadius: "12px",
+                  padding: "11px 0",
                   fontFamily: "'Lato', sans-serif",
                   fontSize: "12px",
                   fontWeight: 700,
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
-                  cursor: "pointer",
-                  transition: "background 0.25s ease, color 0.25s ease",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "7px",
+                  transition: "background 0.3s ease, color 0.3s ease",
                 }}
               >
-                Order Now
-              </button>
-            </>
-          )}
+                View Options
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </motion.div>
+            ) : (
+              <>
+                <div
+                  style={{
+                    marginTop: "auto",
+                    borderTop: `1px solid ${BORDER}`,
+                    paddingTop: "12px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "'Lato', sans-serif",
+                      fontSize: "11px",
+                      color: "#b8956e",
+                      letterSpacing: "0.04em",
+                    }}
+                  >
+                    Available daily
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "'Playfair Display', serif",
+                      fontSize: isMarketPrice ? "12px" : "15px",
+                      fontWeight: 700,
+                      color: B2,
+                    }}
+                  >
+                    {singlePrice}
+                  </span>
+                </div>
+
+                <button
+                  onMouseEnter={() => setOrderHovered(true)}
+                  onMouseLeave={() => setOrderHovered(false)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setChooserOpen(true);
+                  }}
+                  style={{
+                    marginTop: "6px",
+                    width: "100%",
+                    padding: "11px 0",
+                    background: orderHovered ? B : "#fff",
+                    color: orderHovered ? "#f5e8d8" : B,
+                    border: `2px solid ${B}`,
+                    borderRadius: "12px",
+                    fontFamily: "'Lato', sans-serif",
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    cursor: "pointer",
+                    transition: "background 0.25s ease, color 0.25s ease",
+                  }}
+                >
+                  Order Now
+                </button>
+              </>
+            )}
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+
+      {/* WhatsApp Chooser */}
+      <AnimatePresence>
+        {chooserOpen && (
+          <WhatsAppChooser
+            foodName={item.name}
+            onClose={() => setChooserOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
@@ -1156,6 +1398,7 @@ function MenuCard({ item, index, onOpen }) {
 function ItemModal({ item, onClose }) {
   const [imgErr, setImgErr] = useState(false);
   const [orderHovered, setOrderHovered] = useState(false);
+  const [chooserOpen, setChooserOpen] = useState(false);
 
   useEffect(() => {
     const fn = (e) => {
@@ -1170,265 +1413,281 @@ function ItemModal({ item, onClose }) {
   }, [onClose]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.22 }}
-      onClick={onClose}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 1000,
-        background: "rgba(26,14,7,0.72)",
-        backdropFilter: "blur(6px)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "20px",
-      }}
-    >
+    <>
       <motion.div
-        initial={{ opacity: 0, scale: 0.88, y: 30 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.88, y: 30 }}
-        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-        onClick={(e) => e.stopPropagation()}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.22 }}
+        onClick={onClose}
         style={{
-          background: "#fff",
-          borderRadius: "28px",
-          width: "100%",
-          maxWidth: "500px",
-          overflow: "hidden",
-          boxShadow: "0 40px 100px rgba(26,14,7,0.35)",
-          maxHeight: "90vh",
+          position: "fixed",
+          inset: 0,
+          zIndex: 1000,
+          background: "rgba(26,14,7,0.72)",
+          backdropFilter: "blur(6px)",
           display: "flex",
-          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "20px",
         }}
       >
-        <div style={{ position: "relative", height: "220px", flexShrink: 0 }}>
-          <img
-            src={
-              imgErr
-                ? "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=600&q=80"
-                : item.image
-            }
-            onError={() => setImgErr(true)}
-            alt={item.name}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              display: "block",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(to top, rgba(38,20,10,0.82) 0%, rgba(38,20,10,0.08) 60%)",
-            }}
-          />
-
-          <button
-            onClick={onClose}
-            style={{
-              position: "absolute",
-              top: "14px",
-              right: "14px",
-              width: "36px",
-              height: "36px",
-              borderRadius: "50%",
-              background: "rgba(255,255,255,0.95)",
-              border: "none",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 2px 12px rgba(0,0,0,0.18)",
-              fontSize: "18px",
-              color: B2,
-              fontWeight: 700,
-              transition: "transform 0.2s",
-            }}
-          >
-            ×
-          </button>
-
-          <div
-            style={{
-              position: "absolute",
-              bottom: "14px",
-              left: "16px",
-              background: "rgba(255,255,255,0.95)",
-              borderRadius: "999px",
-              padding: "4px 12px",
-              fontSize: "11px",
-              fontFamily: "'Playfair Display', serif",
-              fontWeight: 600,
-              color: B2,
-              letterSpacing: "0.04em",
-            }}
-          >
-            {item.badge}
-          </div>
-        </div>
-
-        <div style={{ padding: "24px 28px 30px", overflowY: "auto", flex: 1 }}>
-          <div style={{ marginBottom: "10px" }}>
-            <h2
+        <motion.div
+          initial={{ opacity: 0, scale: 0.88, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.88, y: 30 }}
+          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+          onClick={(e) => e.stopPropagation()}
+          style={{
+            background: "#fff",
+            borderRadius: "28px",
+            width: "100%",
+            maxWidth: "500px",
+            overflow: "hidden",
+            boxShadow: "0 40px 100px rgba(26,14,7,0.35)",
+            maxHeight: "90vh",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div style={{ position: "relative", height: "220px", flexShrink: 0 }}>
+            <img
+              src={
+                imgErr
+                  ? "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=600&q=80"
+                  : item.image
+              }
+              onError={() => setImgErr(true)}
+              alt={item.name}
               style={{
-                margin: "0 0 8px",
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "22px",
-                fontWeight: 700,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(to top, rgba(38,20,10,0.82) 0%, rgba(38,20,10,0.08) 60%)",
+              }}
+            />
+
+            <button
+              onClick={onClose}
+              style={{
+                position: "absolute",
+                top: "14px",
+                right: "14px",
+                width: "36px",
+                height: "36px",
+                borderRadius: "50%",
+                background: "rgba(255,255,255,0.95)",
+                border: "none",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.18)",
+                fontSize: "18px",
                 color: B2,
-                lineHeight: 1.25,
+                fontWeight: 700,
+                transition: "transform 0.2s",
               }}
             >
-              {item.name}
-            </h2>
-            {item.note && (
-              <span
-                style={{
-                  display: "inline-block",
-                  background: "#fdf3e7",
-                  color: "#92400e",
-                  fontFamily: "'Lato', sans-serif",
-                  fontSize: "10px",
-                  fontWeight: 700,
-                  letterSpacing: "0.09em",
-                  textTransform: "uppercase",
-                  padding: "3px 10px",
-                  borderRadius: "999px",
-                  border: "1px solid #fddfa4",
-                }}
-              >
-                {item.note}
-              </span>
-            )}
+              ×
+            </button>
+
+            <div
+              style={{
+                position: "absolute",
+                bottom: "14px",
+                left: "16px",
+                background: "rgba(255,255,255,0.95)",
+                borderRadius: "999px",
+                padding: "4px 12px",
+                fontSize: "11px",
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: 600,
+                color: B2,
+                letterSpacing: "0.04em",
+              }}
+            >
+              {item.badge}
+            </div>
           </div>
 
-          <p
-            style={{
-              margin: "0 0 22px",
-              fontFamily: "'Lato', sans-serif",
-              fontSize: "13.5px",
-              color: MUTED,
-              lineHeight: 1.75,
-            }}
-          >
-            {item.desc}
-          </p>
-
-          <div
-            style={{ height: "1px", background: BORDER, marginBottom: "20px" }}
-          />
-
-          <p
-            style={{
-              margin: "0 0 14px",
-              fontFamily: "'Lato', sans-serif",
-              fontSize: "10.5px",
-              fontWeight: 700,
-              color: MUTED,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-            }}
-          >
-            Pricing Options
-          </p>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-              marginBottom: "24px",
-            }}
-          >
-            {Object.entries(item.pricing).map(([label, price], i) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, x: -12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.07, duration: 0.35 }}
+          <div style={{ padding: "24px 28px 30px", overflowY: "auto", flex: 1 }}>
+            <div style={{ marginBottom: "10px" }}>
+              <h2
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  padding: "14px 16px",
-                  background: i === 0 ? "#faf5f0" : "#fff",
-                  borderRadius: "14px",
-                  border: `1px solid ${i === 0 ? "#e8d8c8" : BORDER}`,
+                  margin: "0 0 8px",
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: "22px",
+                  fontWeight: 700,
+                  color: B2,
+                  lineHeight: 1.25,
                 }}
               >
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                {item.name}
+              </h2>
+              {item.note && (
+                <span
+                  style={{
+                    display: "inline-block",
+                    background: "#fdf3e7",
+                    color: "#92400e",
+                    fontFamily: "'Lato', sans-serif",
+                    fontSize: "10px",
+                    fontWeight: 700,
+                    letterSpacing: "0.09em",
+                    textTransform: "uppercase",
+                    padding: "3px 10px",
+                    borderRadius: "999px",
+                    border: "1px solid #fddfa4",
+                  }}
+                >
+                  {item.note}
+                </span>
+              )}
+            </div>
+
+            <p
+              style={{
+                margin: "0 0 22px",
+                fontFamily: "'Lato', sans-serif",
+                fontSize: "13.5px",
+                color: MUTED,
+                lineHeight: 1.75,
+              }}
+            >
+              {item.desc}
+            </p>
+
+            <div
+              style={{ height: "1px", background: BORDER, marginBottom: "20px" }}
+            />
+
+            <p
+              style={{
+                margin: "0 0 14px",
+                fontFamily: "'Lato', sans-serif",
+                fontSize: "10.5px",
+                fontWeight: 700,
+                color: MUTED,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+              }}
+            >
+              Pricing Options
+            </p>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                marginBottom: "24px",
+              }}
+            >
+              {Object.entries(item.pricing).map(([label, price], i) => (
+                <motion.div
+                  key={label}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.07, duration: 0.35 }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    padding: "14px 16px",
+                    background: i === 0 ? "#faf5f0" : "#fff",
+                    borderRadius: "14px",
+                    border: `1px solid ${i === 0 ? "#e8d8c8" : BORDER}`,
+                  }}
                 >
                   <div
                     style={{
-                      width: "7px",
-                      height: "7px",
-                      borderRadius: "50%",
-                      background: i === 0 ? B : "#d4b896",
-                      flexShrink: 0,
-                    }}
-                  />
-                  <span
-                    style={{
-                      fontFamily: "'Lato', sans-serif",
-                      fontSize: "14px",
-                      fontWeight: 700,
-                      color: B2,
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
                     }}
                   >
-                    {label}
+                    <div
+                      style={{
+                        width: "7px",
+                        height: "7px",
+                        borderRadius: "50%",
+                        background: i === 0 ? B : "#d4b896",
+                        flexShrink: 0,
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontFamily: "'Lato', sans-serif",
+                        fontSize: "14px",
+                        fontWeight: 700,
+                        color: B2,
+                      }}
+                    >
+                      {label}
+                    </span>
+                  </div>
+                  <span
+                    style={{
+                      fontFamily: "'Playfair Display', serif",
+                      fontSize: "17px",
+                      fontWeight: 700,
+                      color: price === "Market Price" ? MUTED : B,
+                    }}
+                  >
+                    {price === "Market Price" ? "Ask us" : `${price} OMR`}
                   </span>
-                </div>
-                <span
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: "17px",
-                    fontWeight: 700,
-                    color: price === "Market Price" ? MUTED : B,
-                  }}
-                >
-                  {price === "Market Price" ? "Ask us" : `${price} OMR`}
-                </span>
-              </motion.div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </div>
 
-          <button
-            onMouseEnter={() => setOrderHovered(true)}
-            onMouseLeave={() => setOrderHovered(false)}
-            onClick={() => handleWhatsApp(item.name)}
-            style={{
-              width: "100%",
-              padding: "14px 0",
-              background: orderHovered ? B : "#fff",
-              color: orderHovered ? "#f5e8d8" : B,
-              border: `2px solid ${B}`,
-              borderRadius: "16px",
-              fontFamily: "'Lato', sans-serif",
-              fontSize: "14px",
-              fontWeight: 700,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              boxShadow: orderHovered
-                ? "0 8px 24px rgba(38,20,10,0.2)"
-                : "none",
-            }}
-          >
-            Order Now on WhatsApp
-          </button>
-        </div>
+            <button
+              onMouseEnter={() => setOrderHovered(true)}
+              onMouseLeave={() => setOrderHovered(false)}
+              onClick={() => setChooserOpen(true)}
+              style={{
+                width: "100%",
+                padding: "14px 0",
+                background: orderHovered ? B : "#fff",
+                color: orderHovered ? "#f5e8d8" : B,
+                border: `2px solid ${B}`,
+                borderRadius: "16px",
+                fontFamily: "'Lato', sans-serif",
+                fontSize: "14px",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                boxShadow: orderHovered
+                  ? "0 8px 24px rgba(38,20,10,0.2)"
+                  : "none",
+              }}
+            >
+              Order Now on WhatsApp
+            </button>
+          </div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+
+      {/* WhatsApp Chooser — rendered above ItemModal (zIndex 2000) */}
+      <AnimatePresence>
+        {chooserOpen && (
+          <WhatsAppChooser
+            foodName={item.name}
+            onClose={() => setChooserOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
@@ -1635,7 +1894,6 @@ export default function MenuSection() {
                 color: B2,
                 margin: "30px 0 18px",
                 lineHeight: 1.1,
-
               }}
             >
               Our Signature Menu
