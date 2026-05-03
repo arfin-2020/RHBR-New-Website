@@ -20,7 +20,7 @@ const menuData = {
     {
       id: 1,
       image:
-        "https://royalhyderabadioman.com/wp-content/uploads/2026/02/Mutton-Marag-1024x720.jpg",
+        "./assets/Mutton Marag.png",
       title: "Mutton Marag",
       description:
         "A traditional Hyderabadi delicacy, Mutton Marag is a light yet flavorful soup made with tender mutton, aromatic spices, and slow-cooked broth.",
@@ -46,7 +46,7 @@ const menuData = {
     {
       id: 4,
       image:
-        "https://royalhyderabadioman.com/wp-content/uploads/2026/02/Bheja-Fry-1024x720.jpg",
+        "./assets/Bheja Fry.png",
       title: "Bheja Fry",
       description:
         "A rich and flavorful Hyderabadi delicacy made from tender brain, slow-cooked with aromatic spices and herbs.",
